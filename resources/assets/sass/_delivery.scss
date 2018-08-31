@@ -1,0 +1,125 @@
+.delivery-container{
+    width: 100%;
+    //overflow: hidden;
+    .chosen-drop {
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: auto;
+        max-height: 240px;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+.delivery__img{
+    position: relative;
+    margin-top: 50px;
+    width: 400px;
+    img{
+       height: 270px;
+       margin-left: 50px;
+       @include bp (md){
+        margin-left: 0;
+       }
+       @include bp (sm){
+        margin-left: 20px;
+        }
+        @include bp (xs){
+            margin-left: 0;
+            }
+    }
+    .delivery__img-cloud{
+        position: absolute;
+        top: -50px;
+        right: 0px;
+        width: 200px;
+        height: 150px;
+        border-radius: 50%;
+        background: #fad5d9;
+        color: #000;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'FuturaBookC';
+        padding: 0 10px;
+        &::after{
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 11px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 35px 20px 0 20px;
+            border-color: #fad5d9 transparent transparent transparent;
+            transform: rotate(-64deg);
+        }
+        @include bp (sm){
+            right: 100px;
+            width: 150px;
+            font-size: 14px;
+        }
+        @include bp (xs){
+            right: 40px;
+            font-size: 12px;
+            width: 150px;
+        }
+    }
+    @include bp (md){
+        width: 350px;
+    }
+    @include bp (sm){
+        width: 400px;
+        margin-left: calc(50% - 150px);
+    }
+    @include bp (xs){
+        width: 300px;
+        margin-left: calc(50% - 100px);
+    }
+}
+
+@media screen and (max-width: 320px){
+    .delivery__img{
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+.delivery__img-bag{
+    margin-top: 50px;
+    img{
+        height: 200px;
+        @include bp (sm){
+        margin-left: calc(50% - 130px);
+        }
+        @include bp (xs){
+            width: 200px;
+            height: inherit;
+            margin-left: calc(50% - 100px);
+        }
+     }
+}
+
+.delivery__text{
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #5a5a5a;
+    margin-top: 50px;
+    @include bp (xs){
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+}
+
+.delivery__text-title{
+    font-family: 'FuturaDemiC';
+    font-size: 14px;
+    margin: 15px 0;
+    color: #000;
+}
+
+.delivery__text-paragraph{
+    font-family: 'FuturaBookC';
+    margin: 10px 0;
+    font-size: 14px;
+    color: #5a5a5a;
+}

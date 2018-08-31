@@ -1,0 +1,47 @@
+.features-list{
+    margin: 50px 0;
+}
+
+.features-list__item{
+    background: #fff;
+    text-align: center;
+    margin-bottom: 10px;
+   div{
+        padding: 20px;
+        box-shadow: 0px 0px 22px 0px rgba(163,163,163,.4);
+
+    }
+}
+
+.features-list__item-title{
+    font-family: 'FuturaDemiC';
+    font-size: 24px;
+    color: #484848;
+    margin-bottom: 10px;
+}
+
+.features-list__item-img{
+    margin-bottom: 10px;
+    width: 84px;
+    height: 84px;
+    object-fit: contain;
+}
+
+.features-list__item-text{
+    font-family: 'FuturaBookC';
+    text-align: left;
+    font-size: 20px;
+    color: #484848;
+    margin-bottom: 10px;
+}
+
+.features-list__item-btn{
+    color: #e84859;
+    font-family: 'FuturaDemiC';
+    font-size: 20px;
+    text-align: left;
+    &:hover{
+        text-decoration: underline;
+        color: #e84859;
+    }
+}

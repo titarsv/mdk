@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MDK</title>
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+</head>
+<body id='body'>
+
+<header class="header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="visible-sm-block col-sm-12 hidden-xs">
+               <div class="header__logo">
+                   <a href="./index.html"><img src="../../images/logo1.png" alt=""></a>
+               </div>
+           </div>
+        </div>
+        <div class="row header-inform-container underline">
+            <div class="col-sm-3 col-xs-12">
+                <ul class="header__time-information">
+                    <li><img src="../../images/icons/1.png" alt=""></li>
+                    <li>Время работы колл центра: <span>с 09:00 до 17:00 ПН-ПТ </span></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-sm-3 col-xs-12">
+                <div class="header__phone">
+                    <img src="../../images/icons/2.png" alt="">
+                    <ul>
+                        <li><a href="tel:(050) 162 08 88">(050) 162 08 88</a></li>
+                        <li><a href="tel:(067) 800 10 77">(067) 800 10 77</a></li>
+                        <li><a href="tel:(044) 333 71 09">(044) 333 71 09</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-2 hidden-sm hidden-xs">
+                <div class="header__logo">
+                    <img src="../../images/logo.png" alt="">
+                </div>
+            </div>
+            <div class="visible-xs-block col-xs-12">
+                <div class="header__logo">
+                    <img src="../../images/logo1.png" alt="">
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-6 hidden-xs header-info">
+                <form action="" class="header__searcher">
+                    <input type="search" class="header__searcher-input" placeholder="ПОИСК" name="" id="">
+                    <button></button>
+                </form>
+                <a href="">
+                    <ul class="header__like">
+                        <li>Избранное</li>
+                        <li><img src="../../images/icons/heart.png" alt=""></li>
+                    </ul>
+                </a>
+                <a href="" class="popup-btn" data-mfp-src="#logIn-popup">
+                    <ul class="header__profile">
+                        <li>Вход</li>
+                        <li><img src="../../images/icons/4.png" alt=""></li>
+                    </ul>
+                </a>
+                <a href="">
+                    <ul class="header__cart">
+                        <li>Корзина</li>
+                        <li><img src="../../images/icons/5.png" alt=""></li>
+                        <p class="in-cart">1</p>
+                    </ul>
+                </a>
+            </div>
+            <div class="visible-xs-block col-xs-12">
+                <div class="mobile-nav">
+                    <div class="burger-menu__wrp">
+                        <div class="burger-menu"></div>
+                        <p>меню</p>
+                    </div>
+                    <div class="mobile-nav__enter">
+                        <a href="" class="popup-btn" data-mfp-src="#logIn-popup">
+                            <ul class="header__profile">
+                                <li>Вход</li>
+                                <li><img src="../../images/icons/4.png" alt=""></li>
+                            </ul>
+                        </a>
+                        <a href="">
+                            <ul class="header__cart">
+                                <li>Корзина</li>
+                                <li><img src="../../images/icons/5.png" alt=""></li>
+                            </ul>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu close">
+            <div class="mobile-menu__close"></div>
+            <div class="panel-group" id="accordion-menu">                    
+                <!-- 1 панель -->
+                <div>
+                    <h4 class="mobile-menu__title accordion__title">
+                        <a data-toggle="collapse" data-parent="#accordion-menu" href="#collapseOne">ВЕРХНЯЯ ОДЕЖДА</a>
+                    </h4>
+                    <div id="collapseOne" class="mobile-menu__collapse collapse">
+                    <!-- Содержимое 1 панели -->
+                        <div class="mobile-menu__body">
+                            <ul class="mobile-menu__links">
+                                <li><a href="">Дубленки   </a></li>
+                                <li><a href="">Меховые жилеты</a></li>
+                                <li><a href="">Кожаные куртки</a></li>
+                                <li><a href="">Удлиненные кожанные куртки</a></li>
+                                <li><a href="">Утепленные куртки</a></li>
+                                <li><a href=""> Парки</a></li>
+                                <li><a href=""> Шубы</a></li>
+                                <li><a href="">Пальто</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- 2 панель -->
+                 <div>
+                    <h4 class="mobile-menu__title accordion__title">
+                        <a data-toggle="collapse" data-parent="#accordion-menu" href="#collapseTwo">Аксессуары</a>
+                    </h4>
+                    <div id="collapseTwo" class="mobile-menu__collapse collapse">
+                    <!-- Содержимое 2 панели -->
+                        <div class="mobile-menu__body">
+                            <ul class="mobile-menu__links">
+                                <li><a href="">Кошельки</a></li>
+                                <li><a href="">Перчатки</a></li>
+                                <li><a href="">Ремни</a></li>
+                                <li><a href="">Сумки</a></li>
+                                <li><a href="">Шапки</a></li>
+                                <li><a href="">Шарфы</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- 3 панель -->
+                <div>
+                    <h4 class="mobile-menu__title accordion__title">
+                        <a data-toggle="collapse" data-parent="#accordion-menu" href="#collapseThree">Другое</a>
+                    </h4>
+                    <div id="collapseThree" class="mobile-menu__collapse collapse">
+                    <!-- Содержимое 3 панели -->
+                        <div class="mobile-menu__body">
+                            <ul class="mobile-menu__links">
+                                <li><a href="">Браслеты</a></li>
+                                <li><a href="">Визитницы</a></li>
+                                <li><a href="">Ключицы</a></li>
+                                <li><a href="">Обложки для документов</a></li>
+                                <li><a href="">Амулеты в кошельки</a></li>
+                                <li><a href=""> Зонт</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row underline">
+            <nav class="hidden-xs header__navigation">
+
+                <div class="header__navigation-item">
+                    <a href="">Женщины</a>
+                    <div class="header__navigation-page">
+                        <ul class="header__navigation-page-category">
+                            <li>
+                                <a href="">ВЕРХНЯЯ ОДЕЖДА</a>
+                                <div class="header__navigation-page-links">
+                                    <ul>
+                                        <li><a href="" data-toggle="img-1">Дубленки</a></li>
+                                        <li><a href="" data-toggle="img-11">Меховые жилеты</a></li>
+                                        <li><a href="" data-toggle="img-12">Кожаные куртки</a></li>
+                                        <li><a href="" data-toggle="img-13">Удлиненные кожанные куртки</a></li>
+                                        <li><a href="" data-toggle="img-14">Утепленные куртки</a></li>
+                                        <li><a href="" data-toggle="img-15"> Парки</a></li>
+                                        <li><a href="" data-toggle="img-16"> Шубы</a></li>
+                                        <li><a href="" data-toggle="img-17">Пальто</a></li>
+                                    </ul>
+                                    <div class="header__navigation-page-links-img img-1"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="">Аксессуары</a>
+                                <div class="header__navigation-page-links">
+                                    <ul>
+                                        <li><a href="" data-toggle="2">Кошельки</a></li>
+                                        <li><a href="" data-toggle="22">Перчатки</a></li>
+                                        <li><a href="" data-toggle="23">Ремни</a></li>
+                                        <li><a href="" data-toggle="24">Сумки</a></li>
+                                        <li><a href="" data-toggle="25">Шапки</a></li>
+                                        <li><a href="" data-toggle="26">Шарфы</a></li>
+                                    </ul>
+                                    <div class="header__navigation-page-links-img img-2"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="">Другое</a>
+                                 <div class="header__navigation-page-links">
+                                    <ul>
+                                        <li><a href="" data-toggle="3">Браслеты</a></li>
+                                        <li><a href="" data-toggle="32">Визитницы</a></li>
+                                        <li><a href="" data-toggle="33">Ключицы</a></li>
+                                        <li><a href="" data-toggle="34">Обложки для документов</a></li>
+                                        <li><a href="" data-toggle="35">Амулеты в кошельки</a></li>
+                                        <li><a href="" data-toggle="36"> Зонт</a></li>
+                                    </ul>
+                                    <div class="header__navigation-page-links-img img-3"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                 <div class="header__navigation-item">
+                    <a href="">Мужчины</a>
+                    <div class="header__navigation-page">
+                        <ul class="header__navigation-page-category">
+                            <li>
+                                <a href="">ВЕРХНЯЯ ОДЕЖДА</a>
+                                <div class="header__navigation-page-links">
+                                    <ul>
+                                        <li><a href="" data-toggle="img-1">Дубленки</a></li>
+                                        <li><a href="" data-toggle="img-12">Кожаные куртки</a></li>
+                                        <li><a href="" data-toggle="img-13">Удлиненные кожанные куртки</a></li>
+                                        <li><a href="" data-toggle="img-14">Утепленные куртки</a></li>
+                                        <li><a href="" data-toggle="img-15">Парки</a></li>
+                                        <li><a href="" data-toggle="img-16">Шубы</a></li>
+                                    </ul>
+                                    <div class="header__navigation-page-links-img img-1"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="">Аксессуары</a>
+                                <div class="header__navigation-page-links">
+                                    <ul>
+                                        <li><a href="" data-toggle="2">Кошельки</a></li>
+                                        <li><a href="" data-toggle="22">Перчатки</a></li>
+                                        <li><a href="" data-toggle="23">Ремни</a></li>
+                                        <li><a href="" data-toggle="24">Портмоне</a></li>
+                                        <li><a href="" data-toggle="25">Шапки</a></li>
+                                        <li><a href="" data-toggle="26">Шарфы</a></li>
+                                    </ul>
+                                    <div class="header__navigation-page-links-img img-2"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="">Другое</a>
+                                 <div class="header__navigation-page-links">
+                                    <ul>
+                                        <li><a href="" data-toggle="3">Браслеты</a></li>
+                                        <li><a href="" data-toggle="32">Визитницы</a></li>
+                                        <li><a href="" data-toggle="33">Ключицы</a></li>
+                                        <li><a href="" data-toggle="34">Обложки для документов</a></li>
+                                        <li><a href="" data-toggle="35">Амулеты в кошельки</a></li>
+                                        <li><a href="" data-toggle="36">Зонт</a></li>
+                                    </ul>
+                                    <div class="header__navigation-page-links-img img-3"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                 <div class="header__navigation-item">
+                    <a href="">Распродажа</a>
+                </div>
+
+                 <div class="header__navigation-item">
+                    <a href="">Акции</a>
+                </div>
+
+                <div class="header__navigation-item">
+                    <a href="">Контакты</a>
+                </div>
+
+            </nav>
+        </div>
+    </div>
+</header>
+
+
+<section class="section-1">
+    <div class="container-fluid no-padding">
+        <div class="header-slider slick-slider" data-slick='{"slidesToShow": 1, "lazyLoad": "ondemand"}'>
+            <div class="header-slider__item">
+               <div class="row">
+                    <div class="col-md-6 col-sm-5 hidden-xs"></div>
+                    <div class="col-md-6 col-sm-7 col-xs-12">
+                        <div class="header-slider__item-wrp">
+                            <p class="header-slider__item-title">Лучшие цены на шубы</p>
+                            <p class="header-slider__item-subtitle">всего от <span>5 999 грн</span></p>
+                            <a href="">
+                                <p class="header-slider__item-btn">Подробнее</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <p class="header-slider__item-page"><span>1</span>/2</p>
+            </div>
+    
+            <div class="header-slider__item">
+               <div class="row">
+                    <div class="col-sm-6"></div>
+                    <div class="col-sm-6">
+                        <div class="header-slider__item-wrp">
+                            <p class="header-slider__item-title">Лучшие цены на шубы</p>
+                            <p class="header-slider__item-subtitle">всего от <span>5 999 грн</span></p>
+                            <a href="">
+                                <p class="header-slider__item-btn">Подробнее</p>
+                            </a>
+                        </div>
+                    </div>
+               </div>
+               <p class="header-slider__item-page"><span>2</span>/2</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-2">
+    <div class="section-title-wrp">
+        <p class="section-title title-label new">Новинки</p>
+    </div>
+    <div class="container-fluid owl-carousel-wrp">
+        <div class="news-slider owl-carousel owl-theme underline">
+            <div class="item slider__item product-card">
+                <div class="product-card__img-slider product-card__img-slider1 slick-slider" data-slick='{"slidesToShow": 1, "lazyLoad": "ondemand", "asNavFor": ".product-card__colors-slider1"}'>
+                    <div class="product-card__img-slider-item">
+                        <img src="../../images/sample-1.jpg" alt="">
+                        <div class="slider__item-img-label new">
+                            new
+                        </div>
+                    </div>
+                    <div class="product-card__img-slider-item">
+                        <img src="../../images/sample-1.jpg" alt="">
+                        <div class="slider__item-img-label new">
+                            new
+                        </div>
+                    </div>
+                     <div class="product-card__img-slider-item">
+                        <img src="../../images/sample-1.jpg" alt="">
+                        <div class="slider__item-img-label new">
+                            new
+                        </div>
+                    </div>
+                     <div class="product-card__img-slider-item">
+                        <img src="../../images/sample-1.jpg" alt="">
+                        <div class="slider__item-img-label new">
+                            new
+                        </div>
+                    </div>
+                     <div class="product-card__img-slider-item">
+                        <img src="../../images/sample-1.jpg" alt="">
+                        <div class="slider__item-img-label new">
+                            new
+                        </div>
+                    </div>
+                     <div class="product-card__img-slider-item">
+                        <img src="../../images/sample-1.jpg" alt="">
+                        <div class="slider__item-img-label new">
+                            new
+                        </div>
+                    </div>
+                     <div class="product-card__img-slider-item">
+                        <img src="../../images/sample-1.jpg" alt="">
+                        <div class="slider__item-img-label new">
+                            new
+                        </div>
+                    </div>
+                     <div class="product-card__img-slider-item">
+                        <img src="../../images/sample-1.jpg" alt="">
+                        <div class="slider__item-img-label new">
+                            new
+                        </div>
+                    </div>
+                     <div class="product-card__img-slider-item">
+                        <img src="../../images/sample-1.jpg" alt="">
+                        <div class="slider__item-img-label new">
+                            new
+                        </div>
+                    </div>
+                </div>
+               <div class="color-slider-wrp underline">
+                    <div class="product-card__colors-slider product-card__colors-slider1 slick-slider" data-slick='{"slidesToShow": 8, "lazyLoad": "ondemand", "asNavFor": ".product-card__img-slider1","responsive":[{"breakpoint":1300,"settings":{"slidesToShow": 6}},{"breakpoint":768,"settings":{"slidesToShow": 3}}]}'>
+                        <div class="product-card__colors-item black"></div>
+                        <div class="product-card__colors-item dark-grey"></div>
+                        <div class="product-card__colors-item grey"></div>
+                        <div class="product-card__colors-item light-grey"></div>
+                        <div class="product-card__colors-item peach"></div>
+                        <div class="product-card__colors-item brawn"></div>
+                        <div class="product-card__colors-item skin"></div>
+                        <div class="product-card__colors-item light-skin"></div>
+                        <div class="product-card__colors-item red"></div>
+                    </div>
+                </div>
+                <p class="product-card__title">Куртка женская NH-9088</p>
+                <p class="product-card__price">12 899 грн</p>
+                <div class="product-card__btn">
+                    <a href=""><p class="product-card__btn-more">Подробнее</p></a>
+                    <button class="product-card__btn-buy popup-btn" data-mfp-src="#oneClick">Купить в 1 клик</button>
+                </div>
+            </div>
+
+             <div class="item slider__item product-card">
+                <div class="product-card__img-slider product-card__img-slider2 slick-slider" data-slick='{"slidesToShow": 1, "lazyLoad": "ondemand", "asNavFor": ".product-card__colors-slider2"}'>
+                    <div class="product-card__img-slider-item">
+                        <img src="../../images/sample-1.jpg" alt="">
+                        <div class="slider__item-img-label new">
+                            new
+                        </div>
+                    </div>
+                    <div class="product-card__img-slider-item">
+                        <img src="../../images/sample-1.jpg" alt="">
+                        <div class="slider__item-img-label new">
+                            new
+                        </div>
+                    </div>
+                     <div class="product-card__img-slider-item">
+                        <img src="../../images/sample-1.jpg" alt="">
+                        <div class="slider__item-img-label new">
+                            new
+                        </div>
+                    </div>
+                     <div class="product-card__img-slider-item">
+                        <img src="../../images/sample-1.jpg" alt="">
+                        <div class="slider__item-img-label new">
+                            new
+                        </div>
+                    </div>
+                     <div class="product-card__img-slider-item">
+                        <img src="../../images/sample-1.jpg" alt="">
+                        <div class="slider__item-img-label new">
+                            new
+                        </div>
+                    </div>
+                     <div class="product-card__img-slider-item">
+                        <img src="../../images/sample-1.jpg" alt="">
+                        <div class="slider__item-img-label new">
+                            new
+                        </div>
+                    </div>
+                     <div class="product-card__img-slider-item">
+                        <img src="../../images/sample-1.jpg" alt="">
+                        <div class="slider__item-img-label new">
+                            new
+                        </div>
+                    </div>
+                     <div class="product-card__img-slider-item">
+                        <img src="../../images/sample-1.jpg" alt="">
+                        <div class="slider__item-img-label new">
+                            new
+                        </div>
+                    </div>
+                     <div class="product-card__img-slider-item">
+                        <img src="../../images/sample-1.jpg" alt="">
+                        <div class="slider__item-img-label new">
+                            new
+                        </div>
+                    </div>
+                </div>
+               <div class="color-slider-wrp underline">
+                    <div class="product-card__colors-slider product-card__colors-slider2 slick-slider" data-slick='{"slidesToShow": 8, "lazyLoad": "ondemand", "asNavFor": ".product-card__img-slider2","responsive":[{"breakpoint":1300,"settings":{"slidesToShow": 6}}, {"breakpoint":768,"settings":{"slidesToShow": 3}}]}'>
+                        <div class="product-card__colors-item black"></div>
+                        <div class="product-card__colors-item dark-grey"></div>
+                        <div class="product-card__colors-item grey"></div>
+                        <div class="product-card__colors-item light-grey"></div>
+                        <div class="product-card__colors-item peach"></div>
+                        <div class="product-card__colors-item brawn"></div>
+                        <div class="product-card__colors-item skin"></div>
+                        <div class="product-card__colors-item light-skin"></div>
+                        <div class="product-card__colors-item red"></div>
+                    </div>
+                </div>
+                <p class="product-card__title">Куртка женская NH-9088</p>
+                <p class="product-card__price">12 899 грн</p>
+                <div class="product-card__btn">
+                    <a href=""><p class="product-card__btn-more">Подробнее</p></a>
+                    <button class="product-card__btn-buy popup-btn" data-mfp-src="#oneClick">Купить в 1 клик</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section  class="section-3">
+    <div class="container">
+        <ul class="features-list">
+            <div class="row">
+                <li class="features-list__item col-md-4 col-sm-6 col-xs-12">
+                    <div>
+                        <p class="features-list__item-title">Рассрочка 0%</p>
+                        <img src="../../images/img-1.png" class="features-list__item-img" alt="">
+                        <p class="features-list__item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore
+                                magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip</p>
+                        <a href="">
+                            <p class="features-list__item-btn">Подробнее →</p>
+                        </a>
+                    </div>
+                </li>
+                <li class="features-list__item col-md-4 col-sm-6 col-xs-12">
+                    <div>
+                        <p class="features-list__item-title">Химчистка</p>
+                        <img src="../../images/img-2.png" class="features-list__item-img" alt="">
+                        <p class="features-list__item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore
+                                magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip</p>
+                        <a href="">
+                            <p class="features-list__item-btn">Подробнее →</p>
+                        </a>
+                    </div>
+                </li>
+                <li class="features-list__item col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-12">
+                    <div>
+                        <p class="features-list__item-title">Доставка</p>
+                        <img src="../../images/img-3.png" class="features-list__item-img" alt="">
+                        <p class="features-list__item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore
+                                magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip</p>
+                        <a href="">
+                            <p class="features-list__item-btn">Подробнее →</p>
+                        </a>
+                    </div>
+                </li>
+            </div>
+        </ul>
+    </div>
+</section>
+
+<section class="section-4">
+    <div class="section-title-wrp">
+        <p class="section-title title-label sale">Cкидки</p>
+    </div>
+    <div class="container-fluid owl-carousel-wrp">
+        <div class="news-slider owl-carousel owl-theme">
+            <div class="item slider__item product-card">
+                <div class="product-card__img-slider slick-slider" data-slick='{"slidesToShow": 1, "lazyLoad": "ondemand"}'>
+                    <div class="product-card__img-slider-item">
+                        <img src="../../images/sample-2.jpg" alt="">
+                        <div class="slider__item-img-label sale">
+                            -20%</br>sale
+                        </div>
+                    </div>
+                    <div class="product-card__img-slider-item">
+                        <img src="../../images/sample-2.jpg" alt="">
+                        <div class="slider__item-img-label sale">
+                            -20%</br>sale
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card__colors-slider slick-slider underline" data-slick='{"slidesToShow": 3, "lazyLoad": "ondemand", "centerMode": true}'>
+                    <div class="product-card__colors-item black"></div>
+                    <div class="product-card__colors-item dark-grey"></div>
+                    <div class="product-card__colors-item grey"></div>
+                </div>
+                <p class="product-card__title">Куртка женская NH-9088</p>
+                <div class="product-card__price-wrp">
+                    <span class="old-price">7 799</span>
+                    <span class="new-price">6 629 грн</span>
+                </div>
+                <div class="product-card__btn">
+                    <a href=""><p class="product-card__btn-more">Подробнее</p></a>
+                    <button class="product-card__btn-buy">Купить в 1 клик</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-5 underline">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="collection-banner">
+                    <a href="" class="collection-banner__photo">
+                        <img src="../../images/man.jpg" alt="">
+                    </a>
+                    <a href="">
+                        <p class="collection-banner__title">
+                            мужская коллекция
+                        </p>
+                    </a> 
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="collection-banner">
+                    <a href="" class="collection-banner__photo">
+                        <img src="../../images/woman.jpg" alt="">
+                    </a>
+                    <a href="">
+                        <p class="collection-banner__title">
+                            женская коллекция
+                        </p>
+                    </a> 
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="collection-banner">
+                    <a href="" class="collection-banner__photo">
+                        <img src="../../images/accessorize.jpg" alt="">
+                    </a>
+                    <a href="">
+                        <p class="collection-banner__title">
+                            мужские аксессуары
+                        </p>
+                    </a> 
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="collection-banner">
+                    <a href="" class="collection-banner__photo">
+                        <img src="../../images/bag.jpg" alt="">
+                    </a>
+                    <a href="">
+                        <p class="collection-banner__title">
+                            женские аксессуары
+                        </p>
+                    </a> 
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-6 underline">
+    <div class="container-fluid">
+        <p class="about-title">
+            О компании
+        </p>
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <img src="../../images/about.jpg" class="about-img" alt="">
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <p class="about-text-title">Компания «Мир дубленок и кожи» рада приветствовать  новых и постоянных покупателей!</p>
+                <p class="about-text">
+                    Мы занимаем прочную лидерскую позицию на отечественном рынке в течение  21 года. Магазины сети «Мир дубленок и кожи»
+                    работают в Киеве, Харькове, Житомире, Краматорске – в этих города можно купить высококачественные изделия из натуральной
+                    кожи и меха от ведущих, проверенных производителей.
+                </p>
+                <p class="about-text">
+                    В ассортименте сети представлены дубленки, демисезонные и утепленные куртки из натуральной кожи для женщин и мужчин,
+                    парки и стильные аксессуары – перчатки, шапки, шарфы. Мы работаем только с проверенными турецкими производителями: 
+                    CFR, SIMONTO, KHANPACE, VITALLIDANIELS, L’ADRIANO и др.
+                </p>
+                <p class="about-text">
+                    Разнообразие моделей женской и мужской верхней одежды, расцветок и фактурпозволяет создать модный лук, удовлетворяющий
+                    даже самым взыскательным требованиям наших покупателей. Ансамбль можно дополнить эксклюзивной сумочкой, клатчем или
+                    рюкзаком, шарфом и перчатками, а, при помощи оригинальных аксессуаров, создать уникальный, завершенный модный
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-7 underline">
+    <div class="container-fluid">
+        <p class="acticle-title">
+                Статьи
+        </p>
+        <div class="article-slider-wrp">
+            <div class="acticle-slider slick-slider" data-slick='{"slidesToShow": 3, "lazyLoad": "ondemand", "responsive":[{"breakpoint":1200,"settings":{"slidesToShow": 2}}, {"breakpoint":768,"settings":{"slidesToShow": 1, "arrows": false}}]}'>
+                <div class="acticle-slider__item">
+                    <div class="acticle-slider__item-img">
+                        <img src="../../images/article.jpg" alt="">
+                    </div>
+                <div class="acticle-slider__item-text-wrp">
+                        <p class="acticle-slider__item-date">
+                            06.06.2018
+                        </p>
+                        <p class="acticle-slider__item-title">
+                            Правила ухода за кожаными изделиями и аксессуарами
+                        </p>
+                        <p class="acticle-slider__item-text">
+                            При правильном уходе любое изделие из кожи (кошелек, ремень или блокнот)
+                            может прослужить ни один десяток лет и сохраниться  при этом в хорошем
+                            состоянии. Уход за кожаными изделиями не требует особых усилий, нужно
+                            просто запомнить несколько советов и анти-советов.
+                        </p>
+                        <a href="">
+                            <p class="acticle-slider__item-btn">Подробнее →</p>
+                        </a>
+                </div>
+                </div>
+                <div class="acticle-slider__item">
+                    <div class="acticle-slider__item-img">
+                        <img src="../../images/article.jpg" alt="">
+                    </div>
+                <div class="acticle-slider__item-text-wrp">
+                        <p class="acticle-slider__item-date">
+                            06.06.2018
+                        </p>
+                        <p class="acticle-slider__item-title">
+                            Правила ухода за кожаными изделиями и аксессуарами
+                        </p>
+                        <p class="acticle-slider__item-text">
+                            При правильном уходе любое изделие из кожи (кошелек, ремень или блокнот)
+                            может прослужить ни один десяток лет и сохраниться  при этом в хорошем
+                            состоянии. Уход за кожаными изделиями не требует особых усилий, нужно
+                            просто запомнить несколько советов и анти-советов.
+                        </p>
+                        <a href="">
+                            <p class="acticle-slider__item-btn">Подробнее →</p>
+                        </a>
+                </div>
+                </div>
+                <div class="acticle-slider__item">
+                    <div class="acticle-slider__item-img">
+                        <img src="../../images/article.jpg" alt="">
+                    </div>
+                <div class="acticle-slider__item-text-wrp">
+                        <p class="acticle-slider__item-date">
+                            06.06.2018
+                        </p>
+                        <p class="acticle-slider__item-title">
+                            Правила ухода за кожаными изделиями и аксессуарами
+                        </p>
+                        <p class="acticle-slider__item-text">
+                            При правильном уходе любое изделие из кожи (кошелек, ремень или блокнот)
+                            может прослужить ни один десяток лет и сохраниться  при этом в хорошем
+                            состоянии. Уход за кожаными изделиями не требует особых усилий, нужно
+                            просто запомнить несколько советов и анти-советов.
+                        </p>
+                        <a href="">
+                            <p class="acticle-slider__item-btn">Подробнее →</p>
+                        </a>
+                </div>
+                </div>
+                <div class="acticle-slider__item">
+                    <div class="acticle-slider__item-img">
+                        <img src="../../images/article.jpg" alt="">
+                    </div>
+                <div class="acticle-slider__item-text-wrp">
+                        <p class="acticle-slider__item-date">
+                            06.06.2018
+                        </p>
+                        <p class="acticle-slider__item-title">
+                            Правила ухода за кожаными изделиями и аксессуарами
+                        </p>
+                        <p class="acticle-slider__item-text">
+                            При правильном уходе любое изделие из кожи (кошелек, ремень или блокнот)
+                            может прослужить ни один десяток лет и сохраниться  при этом в хорошем
+                            состоянии. Уход за кожаными изделиями не требует особых усилий, нужно
+                            просто запомнить несколько советов и анти-советов.
+                        </p>
+                        <a href="">
+                            <p class="acticle-slider__item-btn">Подробнее →</p>
+                        </a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-sm-5">
+                <p class="footer__title">Контакты</p>
+                <div class="footer__contact">
+                    <div class="footer__contact-phones">
+                        <img src="../../images/icons/2.png" alt="">
+                        <ul class="footer__contact-list footer-list">
+                            <li>(050) 162 08 88</li>
+                            <li>(067) 800 10 77</li>
+                            <li>(044) 333 71 09</li>
+                        </ul>
+                    </div>
+                    <ul class="footer__contact-mail footer-list">
+                        <li><img src="../../images/icons/7.png" alt="">mailmdk@gmail.com</li>
+                        <li><img src="../../images/icons/8.png" alt=""><a href="">Напишите нам</a></li>
+                    </ul>
+                </div>
+                <ul class="footer__contact-address footer-list">
+                    <li><img src="../../images/icons/6.png"</li>
+                    <li>ТЦ «Дафи», 2 эт., ул. Героев Труда, 9</li>
+                </ul>
+            </div>
+            <div class="col-md-offset-1 col-md-3 col-sm-3">
+                <p class="footer__title">Помощь</p>
+                <ul class="footer__links">
+                    <li><a href="#">Условия доставки</a></li>
+                    <li><a href="#">Условия оплаты</a></li>
+                    <li><a href="#">Гарантия</a></li>
+                    <li><a href="#">Как применить промокод</a></li>
+                    <li><a href="#">Вернуть товар. Инструкция</a></li>
+                    <li><a href="#"> Отследить посылку</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-sm-2">
+                <p class="footer__title">Мой кабинет</p>
+                <ul class="footer__links">
+                    <li><a href="#">Личный Кабинет</a></li>   
+                    <li><a href="#">История заказов</a></li>
+                    <li><a href="#">Избранное</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-sm-2">
+                <p class="footer__title">Партнерам</p>
+                <ul class="footer__links">
+                    <li><a href="#">Оптовый сайт</a></li>   
+                    <li><a href="#">Дропшиппинг</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row footer-row">
+            <div class="col-md-5 col-sm-4">
+                <ul class="footer__social">
+                    <li><img src="../../images/icons/9.png" alt="" srcset=""></li>
+                    <li><img src="../../images/icons/10.png" alt="" srcset=""></li>
+                    <li><img src="../../images/icons/11.png" alt="" srcset=""></li>
+                    <li><img src="../../images/icons/12.png" alt="" srcset=""></li>
+                </ul>
+            </div>
+            <div class="col-md-offset-2 col-md-3 col-sm-offset-1 col-sm-4">
+                <ul class="footer-delivery-list footer-list">
+                    <li><img src="../../images/icons/13.png" alt=""></li>
+                    <li> Бесплатная доставка:</li>
+                    <li><img src="../../images/icons/np.png" alt=""></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-sm-3">
+                <ul class="footer-pay-list">
+                    <li>
+                        <img src="../../images/icons/mc.png" alt="">
+                    </li>
+                    <li>
+                        <img src="../../images/icons/visa.png" alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<div class="mfp-hide">
+    <div id="logIn-popup" class="view-popup">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12">
+                    <div class="logIn-popup__container">
+                        <div class="logIn-popup__container-registr">
+                            <p class="logIn-popup__container-title">Регистрация</p>
+                            <ul>
+                                <li>Создавая учетную запись Вы сможете:</li>
+                                <li><img src="../../images/icons/eye.png" alt=""> Отслеживать статус заказа</li>
+                                <li><img src="../../images/icons/history.png" alt=""> Посмотреть историю покупок</li>
+                                <li><img src="../../images/icons/new.png" alt=""> Отслеживать новинки</li>
+                            </ul>
+                            <a href="" class="regist-btn popup-btn"  data-mfp-src="#registration-popup">Зарегистрироваться</a>
+                            <div class="logIn-popup__container-social">
+                                <p>или с помощью</p>
+                                <a href=""><img src="../../images/icons/fb.png" alt=""></a>
+                                <a href=""><img src="../../images/icons/gg.png" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="logIn-popup__container-enter">
+                            <p class="logIn-popup__container-title">Вход</p>
+                            <form action="" class="logIn-form">
+                                <input type="text" placeholder="Ваш логин">
+                                <input type="password" placeholder="Ваш пароль">
+                                <button type="submit">Вход</button>
+                            </form>
+                            <div class="logIn-popup__container-social">
+                                <p>или с помощью</p>
+                                <a href=""><img src="../../images/icons/fb.png" alt=""></a>
+                                <a href=""><img src="../../images/icons/gg.png" alt=""></a>
+                            </div>
+                        </div>
+                        <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mfp-hide">
+    <div id="registration-popup" class="view-popup">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12">
+                    <div class="registration-popup__container">
+                        <p class="registration-popup__container-title">Регистрация</p>
+                        <p class="registration-popup__container-subtitle">Если Вы уже зарегистрированы, перейдите на страницу <a href="">Вход в систему →</a> </p>
+                        <ul>
+                            <li><img src="../../images/icons/eye.png" alt=""> Отслеживать статус заказа</li>
+                            <li><img src="../../images/icons/history.png" alt=""> Посмотреть историю покупок</li>
+                            <li><img src="../../images/icons/new.png" alt=""> Отслеживать новинки</li>
+                        </ul>
+                        <form action="" class="registration-popup__container-form">
+                            <input placeholder="Фамилия, имя" type="text" name="name" data-title="Имя"><input type="tel" name="phone" placeholder="Введите номер телефона" data-title="Телефон" data-validate-required="Обязательное поле" data-validate-uaphone="Неправильный номер"><input placeholder="E-mail" type="email" name="email" data-title="Email" data-validate-required="Обязательное поле" data-validate-email="Неправильный email"><input type="password" placeholder="Пароль"><input type="password" placeholder="Повторите пароль">
+                            <button type="submit">Зарегистрироваться</button>
+                        </form>
+                    <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mfp-hide">
+    <div id="oneClick" class="view-popup">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+                    <div class="oneClick__container">
+                        <p class="oneClick__container-title">Оставьте свои контакты<br>
+                                и наш менеджер свяжется с Вами<br>
+                                для оформления заказа</p>
+                        <form action="" class="oneClick__container-form">
+                            <input placeholder="Ваше имя" type="text" name="name" data-title="Имя">
+                            <input type="tel" name="phone" placeholder="Ваш телефон" data-title="Телефон" data-validate-required="Обязательное поле" data-validate-uaphone="Неправильный номер">
+                            <button type="submit">Отправить</button>
+                        </form>
+                    <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

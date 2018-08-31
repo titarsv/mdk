@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MDK</title>
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+
+    <!-- Load CSS, CSS Localstorage & WebFonts Main Function -->
+    <script>!function(e){"use strict";function t(e,t,n){e.addEventListener?e.addEventListener(t,n,!1):e.attachEvent&&e.attachEvent("on"+t,n)};function n(t,n){return e.localStorage&&localStorage[t+"_content"]&&localStorage[t+"_file"]===n};function a(t,a){if(e.localStorage&&e.XMLHttpRequest)n(t,a)?o(localStorage[t+"_content"]):l(t,a);else{var s=r.createElement("link");s.href=a,s.id=t,s.rel="stylesheet",s.type="text/css",r.getElementsByTagName("head")[0].appendChild(s),r.cookie=t}}function l(e,t){var n=new XMLHttpRequest;n.open("GET",t,!0),n.onreadystatechange=function(){4===n.readyState&&200===n.status&&(o(n.responseText),localStorage[e+"_content"]=n.responseText,localStorage[e+"_file"]=t)},n.send()}function o(e){var t=r.createElement("style");t.setAttribute("type","text/css"),r.getElementsByTagName("head")[0].appendChild(t),t.styleSheet?t.styleSheet.cssText=e:t.innerHTML=e}var r=e.document;e.loadCSS=function(e,t,n){var a,l=r.createElement("link");if(t)a=t;else{var o;o=r.querySelectorAll?r.querySelectorAll("style,link[rel=stylesheet],script"):(r.body||r.getElementsByTagName("head")[0]).childNodes,a=o[o.length-1]}var s=r.styleSheets;l.rel="stylesheet",l.href=e,l.media="only x",a.parentNode.insertBefore(l,t?a:a.nextSibling);var c=function(e){for(var t=l.href,n=s.length;n--;)if(s[n].href===t)return e();setTimeout(function(){c(e)})};return l.onloadcssdefined=c,c(function(){l.media=n||"all"}),l},e.loadLocalStorageCSS=function(l,o){n(l,o)||r.cookie.indexOf(l)>-1?a(l,o):t(e,"load",function(){a(l,o)})}}(this);</script>
+
+    <style>
+        html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:0.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace, monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}html{font-size:10px;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line-height:1.42857143;color:#333;background-color:#fff}input,button,select,textarea{font-family:inherit;font-size:inherit;line-height:inherit}a{color:#337ab7;text-decoration:none}a:hover,a:focus{color:#23527c;text-decoration:underline}a:focus{outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}figure{margin:0}img{vertical-align:middle}.img-responsive{display:block;max-width:100%;height:auto}.img-rounded{border-radius:6px}.img-thumbnail{padding:4px;line-height:1.42857143;background-color:#fff;border:1px solid #ddd;border-radius:4px;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;transition:all .2s ease-in-out;display:inline-block;max-width:100%;height:auto}.img-circle{border-radius:50%}hr{margin-top:20px;margin-bottom:20px;border:0;border-top:1px solid #eee}.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);border:0}.sr-only-focusable:active,.sr-only-focusable:focus{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto}[role="button"]{cursor:pointer}.container{margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}@media (min-width:768px){.container{width:750px}}@media (min-width:992px){.container{width:970px}}@media (min-width:1200px){.container{width:1170px}}.container-fluid{margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}.row{margin-left:-15px;margin-right:-15px}.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12{position:relative;min-height:1px;padding-left:15px;padding-right:15px}.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12{float:left}.col-xs-12{width:100%}.col-xs-11{width:91.66666667%}.col-xs-10{width:83.33333333%}.col-xs-9{width:75%}.col-xs-8{width:66.66666667%}.col-xs-7{width:58.33333333%}.col-xs-6{width:50%}.col-xs-5{width:41.66666667%}.col-xs-4{width:33.33333333%}.col-xs-3{width:25%}.col-xs-2{width:16.66666667%}.col-xs-1{width:8.33333333%}.col-xs-pull-12{right:100%}.col-xs-pull-11{right:91.66666667%}.col-xs-pull-10{right:83.33333333%}.col-xs-pull-9{right:75%}.col-xs-pull-8{right:66.66666667%}.col-xs-pull-7{right:58.33333333%}.col-xs-pull-6{right:50%}.col-xs-pull-5{right:41.66666667%}.col-xs-pull-4{right:33.33333333%}.col-xs-pull-3{right:25%}.col-xs-pull-2{right:16.66666667%}.col-xs-pull-1{right:8.33333333%}.col-xs-pull-0{right:auto}.col-xs-push-12{left:100%}.col-xs-push-11{left:91.66666667%}.col-xs-push-10{left:83.33333333%}.col-xs-push-9{left:75%}.col-xs-push-8{left:66.66666667%}.col-xs-push-7{left:58.33333333%}.col-xs-push-6{left:50%}.col-xs-push-5{left:41.66666667%}.col-xs-push-4{left:33.33333333%}.col-xs-push-3{left:25%}.col-xs-push-2{left:16.66666667%}.col-xs-push-1{left:8.33333333%}.col-xs-push-0{left:auto}.col-xs-offset-12{margin-left:100%}.col-xs-offset-11{margin-left:91.66666667%}.col-xs-offset-10{margin-left:83.33333333%}.col-xs-offset-9{margin-left:75%}.col-xs-offset-8{margin-left:66.66666667%}.col-xs-offset-7{margin-left:58.33333333%}.col-xs-offset-6{margin-left:50%}.col-xs-offset-5{margin-left:41.66666667%}.col-xs-offset-4{margin-left:33.33333333%}.col-xs-offset-3{margin-left:25%}.col-xs-offset-2{margin-left:16.66666667%}.col-xs-offset-1{margin-left:8.33333333%}.col-xs-offset-0{margin-left:0}@media (min-width:768px){.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12{float:left}.col-sm-12{width:100%}.col-sm-11{width:91.66666667%}.col-sm-10{width:83.33333333%}.col-sm-9{width:75%}.col-sm-8{width:66.66666667%}.col-sm-7{width:58.33333333%}.col-sm-6{width:50%}.col-sm-5{width:41.66666667%}.col-sm-4{width:33.33333333%}.col-sm-3{width:25%}.col-sm-2{width:16.66666667%}.col-sm-1{width:8.33333333%}.col-sm-pull-12{right:100%}.col-sm-pull-11{right:91.66666667%}.col-sm-pull-10{right:83.33333333%}.col-sm-pull-9{right:75%}.col-sm-pull-8{right:66.66666667%}.col-sm-pull-7{right:58.33333333%}.col-sm-pull-6{right:50%}.col-sm-pull-5{right:41.66666667%}.col-sm-pull-4{right:33.33333333%}.col-sm-pull-3{right:25%}.col-sm-pull-2{right:16.66666667%}.col-sm-pull-1{right:8.33333333%}.col-sm-pull-0{right:auto}.col-sm-push-12{left:100%}.col-sm-push-11{left:91.66666667%}.col-sm-push-10{left:83.33333333%}.col-sm-push-9{left:75%}.col-sm-push-8{left:66.66666667%}.col-sm-push-7{left:58.33333333%}.col-sm-push-6{left:50%}.col-sm-push-5{left:41.66666667%}.col-sm-push-4{left:33.33333333%}.col-sm-push-3{left:25%}.col-sm-push-2{left:16.66666667%}.col-sm-push-1{left:8.33333333%}.col-sm-push-0{left:auto}.col-sm-offset-12{margin-left:100%}.col-sm-offset-11{margin-left:91.66666667%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-0{margin-left:0}}@media (min-width:992px){.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12{float:left}.col-md-12{width:100%}.col-md-11{width:91.66666667%}.col-md-10{width:83.33333333%}.col-md-9{width:75%}.col-md-8{width:66.66666667%}.col-md-7{width:58.33333333%}.col-md-6{width:50%}.col-md-5{width:41.66666667%}.col-md-4{width:33.33333333%}.col-md-3{width:25%}.col-md-2{width:16.66666667%}.col-md-1{width:8.33333333%}.col-md-pull-12{right:100%}.col-md-pull-11{right:91.66666667%}.col-md-pull-10{right:83.33333333%}.col-md-pull-9{right:75%}.col-md-pull-8{right:66.66666667%}.col-md-pull-7{right:58.33333333%}.col-md-pull-6{right:50%}.col-md-pull-5{right:41.66666667%}.col-md-pull-4{right:33.33333333%}.col-md-pull-3{right:25%}.col-md-pull-2{right:16.66666667%}.col-md-pull-1{right:8.33333333%}.col-md-pull-0{right:auto}.col-md-push-12{left:100%}.col-md-push-11{left:91.66666667%}.col-md-push-10{left:83.33333333%}.col-md-push-9{left:75%}.col-md-push-8{left:66.66666667%}.col-md-push-7{left:58.33333333%}.col-md-push-6{left:50%}.col-md-push-5{left:41.66666667%}.col-md-push-4{left:33.33333333%}.col-md-push-3{left:25%}.col-md-push-2{left:16.66666667%}.col-md-push-1{left:8.33333333%}.col-md-push-0{left:auto}.col-md-offset-12{margin-left:100%}.col-md-offset-11{margin-left:91.66666667%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-9{margin-left:75%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-6{margin-left:50%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-3{margin-left:25%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-0{margin-left:0}}@media (min-width:1200px){.col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12{float:left}.col-lg-12{width:100%}.col-lg-11{width:91.66666667%}.col-lg-10{width:83.33333333%}.col-lg-9{width:75%}.col-lg-8{width:66.66666667%}.col-lg-7{width:58.33333333%}.col-lg-6{width:50%}.col-lg-5{width:41.66666667%}.col-lg-4{width:33.33333333%}.col-lg-3{width:25%}.col-lg-2{width:16.66666667%}.col-lg-1{width:8.33333333%}.col-lg-pull-12{right:100%}.col-lg-pull-11{right:91.66666667%}.col-lg-pull-10{right:83.33333333%}.col-lg-pull-9{right:75%}.col-lg-pull-8{right:66.66666667%}.col-lg-pull-7{right:58.33333333%}.col-lg-pull-6{right:50%}.col-lg-pull-5{right:41.66666667%}.col-lg-pull-4{right:33.33333333%}.col-lg-pull-3{right:25%}.col-lg-pull-2{right:16.66666667%}.col-lg-pull-1{right:8.33333333%}.col-lg-pull-0{right:auto}.col-lg-push-12{left:100%}.col-lg-push-11{left:91.66666667%}.col-lg-push-10{left:83.33333333%}.col-lg-push-9{left:75%}.col-lg-push-8{left:66.66666667%}.col-lg-push-7{left:58.33333333%}.col-lg-push-6{left:50%}.col-lg-push-5{left:41.66666667%}.col-lg-push-4{left:33.33333333%}.col-lg-push-3{left:25%}.col-lg-push-2{left:16.66666667%}.col-lg-push-1{left:8.33333333%}.col-lg-push-0{left:auto}.col-lg-offset-12{margin-left:100%}.col-lg-offset-11{margin-left:91.66666667%}.col-lg-offset-10{margin-left:83.33333333%}.col-lg-offset-9{margin-left:75%}.col-lg-offset-8{margin-left:66.66666667%}.col-lg-offset-7{margin-left:58.33333333%}.col-lg-offset-6{margin-left:50%}.col-lg-offset-5{margin-left:41.66666667%}.col-lg-offset-4{margin-left:33.33333333%}.col-lg-offset-3{margin-left:25%}.col-lg-offset-2{margin-left:16.66666667%}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-0{margin-left:0}}.clearfix:before,.clearfix:after,.container:before,.container:after,.container-fluid:before,.container-fluid:after,.row:before,.row:after{content:" ";display:table}.clearfix:after,.container:after,.container-fluid:after,.row:after{clear:both}.center-block{display:block;margin-left:auto;margin-right:auto}.pull-right{float:right !important}.pull-left{float:left !important}.hide{display:none !important}.show{display:block !important}.invisible{visibility:hidden}.text-hide{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0}.hidden{display:none !important}.affix{position:fixed}@-ms-viewport{width:device-width}.visible-xs,.visible-sm,.visible-md,.visible-lg{display:none !important}.visible-xs-block,.visible-xs-inline,.visible-xs-inline-block,.visible-sm-block,.visible-sm-inline,.visible-sm-inline-block,.visible-md-block,.visible-md-inline,.visible-md-inline-block,.visible-lg-block,.visible-lg-inline,.visible-lg-inline-block{display:none !important}@media (max-width:767px){.visible-xs{display:block !important}table.visible-xs{display:table !important}tr.visible-xs{display:table-row !important}th.visible-xs,td.visible-xs{display:table-cell !important}}@media (max-width:767px){.visible-xs-block{display:block !important}}@media (max-width:767px){.visible-xs-inline{display:inline !important}}@media (max-width:767px){.visible-xs-inline-block{display:inline-block !important}}@media (min-width:768px) and (max-width:991px){.visible-sm{display:block !important}table.visible-sm{display:table !important}tr.visible-sm{display:table-row !important}th.visible-sm,td.visible-sm{display:table-cell !important}}@media (min-width:768px) and (max-width:991px){.visible-sm-block{display:block !important}}@media (min-width:768px) and (max-width:991px){.visible-sm-inline{display:inline !important}}@media (min-width:768px) and (max-width:991px){.visible-sm-inline-block{display:inline-block !important}}@media (min-width:992px) and (max-width:1199px){.visible-md{display:block !important}table.visible-md{display:table !important}tr.visible-md{display:table-row !important}th.visible-md,td.visible-md{display:table-cell !important}}@media (min-width:992px) and (max-width:1199px){.visible-md-block{display:block !important}}@media (min-width:992px) and (max-width:1199px){.visible-md-inline{display:inline !important}}@media (min-width:992px) and (max-width:1199px){.visible-md-inline-block{display:inline-block !important}}@media (min-width:1200px){.visible-lg{display:block !important}table.visible-lg{display:table !important}tr.visible-lg{display:table-row !important}th.visible-lg,td.visible-lg{display:table-cell !important}}@media (min-width:1200px){.visible-lg-block{display:block !important}}@media (min-width:1200px){.visible-lg-inline{display:inline !important}}@media (min-width:1200px){.visible-lg-inline-block{display:inline-block !important}}@media (max-width:767px){.hidden-xs{display:none !important}}@media (min-width:768px) and (max-width:991px){.hidden-sm{display:none !important}}@media (min-width:992px) and (max-width:1199px){.hidden-md{display:none !important}}@media (min-width:1200px){.hidden-lg{display:none !important}}.visible-print{display:none !important}@media  print{.visible-print{display:block !important}table.visible-print{display:table !important}tr.visible-print{display:table-row !important}th.visible-print,td.visible-print{display:table-cell !important}}.visible-print-block{display:none !important}@media  print{.visible-print-block{display:block !important}}.visible-print-inline{display:none !important}@media  print{.visible-print-inline{display:inline !important}}.visible-print-inline-block{display:none !important}@media  print{.visible-print-inline-block{display:inline-block !important}}@media  print{.hidden-print{display:none !important}}
+    </style>
+
+    <!-- Load Custom CSS Start -->
+    <script>loadCSS( "/css/app.css?id=9c246150ae0ad6600c38", false, "all" );</script>
+    <!-- Load Custom CSS End -->
+
+    <!-- Load Custom CSS Compiled without JS Start -->
+    <noscript>
+        <link rel="stylesheet" href="/css/app.css?id=9c246150ae0ad6600c38">
+    </noscript>
+    <!-- Load Custom CSS Compiled without JS End -->
+</head>
+<body id='body'>
+
+<header class="header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="visible-sm-block col-sm-12 hidden-xs">
+               <div class="header__logo">
+                    <a href="./index.html"><img src="../../images/logo1.png" alt=""></a>
+               </div>
+           </div>
+        </div>
+        <div class="row header-inform-container underline">
+            <div class="col-sm-3 col-xs-12">
+                <ul class="header__time-information">
+                    <li><img src="../../images/icons/1.png" alt=""></li>
+                    <li>Время работы колл центра: <span>с 09:00 до 17:00 ПН-ПТ </span></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-sm-3 col-xs-12">
+                <div class="header__phone">
+                    <img src="../../images/icons/2.png" alt="">
+                    <ul>
+                        <li><a href="tel:(050) 162 08 88">(050) 162 08 88</a></li>
+                        <li><a href="tel:(067) 800 10 77">(067) 800 10 77</a></li>
+                        <li><a href="tel:(044) 333 71 09">(044) 333 71 09</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-2 hidden-sm hidden-xs">
+                <div class="header__logo">
+                    <img src="../../images/logo.png" alt="">
+                </div>
+            </div>
+            <div class="visible-xs-block col-xs-12">
+                <div class="header__logo">
+                    <img src="../../images/logo1.png" alt="">
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-6 hidden-xs header-info">
+                <form action="" class="header__searcher">
+                    <input type="search" class="header__searcher-input" placeholder="ПОИСК" name="" id="">
+                    <button></button>
+                </form>
+                <a href="">
+                    <ul class="header__like">
+                        <li>Избранное</li>
+                        <li><img src="../../images/icons/heart.png" alt=""></li>
+                    </ul>
+                </a>
+                <a href="">
+                    <ul class="header__profile">
+                        <li>Вход</li>
+                        <li><img src="../../images/icons/4.png" alt=""></li>
+                    </ul>
+                </a>
+                <a href="">
+                    <ul class="header__cart">
+                        <li>Корзина</li>
+                        <li><img src="../../images/icons/5.png" alt=""></li>
+                    </ul>
+                </a>
+            </div>
+            <div class="visible-xs-block col-xs-12">
+                <div class="mobile-nav">
+                    <div class="burger-menu__wrp">
+                        <div class="burger-menu"></div>
+                        <p>меню</p>
+                    </div>
+                    <div class="mobile-nav__enter">
+                        <a href="">
+                            <ul class="header__profile">
+                                <li>Вход</li>
+                                <li><img src="../../images/icons/4.png" alt=""></li>
+                            </ul>
+                        </a>
+                        <a href="">
+                            <ul class="header__cart">
+                                <li>Корзина</li>
+                                <li><img src="../../images/icons/5.png" alt=""></li>
+                            </ul>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu close">
+            <div class="mobile-menu__close"></div>
+            <div class="panel-group" id="accordion">                    
+                <!-- 1 панель -->
+                <div>
+                    <h4 class="mobile-menu__title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">ВЕРХНЯЯ ОДЕЖДА</a>
+                    </h4>
+                    <div id="collapseOne" class="mobile-menu__collapse collapse">
+                    <!-- Содержимое 1 панели -->
+                        <div class="mobile-menu__body">
+                            <ul class="mobile-menu__links">
+                                <li><a href="">Дубленки   </a></li>
+                                <li><a href="">Меховые жилеты</a></li>
+                                <li><a href="">Кожаные куртки</a></li>
+                                <li><a href="">Удлиненные кожанные куртки</a></li>
+                                <li><a href="">Утепленные куртки</a></li>
+                                <li><a href=""> Парки</a></li>
+                                <li><a href=""> Шубы</a></li>
+                                <li><a href="">Пальто</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- 2 панель -->
+                <div>
+                    <h4 class="mobile-menu__title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Аксессуары</a>
+                    </h4>
+                    <div id="collapsTwo" class="mobile-menu__collapse collapse">
+                    <!-- Содержимое 2 панели -->
+                        <div class="mobile-menu__body">
+                            
+                        </div>
+                    </div>
+                </div>
+                <!-- 3 панель -->
+                <div>
+                    <h4 class="mobile-menu__title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Другое</a>
+                    </h4>
+                    <div id="collapsTwo" class="mobile-menu__collapse collapse">
+                    <!-- Содержимое 3 панели -->
+                        <div class="mobile-menu__body">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row underline">
+            <nav class="hidden-xs header__navigation">
+
+                <div class="header__navigation-item">
+                    <a href="">Женщины</a>
+                    <div class="header__navigation-page">
+                        <ul class="header__navigation-page-category">
+                            <li>
+                                <a href="">ВЕРХНЯЯ ОДЕЖДА</a>
+                                <div class="header__navigation-page-links">
+                                    <ul>
+                                        <li><a href="" data-toggle="img-1">Дубленки</a></li>
+                                        <li><a href="" data-toggle="img-2">Меховые жилеты</a></li>
+                                        <li><a href="" data-toggle="img-3">Кожаные куртки</a></li>
+                                        <li><a href="" data-toggle="img-4">Удлиненные кожанные куртки</a></li>
+                                        <li><a href="" data-toggle="img-5">Утепленные куртки</a></li>
+                                        <li><a href="" data-toggle="img-6"> Парки</a></li>
+                                        <li><a href="" data-toggle="img-7"> Шубы</a></li>
+                                        <li><a href="" data-toggle="img-8">Пальто</a></li>
+                                    </ul>
+                                    <div class="header__navigation-page-links-img img-1"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="">Аксессуары</a>
+                                <div class="header__navigation-page-links">
+                                    <ul>
+                                        <li><a href="" data-toggle="img-1">Сумки</a></li>
+                                        <li><a href="" data-toggle="img-2">Перчатки</a></li>
+                                        <li><a href="" data-toggle="img-3">Шарфы</a></li>
+                                        <li><a href="" data-toggle="img-4">Шапки</a></li>
+                                    </ul>
+                                    <div class="header__navigation-page-links-img img-1"></div>
+                                </div>
+                            </li>
+                            <li><a href="">Другое</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                 <div class="header__navigation-item">
+                    <a href="">Мужчины</a>
+                </div>
+
+                 <div class="header__navigation-item">
+                    <a href="">Распродажа</a>
+                </div>
+
+                 <div class="header__navigation-item">
+                    <a href="">Акции</a>
+                </div>
+
+                <div class="header__navigation-item">
+                    <a href="">Контакты</a>
+                </div>
+
+            </nav>
+        </div>
+    </div>
+</header>
+
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 hidden-xs">
+                <ul class="breadcrambs">
+                    <li><a href="">Главная →</a></li>
+                    <li><a href="">Женщинам →</a></li>
+                    <li><a href=""> Верхняя одежда →</a></li>
+                    <li><a href="">Удленненые кожанные куртки</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-7 col-md-6 col-sm-5 col-xs-12">
+                <!-- <div class="product__static-image hidden-xs" >
+                    <img src="../../images/prod/1.jpg"alt="">
+                </div>
+                <div class="product__static-image hidden-xs" >
+                    <img src="../../images/prod/2.jpg"alt="">
+                </div> -->
+                <div class="product__info-sale visible-xs-block">-20% sale</div>
+                <!-- <div class="product__info-new visible-xs-block">new</div> -->
+                <div class="slick-slider product-slider" data-slick='{"slidesToShow": 2, "dots": false, "arrows": true, "responsive":[{"breakpoint": 991,"settings":{"slidesToShow": 2}}, {"breakpoint":480,"settings":{"slidesToShow": 1}}]}'>
+                    <div>
+                        <div class="product-slider__item">
+                            <img src="../../images/prod/3.jpg" alt="">
+                        </div>
+                    </div>
+                     <div>
+                        <div class="product-slider__item">
+                            <img src="../../images/prod/4.jpg" alt="">
+                        </div>
+                    </div>
+                     <div>
+                        <div class="product-slider__item">
+                            <img src="../../images/prod/5.jpg" alt="">
+                        </div>
+                    </div>
+                     <div>
+                        <div class="product-slider__item">
+                            <img src="../../images/prod/1.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 visible-xs-block">
+                <ul class="breadcrambs">
+                    <li><a href="">Главная →</a></li>
+                    <li><a href="">Женщинам →</a></li>
+                    <li><a href=""> Верхняя одежда →</a></li>
+                    <li><a href="">Удленненые кожанные куртки</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-5 col-md-6 col-sm-7 col-xs-12">
+                <div class="product__info-wrp">
+                    <div class="product__info-name-wrp hidden-xs">
+                        <div class="product__info-sale">-20% sale</div>
+                        <!-- <div class="product__info-new">new</div> -->
+                        <p class="product__info-name">Куртка женская DC-1648</p>
+                        <p class="product__info-article">Артикул товара: 46692-1</p>
+                    </div>
+                    <div class="product__info-price-wrp">
+                        <p class="product__info-price-old">7 799 грн</p>
+                        <p class="product__info-price">6 629 грн</p>
+                        <p class="product__info-price-economy">
+                            <img src="../../images/icons/econom.png" alt="">
+                            <span>Вы экономите 1170 грн</span>
+                        </p>
+                    </div>
+                </div>
+                <form action="" class="product__form">
+                    <div class="product__form-container">
+                        <p class="product__form-title">Выберите цвет:</p>
+                    </div>
+                    <div class="product__form-container hidden-xs">
+                        <input type="radio" name="prod-color" id="prod-color1">
+                        <label for="prod-color1" class="product-card__colors-item black"></label>
+                        <input type="radio" name="prod-color" id="prod-color2">
+                        <label for="prod-color2" class="product-card__colors-item dark-grey"></label>
+                        <input type="radio" name="prod-color" id="prod-color3">
+                        <label for="prod-color3" class="product-card__colors-item grey"></label>
+                        <input type="radio" name="prod-color" id="prod-color4">
+                        <label for="prod-color4" class="product-card__colors-item light-grey"></label>
+                        <input type="radio" name="prod-color" id="prod-color5">
+                        <label for="prod-color5" class="product-card__colors-item peach"></label>
+                        <input type="radio" name="prod-color" id="prod-color6">
+                        <label for="prod-color6" class="product-card__colors-item brawn"></label>
+                        <input type="radio" name="prod-color" id="prod-color7">
+                        <label for="prod-color7" class="product-card__colors-item skin"></label>
+                        <input type="radio" name="prod-color" id="prod-color8">
+                        <label for="prod-color8" class="product-card__colors-item light-skin"></label>
+                        <input type="radio" name="prod-color" id="prod-color9">
+                        <label for="prod-color9" class="product-card__colors-item red"></label>
+                    </div>
+                    <div class="product__form-container visible-xs-block">
+                        <div class="color-label"></div>
+                        <select class="product__select-color chosen-select" name="" id="">
+                            <option value="#000" selected="selected" class="select-color-item black"> - черный</option>
+                            <option value="#a0a0a0" class="select-color-item dark-grey"> - темно-серый</option>
+                            <option value="#dcdcdc" class="select-color-item light-grey"> - светло-серый</option>
+                            <option value="#f1af9f" class="select-color-item peach"> - персиковый</option>
+                            <option value="#dd9c85" class="select-color-item brawn"> - коричневый</option>
+                            <option value="#f1c4a5" class="select-color-item skin"> - бежевый</option>
+                            <option value="#f6d4c2" class="select-color-item light-skin"> - светло-бежевый</option>
+                            <option value="#ec5464" class="select-color-item red"> - красный</option>
+                        </select>
+                    </div>
+                    <div class="product__form-container size">
+                        <p class="product__form-title">Выберите размер:</p>
+                        <div class="product__select-size-wrp">
+                            <div class="size-label">M</div>
+                            <select class="product__select-size chosen-select" name="" id="">
+                                <option value="xxs">Small size (39)</option>
+                                <option value="xs">Small size (40)</option>
+                                <option value="s">Small size (42)</option>
+                                <option value="m" selected="selected">Medium size (44-46)</option>
+                                <option value="l">Large size (48-50)</option>
+                                <option value="xl">Large size (52)</option>
+                                <option value="xxl">Large size (54)</option>
+                                <option value="xxl">Large size (56)</option>
+                                <option value="xxxl">Large size (58)</option>
+                            </select>
+                       </div>
+                    </div>
+                    <a class="product__size-table-link popup-btn" data-mfp-src="#sizeTable" href="">Таблица размеров</a>
+                    <button type="submit">Купить</button>
+                    <a href="" class="product__one-click-btn popup-btn" data-mfp-src="#oneClick">
+                        <span> Купить в 1 клик</span>
+                    </a>
+                    <a href="" class="product__part-pay-btn popup-btn" data-mfp-src="#partPay">
+                        <span>Купить частичной оплатой</span> 
+                    </a>
+                    <a href="" class="product__wishlist-btn">
+                        <span>Добавить в избранное</span>
+                    </a>
+                    <a href="" class="product__full-descr-btn">
+                        <span>Полное описание товара</span>
+                    </a>
+                </form>
+                <div class="product__description-wrp">
+                    <p class="main-title">Полное описание:</p>
+
+                    <ul class="product__description-tabs nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#characteristics">Характеристики </a></li>
+                        <li><a data-toggle="tab" href="#delivery">Доставка</a></li>
+                        <li><a data-toggle="tab" href="#garanty">Гарантия</a></li>
+                        <li><a data-toggle="tab" href="#pay">Оплата</a></li>
+                    </ul>
+                    <div class="product__description-tabs-content tab-content">
+                        <div id="characteristics" class="tab-pane fade in active">
+                            <p class="product__description-color black"> <span class="product__description-name">Цвет:</span> черный</p>
+                            <p><span class="product__description-name">Cезон:</span> осень</p>
+                            <p class="product__description-material suede"><span class="product__description-name">Сырье:</span> jumbo/замш</p>
+                            <p> <span class="product__description-name">Производитель:</span> Турция</p>
+                            <p>Описание товара. Женственность, экстравагантность, практичность и комфорт
+                                обеспечат новые разработки ведущих дизайнеров. В нашей коллекции собраны
+                                трендовые варианты курточек. Популярный данный фасоны<br>
+                                Курточка из натуральной кожи – это дорогостоящая вещь. Наш
+                                интернет-магазин работает с ведущими производителями высококачественной
+                                верхней одежды без посредников. <br>Поэтому цена на предлагаемый товар у нас
+                                самая привлекательная.
+                                Кроме этого покупателей ждут существенные скидки и подарки.</p>
+                            <p>В широком ассортименте представлена женская кожаная куртка для весны
+                                и осени. Это элегантные модели из мягкого тонкого материала с необычным
+                                декором. Для зимы подойдут изделия средней длины с мехом.Чтобы правильно
+                                подобрать размер в каталоге предусмотрена специальная таблица основных
+                                параметров тела. Она поможет безошибочно выбрать модель.</p>
+                        </div>
+                        <div id="delivery" class="tab-pane fade">
+                            Доставка
+                        </div>
+                        <div id="garanty" class="tab-pane fade">
+                            Гарантия
+                        </div>
+                        <div id="pay" class="tab-pane fade">
+                            Оплата
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-sm-5">
+                <p class="footer__title">Контакты</p>
+                <div class="footer__contact">
+                    <div class="footer__contact-phones">
+                        <img src="../../images/icons/2.png" alt="">
+                        <ul class="footer__contact-list footer-list">
+                            <li>(050) 162 08 88</li>
+                            <li>(067) 800 10 77</li>
+                            <li>(044) 333 71 09</li>
+                        </ul>
+                    </div>
+                    <ul class="footer__contact-mail footer-list">
+                        <li><img src="../../images/icons/7.png" alt="">mailmdk@gmail.com</li>
+                        <li><img src="../../images/icons/8.png" alt=""><a href="">Напишите нам</a></li>
+                    </ul>
+                </div>
+                <ul class="footer__contact-address footer-list">
+                    <li><img src="../../images/icons/6.png"</li>
+                    <li>ТЦ «Дафи», 2 эт., ул. Героев Труда, 9</li>
+                </ul>
+            </div>
+            <div class="col-md-offset-1 col-md-3 col-sm-3">
+                <p class="footer__title">Помощь</p>
+                <ul class="footer__links">
+                    <li><a href="#">Условия доставки</a></li>
+                    <li><a href="#">Условия оплаты</a></li>
+                    <li><a href="#">Гарантия</a></li>
+                    <li><a href="#">Как применить промокод</a></li>
+                    <li><a href="#">Вернуть товар. Инструкция</a></li>
+                    <li><a href="#"> Отследить посылку</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-sm-2">
+                <p class="footer__title">Мой кабинет</p>
+                <ul class="footer__links">
+                    <li><a href="#">Личный Кабинет</a></li>   
+                    <li><a href="#">История заказов</a></li>
+                    <li><a href="#">Избранное</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-sm-2">
+                <p class="footer__title">Партнерам</p>
+                <ul class="footer__links">
+                    <li><a href="#">Оптовый сайт</a></li>   
+                    <li><a href="#">Дропшиппинг</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row footer-row">
+            <div class="col-md-5 col-sm-4">
+                <ul class="footer__social">
+                    <li><img src="../../images/icons/9.png" alt="" srcset=""></li>
+                    <li><img src="../../images/icons/10.png" alt="" srcset=""></li>
+                    <li><img src="../../images/icons/11.png" alt="" srcset=""></li>
+                    <li><img src="../../images/icons/12.png" alt="" srcset=""></li>
+                </ul>
+            </div>
+            <div class="col-md-offset-2 col-md-3 col-sm-offset-1 col-sm-4">
+                <ul class="footer-delivery-list footer-list">
+                    <li><img src="../../images/icons/13.png" alt=""></li>
+                    <li> Бесплатная доставка:</li>
+                    <li><img src="../../images/icons/np.png" alt=""></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-sm-3">
+                <ul class="footer-pay-list">
+                    <li>
+                        <img src="../../images/icons/mc.png" alt="">
+                    </li>
+                    <li>
+                        <img src="../../images/icons/visa.png" alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<div class="mfp-hide">
+    <div id="oneClick" class="view-popup">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+                    <div class="oneClick__container">
+                        <p class="oneClick__container-title">Оставьте свои контакты<br>
+                                и наш менеджер свяжется с Вами<br>
+                                для оформления заказа</p>
+                        <form action="" class="oneClick__container-form">
+                            <input placeholder="Ваше имя" type="text" name="name" data-title="Имя">
+                            <input type="tel" name="phone" placeholder="Ваш телефон" data-title="Телефон" data-validate-required="Обязательное поле" data-validate-uaphone="Неправильный номер">
+                            <button type="submit">Отправить</button>
+                        </form>
+                    <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mfp-hide">
+    <div id="partPay" class="view-popup">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1 col-xs-12">
+                    <div class="partPay__container">
+                       <form action="">
+                            <div class="partPay__img">
+                                <img src="../../images/mdk-credit.jpg" alt=""><img src="../../images/pb-credit.jpg" alt="">
+                            </div>
+                            <div class="partPay__form-wrp">
+                                <div action="" class="partPay__form">
+                                    <p class="hidden-xs">Сумма</p>
+                                    <fieldset class="partPay__credit-range-wrp">
+                                        <div class="partPay__credit-range price-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="0" data-max="100000" data-min="1"></div>
+                                        <div class="partPay-inputs__inner">
+                                            <p class="visible-xs-block">Сумма</p>
+                                            <input type="text" class="partPaysliderValue val1" data-index="0" value="0" />
+                                            <p class="visible-xs-block">Сумма</p>
+                                        </div>
+                                    </fieldset>
+                                    <p class="hidden-xs">Сумма</p>
+                                </div>
+                                <div action="" class="partPay__form">
+                                    <p class="hidden-xs">Первый взнос</p>
+                                    <fieldset class="partPay__credit-range-wrp">
+                                        <div class="partPay__credit-range credit-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="0" data-max="101" data-min="0"></div>
+                                        <div class="partPay-inputs__inner">
+                                            <p class="visible-xs-block">Первый взнос</p>
+                                            <input type="text" class="partPaysliderValue val2" data-index="0" value="0" />
+                                            <p class="visible-xs-block">%</p>
+                                        </div>
+                                    </fieldset>
+                                    <p class="hidden-xs">%</p>
+                                </div>
+                                <div action="" class="partPay__form">
+                                    <p class="hidden-xs">Cрок</p>
+                                    <fieldset class="partPay__credit-range-wrp">
+                                        <div class="partPay__credit-range credit-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="0" data-max="13" data-min="0"></div>
+                                        <div class="partPay-inputs__inner">
+                                            <p class="visible-xs-block">Cрок</p>
+                                            <input type="text" class="partPaysliderValue val3" data-index="0" value="0" />
+                                            <p class="visible-xs-block">Месяцев</p>
+                                        </div>
+                                    </fieldset>
+                                    <p class="hidden-xs">Месяцев</p>
+                                </div>
+                                <div action="" class="partPay__form">
+                                    <p class="hidden-xs">Месячный платеж</p>
+                                    <fieldset class="partPay__credit-range-wrp">
+                                        <div class="partPay__credit-range credit-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="0" data-max="10000" data-min="1000"></div>
+                                        <div class="partPay-inputs__inner">
+                                            <p class="visible-xs-block">Месячный платеж</p>
+                                            <input type="text" class="partPaysliderValue val4" data-index="0" value="0" />
+                                            <p class="visible-xs-block">Сумма</p>
+                                        </div>
+                                    </fieldset>
+                                    <p class="hidden-xs">Сумма</p>
+                                </div>
+                            </div>
+                            <p class="partPay__total-title">Ваша сумма:</p>
+                            <div class="partPay__total">
+                                <p class="partPay__total-date">25.06.2018 ПОНЕДЕЛЬНИК</p>
+                                <div class="partPay__total-item">
+                                    <p>Сумма:</p>
+                                    <div>
+                                        <p>10 000</p> 
+                                        <span>грн</span>
+                                    </div>
+                                </div>
+                                <div class="partPay__total-item">
+                                    <p>Первый взнос:</p>
+                                    <div>
+                                       <p>0,9</p> 
+                                       <span>%</span>
+                                    </div>
+                                </div>
+                                <div class="partPay__total-item">
+                                    <p>Срок:</p>
+                                    <div>
+                                        <p>9</p>
+                                        <span>мес.</span>
+                                    </div>
+                                </div>
+                                <div class="partPay__total-item sum">
+                                    <p>Оплата в месяц:</p>
+                                    <span class="partPay__total-item-sum">1 000 грн</span>
+                                </div>
+                                <div class="partPay__total-item sum">
+                                    <p>Всего:</p>
+                                    <span class="partPay__total-item-sum">10 090 грн</span>
+                                </div>
+                            </div>
+                            <div class="partPay__bnt-wrp">
+                                <button type="submit" class="partPay__btn">Получить кредит</button>
+                                <button class="partPay__promocode-btn">У меня есть промокод</button>
+                            </div>
+                       </form>
+                        <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mfp-hide">
+    <div id="sizeTable" class="view-popup">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1 col-xs-12">
+                    <div class="sizeTable__container-wrp">
+                        <p class="main-title">Таблица размеров</p>
+                        <div class="sizeTable__container">
+                            <img src="../../images/model.jpg" class="hidden-xs" alt="">
+                            <div class="sizeTable__table">
+                                <ul>
+                                    <li class="sizeTable__table-row-title">Обхват груди</li>
+                                    <li>80</li>
+                                    <li>84</li>
+                                    <li>88</li>
+                                    <li>92</li>
+                                    <li>96</li>
+                                    <li>100</li>
+                                </ul>
+                                <ul>
+                                    <li class="sizeTable__table-row-title">Обхват талии</li>
+                                    <li>62</li>
+                                    <li>66</li>
+                                    <li>70</li>
+                                    <li>74</li>
+                                    <li>78</li>
+                                    <li>82</li>
+                                </ul>
+                                <ul>
+                                    <li class="sizeTable__table-row-title">Обхват бедер</li>
+                                    <li>86</li>
+                                    <li>90</li>
+                                    <li>94</li>
+                                    <li>98</li>
+                                    <li>102</li>
+                                    <li>106</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <ul class="sizeTable__table-row-letter">
+                            <li></li>
+                            <li class="sizeTable__table-row-title">Европейский размер</li>
+                            <li>32 <sup>(XXS)</sup></li>
+                            <li>34 <sup>(XS)</sup></li>
+                            <li>36 <sup>(S)</sup></li>
+                            <li>38 <sup>(M)</sup></li>
+                            <li>40 <sup>(L)</sup></li>
+                            <li>42 <sup>(XL)</sup></li>
+                        </ul>
+                        <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Optimized loading JS Start -->
+    <script>var scr = {"scripts":[
+            {"src" : "/js/app.js", "async" : false}
+        ]};!function(t,n,r){"use strict";var c=function(t){if("[object Array]"!==Object.prototype.toString.call(t))return!1;for(var r=0;r<t.length;r++){var c=n.createElement("script"),e=t[r];c.src=e.src,c.async=e.async,n.body.appendChild(c)}return!0};t.addEventListener?t.addEventListener("load",function(){c(r.scripts);},!1):t.attachEvent?t.attachEvent("onload",function(){c(r.scripts)}):t.onload=function(){c(r.scripts)}}(window,document,scr);
+    </script>
+    <!-- Optimized loading JS End -->
+
+</body>
+</html>

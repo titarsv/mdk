@@ -1,0 +1,330 @@
+.basket__step-title{
+    display: flex;
+    border-bottom: 1px solid #000;
+    p{
+        font-family: 'FuturaDemiC';
+        color: #000;
+        font-size: 16px;
+        padding: 15px 0;
+        width: 30%;
+        &.active{
+            color: #ed2024;
+            position: relative;
+            &::after{
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 30px;
+                width: 20px;
+                height: 20px;
+                background: url('../images/icons/arrow-basket.png')top center;
+            }
+        }
+        @include bp (sm){
+            width: 50%;
+        }
+    }
+}
+
+.basket__items-title{
+    border: 1px solid #000;
+    border-left: none;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 210px;
+    p:nth-child(1){
+        width: 30%;
+    }
+    p{
+        padding: 10px 0;
+        color: #000;
+        font-size: 12px;
+        font-family: 'FuturaDemiC';
+        width: 15%;
+    }
+}
+
+.basket__item{
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 15px 0;
+    border-bottom: 1px solid #c7c7c7;
+    p{
+        padding: 5px 0;
+        color: #000;
+        font-size: 14px;
+        font-family: 'FuturaDemiC';
+    }
+    .delete{
+        position: absolute;
+        right: 0px;
+        border-radius: 50%;
+        border: 1px solid #808080;
+        text-align: center;
+        width: 25px;
+        height: 25px;
+        color: #808080;
+        font-family: 'FuturaMediumC';
+        top: calc(50% - 15px);
+        background: transparent;
+        cursor: pointer;
+        &::before{
+            content: 'x';
+            position: absolute;
+            top: 2px;
+            right: 7.5px;
+        }
+        &:hover{
+            border: 1px solid #ed2024;
+            color: #ed2024;
+        }
+        @include bp (xs){
+            top: initial;
+            bottom: 41px;
+            right: 10px;
+        }
+    }
+}
+
+.basket__item-img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-right: 10px;
+    @include bp (xs){
+        width: 150px;
+        height: 150px;
+    }
+}
+
+.basket__item-info-wrp{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    @include bp (sm){
+        flex-direction: column;
+    }
+}
+
+.asket__item-article{
+    font-family: 'FuturaBookC';
+}
+
+.basket__item-name{
+    width: 30%;
+    @include bp (sm){
+        width: 100%;
+    }
+}
+
+.basket__item-price{
+    width: 15%;
+    @include bp (sm){
+        width: 100%;
+    }
+}
+
+.prod-quantity{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 15%;
+    input{
+        width: 15px;
+        border: 0;
+        outline: none;
+        color: #000;
+        font-family: 'FuturaDemiC';
+        text-align: center;
+    }
+    @include bp (sm){
+        width: 100%;
+    }
+}
+
+.minus{
+    width: 25px;
+    height: 25px;
+    background: url('../images/icons/18.png') center no-repeat;
+    background-size: contain;
+    margin-right: 5px;
+}
+
+.plus{
+    width: 25px;
+    height: 25px;
+    background: url('../images/icons/19.png') center no-repeat;
+    background-size: contain;
+    margin-left: 5px;
+}
+
+.basket__promocode-wrp{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 20px;
+    @include bp (sm){
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.basket__promocode{
+    padding: 15px;
+    background: #feeff0;
+    li{
+        display: flex;
+        align-items: center;
+    }
+
+    input{
+        display: none;
+    }
+
+    label{
+        position: relative;
+        color: #808080;
+        font-family: 'FuturaBookC';
+        padding: 0 10px 0 20px;
+        margin: 10px 0;
+        font-size: 14px;
+        cursor: pointer;
+        width: 270px;
+        &::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            border: 1px solid #808080;
+        }
+        a{
+            color: #ed2024;
+            &:hover{
+                text-decoration: underline;
+                color: #ed2024;
+            }
+        }
+        @include bp (sm){
+            width: 100%;
+        }
+    }
+
+    input:checked + label::before{
+        background: url('../images/icons/20.png') center;
+        border: none;
+    }
+
+    .question-mark{
+        border: 1px solid #ed2024;
+        font-size: 14px;
+        color: #ed2024;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        font-family: 'FuturaDemiC';
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    @include bp (sm){
+        width: 100%;
+    }
+}
+
+.basket__promocode-title{
+    color: #000;
+    font-size: 16px;
+    margin-bottom: 15px;
+    font-family: 'FuturaDemiC';
+}
+
+.promocode-input-wrp{
+    padding: 15px;
+    background: #feeff0;
+    @include bp (sm){
+        width: 100%;
+    }
+}
+
+.promocode-input{
+    padding: 5px;
+    height: 30px;
+    width: 220px;
+    border: 1px solid #808080;
+    color: #808080;
+    font-family: 'FuturaDemiC';
+    font-size: 16px;
+    outline: none;
+    background: transparent;
+    margin: 10px 0;
+    &:focus{
+        border: 1px solid #ed2024;
+    }
+    @include bp (xs){
+        width: 100%;
+    }
+}
+
+.promocode-calc-btn{
+    padding: 7px 5px;
+    width: 220px;
+    border: 1px solid #ed2024;
+    color: #ed2024;
+    font-family: 'FuturaDemiC';
+    font-size: 16px;
+    outline: none;
+    background: transparent;
+    margin: 10px 0;
+    text-align: center;
+    outline: none;
+    &:hover{
+        background: #ed202317;
+    }
+    @include bp (xs){
+        width: 100%;
+    }
+}
+
+.basket__total{
+    text-align: right;
+    margin: 20px 0 10px;
+    color: #808080;
+    font-size: 20px;
+    font-family: 'FuturaDemiC';
+    span{
+        margin-left: 15px;
+        color: #000;
+    }
+    @include bp (sm){
+        text-align: center;
+    }
+}
+
+.basket__submit-btn-wrp{
+    text-align: right;
+}
+
+.basket__submit-btn{
+    display: inline-block;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    width: 250px;
+    padding: 10px 0;
+    background: #ed2024;
+    border: none;
+    outline: none;
+    &:hover{
+        background: #e0191c;
+    }
+    @include bp (sm){
+        width: 100%;
+    }
+}

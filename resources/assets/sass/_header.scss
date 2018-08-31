@@ -1,0 +1,508 @@
+.header-inform-container{
+    padding: 15px 10px;
+    display: flex;
+    align-items: center;
+    @include bp (sm){
+        display: block;
+    }
+    &.thanks-page{
+        justify-content: space-between;
+    }
+}
+
+.underline{
+    border-bottom: 1px solid #bfbfbf;
+}
+
+.header__time-information{
+    display: flex;
+    align-items: center;
+    font-family: 'FuturaBookC';
+    font-size: 12px;
+    color: #454545;
+    li:first-child{
+        margin-right: 5px;
+    }
+    span{
+        font-size: 13px;
+        font-family: 'FuturaDemiC';
+    }
+    img{
+        @include bp (sm){
+            width: 20px;
+        }
+    }
+    @include bp (xs){
+        margin-bottom: 10px;
+    }
+}
+
+.header__phone{
+    display: flex;
+    align-items: center;
+    font-family: 'FuturaBookC';
+    font-size: 14px;
+    @include bp (lg){
+        font-size: 12px;
+    }
+    @include bp (xs){
+        font-size: 11px;
+    }
+    ul{
+        margin-left: 5px;
+        @include bp (sm){
+            display: flex;
+        }
+    }
+    li{
+        @include bp (sm){
+            margin-right: 5px;
+        }
+    }
+    a{
+        color: #454545;
+    }
+    img{
+        @include bp (sm){
+            width: 20px;
+        }
+    }
+}
+
+.header__logo{
+    position: relative;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img{
+        width: 140px;
+        @include bp (md){
+            width: 250px;
+        }
+    }
+    @include bp (md){
+        margin: 20px 0;
+    }
+    &.thanks-page{
+        img{
+            width: 100%;
+            @include bp (sm){
+                width: 150px;
+            }
+        }
+    }
+}
+
+.header-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 0;
+}
+
+.header__searcher{
+    position: relative;
+    background-color: #fbfbfb;
+    &::after{
+        content: '';
+        position: absolute;
+        background: url('../images/icons/3.png') center no-repeat;
+        width: 20px;
+        height: 20px;
+        background-size: cover;
+        right: 5px;
+        top: 5px;
+    }
+    button{
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 35px;
+        height: 30px;
+        background: transparent;
+        border: none;
+        font-size: none;
+        z-index: 100;
+    }
+}
+
+.header__searcher-input{
+    outline: none;
+    border: none;
+    padding: 7px;
+    padding-right: 20px;
+    background-color: #fbfbfb;
+    color: #454545;
+    position: relative;
+    font-family: 'FuturaDemiC';
+    font-size: 12px;
+    width: 150px;
+    margin-right: 7px;
+    &::placeholder{
+    color: #454545;
+    }
+}
+
+.header__like{
+    display: flex;
+    align-items: center;
+    color: #454545;
+    font-family: 'FuturaDemiC';
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-right: 7px;
+    li:first-child{
+        margin-right: 5px;
+    }
+    img{
+        width: 25px;
+        @include bp (lg){
+            width: 20px;
+        }
+    }
+    @include bp (md){
+        font-size: 10px;
+    }
+}
+
+.header__profile{
+    display: flex;
+    align-items: center;
+    color: #454545;
+    font-family: 'FuturaDemiC';
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-right: 7px;
+    li:first-child{
+        margin-right: 5px;
+    }
+    img{
+        width: 25px;
+        @include bp (lg){
+            width: 20px;
+        }
+    }
+    @include bp (md){
+        font-size: 10px;
+    }
+}
+
+.header__cart{
+    display: flex;
+    align-items: center;
+    color: #454545;
+    font-family: 'FuturaDemiC';
+    font-size: 12px;
+    text-transform: uppercase;
+    position: relative;
+    li:first-child{
+        margin-right: 5px;
+    }
+    img{
+        width: 25px;
+        @include bp (lg){
+            width: 20px;
+        }
+    }
+    @include bp (md){
+        font-size: 10px;
+    }
+    .in-cart{
+        position: absolute;
+        bottom: -2px;
+        right: -2px;
+        border-radius: 50%;
+        background: #e62f43;
+        color: #fff;
+        font-size: 8px;
+        font-family: 'FuturaDemiC';
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 13px;
+        height: 13px;
+    }
+}
+
+.header__navigation{
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__navigation-item{
+    position: relative;
+    & > a{
+        position: relative;
+        padding: 15px;
+        color: #454545;
+        font-family: 'FuturaDemiC';
+        text-transform: uppercase;
+        font-size: 16px;
+        display: block;
+    }
+}
+
+.header__navigation-page{
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    display: none;
+    position: absolute;
+    z-index: 100;
+    top: 55px;
+    background-color: #fff;
+    align-items: flex-start;
+    &::before{
+        content: '';
+        position: absolute;
+        top: -7px;
+        left: 20px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 20px 10px 20px;
+        border-color: transparent transparent #ffffff transparent;
+    }
+    &::after{
+        content: '';
+        position: absolute;
+        top: -11px;
+        left: 0px;
+        width: 100%;
+        height: 12px;
+    }
+}
+
+.header__navigation-page-category{
+    width: 250px;
+    padding: 20px 0 20px 20px;
+    position: relative;
+    & > li > a{
+        position: relative;
+        padding: 10px;
+        color: #454545;
+        text-transform: uppercase;
+        font-size: 14px;
+        display: block;
+        font-weight: 700;
+        font-family: 'FuturaDemiC';
+        &::after{
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: url('../images/icons/16.png') center no-repeat;
+            background-size: contain;
+            top: calc(50% - 5px);
+            right: 20px;
+        }
+        &:hover{
+            text-decoration: none;
+            &::after{
+                right: 18px;
+            }
+        }
+    }
+}
+
+.header__navigation-page-links{
+    display: none;
+    border-left: 1px solid #bfbfbf;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background: #fff;
+    ul{
+        padding: 20px;
+        width: 200px;
+    }
+    a{
+        color: #000;
+        font-size: 14px;
+        display: block;
+        padding: 3px 0;
+        text-decoration: none;
+        font-family: 'FuturaBookC';
+        &:hover{
+            color: #e73a4d;
+        }
+    }
+}
+
+.header__navigation-page-links-img{
+    width: 250px;
+    height: 250px;
+    background-size: cover;
+    @include bp (md){
+        width: 150px;
+    }
+    &.img-1{
+        background: url('../images/menu.jpg') center no-repeat;
+        background-size: cover;
+    }
+    &.img-11{
+        background: url('../images/sample-1.jpg') center no-repeat;
+        background-size: cover;
+    }
+    &.img-12{
+        background: url('../images/sample-2.jpg') center no-repeat;
+        background-size: cover;
+    }
+}
+
+.header__navigation-item a:hover + .header__navigation-page, .header__navigation-page:hover{
+    display: flex;
+}
+
+.header__navigation-page-category a:hover + .header__navigation-page-links, .header__navigation-page-links:hover{
+    display: flex;
+}
+
+.mobile-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.burger-menu__wrp{
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: #000;
+    font-size: 13px;
+    font-family: 'FuturaDemiC';
+    padding: 10px 5px 10px 0;
+}
+
+.burger-menu{
+    position: relative;
+    width: 30px;
+    height: 3px;
+    background: #000;
+    margin-right: 5px;
+    cursor: pointer;
+    &::before{
+        content: '';
+        position: absolute;
+        top: -7px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: #000;
+    }
+    &::after{
+        content: '';
+        position: absolute;
+        bottom: -7px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: #000;
+    }
+}
+
+.mobile-nav__enter{
+    display: flex;
+}
+
+.mobile-menu.close{
+    opacity: 0;
+    visibility: hidden;
+    top: -500px;
+}
+
+.mobile-menu{
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+    transition: .5s linear;
+    background-color: #fff;
+    padding: 30px 30px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.mobile-menu__close{
+    position: relative;
+    display: flex;
+    width: 24px;
+    padding: 0 10px;
+    height: 35px;
+    &::before{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: #000;
+        transform: rotate(131deg);
+    }
+    &::after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: #000;
+        transform: rotate(-131deg);
+    }
+}
+
+.panel-group{
+    width: 100%;
+}
+
+.mobile-menu__title{
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    a{
+        color: #000;
+        display: block;
+        padding: 15px;
+    }
+}
+
+.accordion__title{
+    position: relative;
+    &:after{
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        top: calc(50% - 5px);
+        right: 15px;
+        background: url('../images/icons/arrow.png') center no-repeat;
+        transition: .3s;
+        transform: rotate(180deg);
+    }
+    &.open{
+        &:after{
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            top: calc(50% - 5px);
+            right: 15px;
+            background: url('../images/icons/arrow.png') center no-repeat;
+            transition: .3s;
+            transform: rotate(0deg);
+        }
+    }
+}
+
+.mobile-menu__links{
+    li{
+        margin-left: 20px;
+    }
+    a{
+        font-size: 14px;
+        color: #000;
+        display: block;
+        padding: 7px;
+        text-decoration: none;
+        font-weight: 700;
+    }
+}

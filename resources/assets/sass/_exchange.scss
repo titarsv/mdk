@@ -1,0 +1,197 @@
+
+.exchange__img{
+    img{
+        width: 100%;
+    }
+}
+
+.exchange__text-title{
+    color: #000;
+    font-size: 20px;
+    font-family: 'FuturaBookC';
+    margin: 100px 0 15px;
+    @include bp (sm){
+        margin: 15px 0;
+    }
+}
+
+.exchange__text{
+    font-family: 'FuturaBookC';
+    font-size: 18px;
+    color: #484848;
+    margin: 10px 0 10px 0;
+}
+
+.exchange__video{
+    img{
+        cursor: pointer;
+        width:100%;
+        height: 350px;
+        @include bp (lg){
+            height: 270px;
+        }
+        @include bp (md){
+            height: initial;
+        }
+   }
+   @include bp (lg){
+    height: 270px;
+    display: flex;
+    align-items: center;
+   }
+   @include bp (sm){
+    height: initial;
+    display: block;
+   }
+}
+
+.exchange__benefits{
+    background-color: #f9f9f9;
+    padding: 10px;
+    height: 350px;
+    p{
+        font-size: 16px;
+        color: #000;
+        font-family: 'FuturaDemiC';
+        margin-bottom: 25px;
+        margin-top: 30px;
+    }
+    li{
+        display: flex;
+        align-items: center;
+        color: #000;
+        font-size: 16px;
+        font-family: 'FuturaBookC';
+        margin: 5px 0;
+        word-wrap: break-word;
+        line-height: 25px;
+        a{
+            color: #f66070;
+            font-size: 18px;
+            margin-left: 5px;
+            display: block;
+            width: 160px;
+            @include bp (sm){
+               margin-left: 45px;
+            }
+        }
+        img{
+            margin-right: 10px;
+        }
+        @include bp (sm){
+            flex-wrap: wrap
+        }
+    }
+    @include bp (lg){
+        height: 270px;
+    }
+    @include bp (sm){
+        height: initial;
+    }
+}
+
+.get-consultation{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    p{
+        font-family: 'FuturaDemiC';
+        font-size: 16px;
+        text-align: center;
+    }
+    div{
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+        @include bp (sm){
+            flex-direction: column;
+        }
+    }
+    input{
+        outline: none;
+        font-size: 16px;
+        font-family: 'FuturaBookC';
+        padding: 5px;
+        width: 200px;
+        color: #484848;
+        text-align: center;
+        margin: 0 10px;
+        border: 1px solid #484848;
+        transition: .3s;
+        &::placeholder{
+            font-size: 16px;
+            color: #484848
+        }
+        @include bp (sm){
+            width: 100%;
+        }
+    }
+    button{
+        text-align: center;
+        width: 200px;
+        padding: 10px 0;
+        color: #fff;
+        font-size: 14px;
+        background: #f66070;
+        border: none;
+        outline: none;
+        margin-bottom: 10px;
+        margin-top: 15px;
+        font-family: 'FuturaDemiC';
+        &:hover{
+            background: #e95362;
+        }
+        @include bp (sm){
+            width: 100%;
+        }
+    }
+    @include bp (sm){
+        margin-top: 20px;
+    }
+}
+
+.garant-wrp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .garant-wrp-img{
+        margin-bottom: 20px;
+        height: 250px;
+        @include bp (sm){
+            height: inherit;
+            img{
+                width: 100%;
+            }
+        }
+    }
+    p{
+        font-size: 16px;
+        font-family: 'FuturaBookC';
+        color: #000;
+        margin: 5px 0;
+        position: relative;
+        padding-left: 20px;
+        &::before{
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: url('../images/check.png') center no-repeat;
+            background-size: cover;
+            left: 0;
+            top: 0px;
+            @include bp (md){
+                top: 9px;
+            }
+            @include bp (sm){
+                top: 0px;
+            }
+            @include bp (xs){
+                top: 9px;
+            }
+        }
+    }
+}

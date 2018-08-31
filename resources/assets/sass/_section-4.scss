@@ -1,0 +1,20 @@
+.product-card__price-wrp{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0 10px;
+}
+
+.old-price{
+    font-size: 18px;
+    text-decoration: line-through;
+    font-family: 'FuturaDemiC';
+    color: #484848;
+    margin-right: 10px;
+}
+
+.new-price{
+    font-size: 24px;
+    font-family: 'FuturaDemiC';
+    color: #e84859;
+}

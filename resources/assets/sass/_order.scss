@@ -1,0 +1,76 @@
+.order-item{
+    padding: 10px 0;
+    border-bottom: 2px solid #c7c7c7;
+    // display: flex;
+}
+
+.order-item-descr-wrp{
+    display: inline-block;
+    width: calc(100% - 214px);
+    vertical-align: middle;
+    @include bp (sm){
+        width: calc(100% - 134px);
+    }
+}
+
+.order-item-img{
+    width: 200px;
+    display: inline-block;
+    vertical-align: middle;
+    height: 200px;
+    object-fit: cover;
+    margin-right: 10px;
+    @include bp (sm){
+        width: 120px;
+        height: 120px;
+    }
+}
+
+.order-item-name{
+    color: #000;
+    font-size: 18px;
+    font-family: 'FuturaDemiC';
+    margin-bottom: 5px;
+}
+
+.order-item-article{
+    color: #000;
+    font-size: 16px;
+    font-family: 'FuturaMediumC';
+    margin-bottom: 20px;
+}
+
+.order-item-descr{
+    display: flex;
+    justify-content: space-between;
+    p{
+        font-size: 14px;
+        font-family: 'FuturaMediumC';
+        margin-bottom: 20px;
+        color: #000;
+        &:last-child{
+            font-family: 'FuturaDemiC';
+        }
+    }
+    @include bp (sm){
+        justify-content: flex-start;
+    }
+}
+
+.order-total{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #c7c7c7;
+    margin-bottom: 25px;
+    p{
+        font-size: 20px;
+        color: #7d7d7d;
+        font-family: 'FuturaDemiC';
+        &:last-child{
+            color: #000;
+        }
+    }
+}

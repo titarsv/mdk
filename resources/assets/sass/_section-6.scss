@@ -1,0 +1,32 @@
+.section-6{
+    padding-bottom: 30px;
+}
+
+.about-title{
+    font-family: 'FuturaMediumC';
+    font-size: 30px;
+    text-align: center;
+    margin: 20px 0;
+    color: #484848;
+}
+
+.about-img{
+    width: 100%;
+}
+
+.about-text-title{
+    font-family: 'FuturaDemiC';
+    font-size: 20px;
+    margin: 40px 0 10px;
+    color: #484848;
+    @include bp (md){
+        margin: 10px 0 10px;
+    }
+}
+
+.about-text{
+    font-family: 'FuturaBookC';
+    font-size: 17px;
+    margin-bottom: 15px;
+    color: #484848;
+}

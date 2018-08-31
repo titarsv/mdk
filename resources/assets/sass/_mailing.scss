@@ -1,0 +1,51 @@
+.mailing-inputs{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    input{
+        display: none;
+    }
+
+    label{
+        position: relative;
+        color: #808080;
+        font-family: 'FuturaBookC';
+        padding: 0 10px 0 20px;
+        margin: 10px 0;
+        font-size: 14px;
+        cursor: pointer;
+        &::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            border: 1px solid #808080;
+        }
+        a{
+            color: #ed2024;
+            &:hover{
+                text-decoration: underline;
+                color: #ed2024;
+            }
+        }
+        @include bp (sm){
+            width: 100%;
+        }
+    }
+    input:checked + label::before{
+        background: url('../images/icons/20.png') center;
+        border: none;
+    }
+}
+
+.mailing-phone{
+    .cabinet-number-bell{
+        &:after{
+            display: none;
+        }
+    }
+}

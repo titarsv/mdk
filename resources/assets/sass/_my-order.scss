@@ -1,0 +1,348 @@
+.my-order__form{
+    .chosen-container-single .chosen-single span{
+        color: #000;
+        font-size: 16px;
+        font-family: 'FuturaBookC';
+    }
+
+    .chosen-container.chosen-container-single{
+        width: 300px !important;
+        margin: 5px;
+        display: inline-block;
+       @include bp (sm){
+            display: flex;
+            justify-content: center;
+            width: 100% !important;
+       }
+    }
+    
+    .chosen-container-single .chosen-single{
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        padding:10px;
+        height: initial;
+        width: 300px;
+        border: 1px solid #000;
+        @include bp (sm){
+            width: 300px;
+            width: 100% !important;
+        }
+    }
+
+    .chosen-container .chosen-results li{
+        padding:10px;
+    }
+    
+    .chosen-container-single .chosen-single div{
+        width: 25px;
+    }
+    
+    .chosen-container-single .chosen-single div b{
+        background: url('../images/icons/17.png') center no-repeat;
+    }
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi), only screen and (min-resolution: 1.5dppx){
+        .chosen-container-single .chosen-single div b{
+            background-image: url('../images/icons/17.png') center no-repeat !important;
+        }
+    }
+    
+    .chosen-search{
+        display: none;
+    }
+
+    .chosen-container .chosen-results{
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+        max-height: initial;
+    }
+
+    .chosen-container .chosen-results li.highlighted{
+        background-color: #f66070;
+        background-image: linear-gradient(#f66070 20%, #e95161 90%);
+        color: #fff;
+    }
+    
+    .chosen-container .chosen-results li{
+        font-size: 16px;
+        font-family: 'FuturaBookC';
+        color: #000;
+        height: initial;
+    }
+
+    .chosen-container-single .chosen-single span{
+        margin-right: 0;
+    }
+
+    .chosen-container.chosen-with-drop .chosen-drop{
+        width: 300px;
+        @include bp (sm){
+            width: 100% !important;
+            border: 2px solid #000;
+            border-top: none;
+            top: 98%;
+        }
+    }
+}
+
+.my-order-refresh-btn{
+    background: transparent;
+    border: 1px solid #e95161;
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    color: #e95161;
+    font-size: 14px;
+    font-family: 'FuturaDemiC';
+    margin: 5px;
+    display: inline-block;
+    outline: none;
+    &:hover{
+        background: #e9516017;
+    }
+    @include bp (sm){
+        width: 100%;
+    }
+}
+
+.my-order__titles{
+    padding: 10px 0;
+    border-top: 1px solid #888888;
+    border-bottom: 1px solid #888888;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #484848;
+    font-family: 'FuturaDemiC';
+    margin-top: 20px;
+    text-align: center;
+    li:nth-child(1),  li:nth-child(2){
+        width: 15%;
+    }
+    li:nth-child(3){
+        width: 200px;
+        @include bp (lg){
+            width: 150px;
+        }
+    }
+    li:nth-child(4),  li:nth-child(5){
+        width: 20%;
+    }
+    @include bp (xs){
+        display: none;
+    }
+}
+
+.my-order__item{
+    padding: 15px 0;
+    border-bottom: 2px solid #888888;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include bp (xs){
+        flex-direction: column;
+    }
+}
+
+.my-order__item-article{
+    text-align: center;
+    width: 15%;
+    p{
+        font-family: 'FuturaBookC';
+        color: #000;
+        margin-bottom: 5px;
+        font-size: 16px;
+        @include bp (md){
+            font-size: 14px;
+        }
+    }
+    a{
+        color: #e95161;
+        font-size: 16px;
+        font-family: 'FuturaBookC';
+        &:hover{
+            color: #e95161;
+        }
+        @include bp (md){
+            font-size: 14px;
+        }
+    }
+    @include bp (xs){
+        display: none;
+        width: 100%;
+        align-items: flex-start;
+        text-align: left;
+    }
+}
+
+.my-order__item-date{
+    color: #888888;
+    font-size: 16px;
+    font-family: 'FuturaBookC';
+    text-align: center;
+    width: 15%;
+    @include bp (md){
+        font-size: 14px;
+    }
+    @include bp (xs){
+        display: none;
+        width: 100%;
+        text-align: left;
+    }
+}
+
+.my-order__item-total{
+    text-align: center;
+    font-family: 'FuturaBookC';
+    font-size: 16px;
+    span{
+        font-family: 'FuturaDemiC';
+    }
+    img{
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        margin-top: 10px;
+        @include bp (lg){
+            width: 150px;
+            height: 150px;
+        }
+        @include bp (sm){
+            width: 110px;
+            height: 110px;
+        }
+        @include bp (xs){
+            margin-top: 0;
+            margin-right: 15px;
+        }
+    }
+    .my-order__item-article, .my-order__item-date{
+        display: none;
+    }
+    @include bp (md){
+        font-size: 14px;
+    }
+    @include bp (xs){
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        text-align: left;
+        .my-order__item-article, .my-order__item-date{
+            display: block;
+            margin: 5px 0;
+        }
+    }
+}
+
+.my-order__item-number{
+    text-align: center;
+    width: 20%;
+    span{
+        color: #888888;
+        font-size: 14px;
+        font-family: 'FuturaDemiC';
+        margin-bottom: 10px;
+    }
+    p{
+        color: #888888;
+        font-size: 14px;
+        padding: 10px 15px;
+        border: 1px solid #888888;
+        margin: 5px 0;
+        font-family: 'FuturaDemiC';
+        @include bp (md){
+            font-size: 12px;
+            padding: 7px 10px;
+        }
+        @include bp (sm){
+            font-size: 12px;
+            padding: 7px 1px;
+        }
+        @include bp (xs){
+            padding: 7px 8px;
+        }
+    }
+    a{
+        color: #e95161;
+        font-family: 'FuturaDemiC';
+        font-size: 14px;
+        text-decoration: underline;
+        &:hover{
+            color: #e95161;
+        }
+    }
+    .my-order__item-status{
+        display: none;
+    }
+    @include bp (sm){
+        width: 22%;
+        margin-right: 2px;
+    }
+    @include bp (xs){
+        width: 100%;
+        text-align: left;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        margin-top: 5px;
+        .my-order__item-status{
+            display: flex;
+            margin-left: 15px;
+        }
+    }
+}
+
+.my-order__item-status{
+    width: 20%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    @include bp (xs){
+        display: none;
+        width: initial;
+        align-items: flex-start;
+    }
+}
+
+.my-order__item-status{
+    .issued{
+        color: #fff;
+        font-size: 14px;
+        font-family: 'FuturaDemiC';
+        text-align: center;
+        padding: 5px;
+        margin: 5px 0;
+        background: #60c483;
+
+    }
+    .canseled{
+        color: #fff;
+        font-size: 14px;
+        font-family: 'FuturaDemiC';
+        text-align: center;
+        padding: 5px;
+        margin: 5px 0;
+        background: #e95161;
+    }
+    .return{
+        color: #e95161;
+        font-size: 14px;
+        font-family: 'FuturaDemiC';
+        text-align: center;
+        padding: 5px;
+        margin: 5px 0;
+        border: 1px solid #e95161;
+        text-decoration: none;
+        outline: none;
+        &:hover{
+            color: #e95161;
+        }
+        @include bp (md){
+            font-size: 12px;
+        }
+    }
+}

@@ -1,0 +1,70 @@
+.credit-form__input-title{
+    font-size: 14px;
+    color: #000;
+    font-family: 'FuturaDemiC';
+    margin: 10px 0;
+}
+
+.credit-form__work-list{
+    display: flex;
+    .credit-form__input-wrp{
+        width: 50%;
+        input{
+            width: 100%;
+        }
+        @include bp (sm){
+            width: 100%;
+        }
+    }
+    @include bp (sm){
+       flex-direction: column;
+    }
+}
+
+.credit-form__address-list{
+    display: flex;
+    justify-content: space-between;
+    @include bp (lg){
+        input{
+            width: 100px;
+        }
+    }
+    @include bp (md){
+        input{
+            width: 80px;
+        }
+    }
+    @include bp (sm){
+       input{
+            width: 100%;
+       }
+    }
+    @include bp (sm){
+        flex-direction: column;
+    }
+    label{
+        min-width: 40px;
+    }
+    .credit-form__input-wrp:nth-child(4){
+        input{
+            width: 50px;
+            @include bp (md){
+                width: 40px;
+            }
+            @include bp (sm){
+                width: 100%;
+            }
+        }
+    }
+    .credit-form__input-wrp:nth-child(5){
+        input{
+            width: 50px;
+            @include bp (md){
+                width: 40px;
+            }
+            @include bp (sm){
+                width: 100%;
+            }
+        }
+    }
+}

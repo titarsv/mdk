@@ -1,0 +1,34 @@
+.about__description{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    @include bp (sm){
+       flex-direction: column;
+    }
+}
+
+.about__img{
+    img{
+        width: 600px;
+        @include bp (md){
+            width: 400px;
+        }
+        @include bp (sm){
+            width: 100%;
+        }
+    }
+}
+
+.about__description-title{
+    text-align: center;
+    font-size: 18px;
+    padding: 10px 0;
+    font-family: 'FuturaDemiC';
+}
+
+.about__description-text{
+    text-align: center;
+    font-size: 18px;
+    padding: 10px 0;
+    font-family: 'FuturaBookC';
+}

@@ -1,0 +1,126 @@
+// .section-1{
+// }
+
+
+.header-slider__item{
+    height: 50vh;
+    background: url('../images/header-bg.jpg') center no-repeat;
+    background-size: cover;
+    @include bp (sm){
+        height: 30vh;
+    }
+    @include bp (xs){
+        background-position: -233px;
+    }
+
+}
+
+.header-slider{
+    .slick-prev.slick-arrow, .slick-next.slick-arrow{
+        position: absolute;
+        bottom: 50px;
+        width: 15px;
+        height: 15px;
+        color: transparent;
+        font-size: 0;
+        border: none;
+        outline: none;
+        @include bp (sm){
+            display: none !important;
+        }
+    }
+    .slick-prev.slick-arrow{
+        background: url('../images/icons/15.png') center no-repeat;
+        background-size: contain;
+        right: 100px;
+        z-index: 2;
+    }
+    .slick-next.slick-arrow{
+        background: url('../images/icons/16.png') center no-repeat;
+        background-size: contain;
+        right: 50px;
+    }
+}
+
+.header-slider__item{
+    position: relative;
+}
+
+.header-slider__item-wrp{
+    margin-top: 150px;
+    @include bp (lg){
+        margin-top: 130px;
+    }
+    @include bp (sm){
+        margin-top: 60px;
+        position: absolute;
+        right: 10px;
+        top: 20px;
+        width: 300px;
+    }
+    @include bp (xs){
+        width: 200px;
+    }
+}
+
+.header-slider__item-title{
+    color: #484848;
+    font-size: 35px;
+    font-family: 'FuturaDemiC';
+    line-height: 40px;
+    @include bp (sm){
+        font-size: 30px;
+        line-height: 25px;
+    }
+    @include bp (xs){
+        font-size: 18px;
+        line-height: 25px;
+    }
+}
+
+.header-slider__item-subtitle{
+    color: #484848;
+    font-size: 25px;
+    line-height: 40px;
+    font-family: 'FuturaMediumC';
+    text-transform: uppercase;
+    span{
+        color: #cc2021;
+    }
+    @include bp (sm){
+        font-size: 20px;
+        line-height: 25px;
+    }
+}
+
+.header-slider__item-btn{
+    color: #fff;
+    font-size: 18px;
+    font-family: 'FuturaDemiC';
+    background-color: #484848;
+    padding: 10px 0;
+    width: 200px;
+    text-align: center;
+    &:hover{
+        background-color: darken($color: #484848, $amount: 15%)
+    }
+    @include bp (sm){
+        display: none;
+    }
+}
+
+.header-slider__item-page{
+    position: absolute;
+    font-size: 14px;
+    color: #000;
+    bottom: 47px;
+    right: 70px;
+    font-family: 'FuturaBookC';
+    span{
+        font-size: 18px;
+        font-family: 'FuturaDemiC';
+    }
+    @include bp (sm){
+        display: none;
+    }
+}

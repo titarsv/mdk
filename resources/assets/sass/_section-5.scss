@@ -1,0 +1,22 @@
+.section-5{
+    padding-bottom: 30px;
+}
+
+.collection-banner{
+    margin-top: 30px;
+    img{
+        width: 100%;
+    }
+}
+
+.collection-banner__title{
+    font-size: 30px;
+    text-transform: uppercase;
+    color: #484848;
+    font-family: 'FuturaDemiC';
+    text-align: center;
+    margin-top: 15px;
+    @include bp (md){
+        font-size: 22px;
+    }
+}
