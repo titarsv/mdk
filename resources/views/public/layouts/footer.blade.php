@@ -25,12 +25,12 @@
             <div class="col-md-offset-1 col-md-3 col-sm-3">
                 <p class="footer__title">Помощь</p>
                 <ul class="footer__links">
-                    <li><a href="#">Условия доставки</a></li>
-                    <li><a href="#">Условия оплаты</a></li>
-                    <li><a href="#">Гарантия</a></li>
-                    <li><a href="#">Как применить промокод</a></li>
-                    <li><a href="#">Вернуть товар. Инструкция</a></li>
-                    <li><a href="#"> Отследить посылку</a></li>
+                    <li><a href="{{env('APP_URL')}}/page/o-magazine">О магазине</a></li>
+                    <li><a href="{{env('APP_URL')}}/page/dostavka-i-oplata">Доставка и оплата</a></li>
+                    <li><a href="{{env('APP_URL')}}/page/obmen">Обмен</a></li>
+                    <li><a href="{{env('APP_URL')}}/page/hochu-videt-v-magazine">Хочу видеть в магазине</a></li>
+                    <li><a href="{{env('APP_URL')}}/page/predlozheniya-ot-privatbanka">Рассрочка</a></li>
+                    <li><a href="#">Отследить посылку</a></li>
                 </ul>
             </div>
             <div class="col-md-2 col-sm-2">

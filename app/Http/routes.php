@@ -27,7 +27,7 @@ Route::get('/handling_item/{alias}', 'NewsController@show');
 Route::get('/cart', 'CartController@cart');
 Route::get('/checkout', 'CartController@show');
 Route::post('/checkout', 'CartController@show');
-Route::get('/thank_you', 'OrdersController@thank_you');
+Route::get('/thank_you', 'CheckoutController@thank_you');
 Route::match(['get', 'post'], '/search/{page?}', ['as' => 'search', 'uses' => 'ProductsController@search']);
 
 //Route::post('/neworder', 'OrdersController@newOrder');

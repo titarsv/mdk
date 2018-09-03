@@ -306,4 +306,10 @@ class CheckoutController extends Controller
             return response()->json(['error' => 'При загрузке отделений произошла ошибка. Пожалуйста, попробуйте еще раз!']);
         }
     }
+
+    public function thank_you(Request $request)
+    {
+        $order = Order::find($request->order_id);
+        return view('public.thanks')->with('order', $order);
+    }
 }

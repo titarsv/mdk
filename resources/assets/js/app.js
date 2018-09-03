@@ -47,9 +47,7 @@ $(function() {
   new Popup();
   new Fancy_select();
   new Jscrollpane();
-  // new LightGallery();
   new Slider();
-  // new Jslider();
   new Fancybox();
   new Chosen();
 

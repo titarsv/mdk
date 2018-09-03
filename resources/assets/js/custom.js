@@ -468,11 +468,7 @@ $(function() {
                             window.location = '/checkout/complete?order_id=' + response.order_id;
                         });
                     } else if (response.success == 'redirect') {
-                        swal('Заказ оформлен!', 'Номер заказа: '+response.order_id, 'success');
-                        setTimeout(function(){
-                            window.location = '/user/history';
-                        }, 5000);
-                        //window.location = '/checkout/complete?order_id=' + response.order_id;
+                        window.location = '/thank_you?order_id=' + response.order_id;
                     }
                 }
             }
