@@ -45,6 +45,17 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
+                                <label class="col-sm-2 text-right control-label">Подзаголовок</label>
+                                <div class="form-element col-sm-10">
+                                    <textarea name="subtitle" class="form-control" rows="3">{!! old('subtitle') ? old('subtitle') : html_entity_decode($article->subtitle)  !!}</textarea>
+                                    @if($errors->has('subtitle'))
+                                        <p class="warning" role="alert">{!! $errors->first('subtitle',':message') !!}</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
                                 <label class="col-sm-2 text-right control-label">Текст новости</label>
                                 <div class="form-element col-sm-10">
                                     <textarea id="text-area" name="text" class="form-control" rows="6">{!! old('text') ? old('text') : html_entity_decode($article->text) !!}</textarea>

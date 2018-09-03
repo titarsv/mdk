@@ -6,6 +6,7 @@
         @else
             {!! $category->meta_title !!}
         @endif
+            | Мир дубленок и кожи
         @if(!empty($products) && $products->currentPage() > 1) - Страница {!! $products->currentPage() !!}@endif
     </title>
 
