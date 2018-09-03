@@ -443,9 +443,9 @@ class Filter
                 $attribute = $attr->where('slug', $attr_slug)->first();
                 if ($attribute !== null) {
                     foreach ($values as $value_slug) {
-//                        if ($attribute->name == 'Цвет') {
-//                            $value_slug = '#' . $value_slug;
-//                        }
+                        if ($attribute->name == 'Цвет') {
+                            $value_slug = '#' . $value_slug;
+                        }
                         $val = $attribute->values()->where('value', $value_slug)->first();
                         if ($val !== null) {
                             $new_filter[$attribute->id][] = $val->id;

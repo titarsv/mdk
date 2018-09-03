@@ -359,7 +359,7 @@ class Categories extends Model
         $categories = $this->get_parent_categories($this->id);
 
         if(count($categories) > 1)
-            return $categories[count($categories) - 2];
+            return $categories[count($categories) - 1];
         else
             return $this;
     }

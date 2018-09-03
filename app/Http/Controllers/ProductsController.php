@@ -720,7 +720,6 @@ class ProductsController extends Controller
                 $prepared_data = [];
 
                 foreach ($data as $row) {
-
                     $row_data = ['tables' => []];
                     foreach ($row as $key => $val){
                         $field = ['options' => $this->get_field_options($key)];

@@ -405,7 +405,7 @@ $(function() {
         $(this).hide();
     });
 
-    $('#filters input').change(function(){
+    $('.filters input').change(function(){
         var url = $(this).data('url')
         if(typeof url !== 'undefined' && location.pathname != url){
             location = url;
