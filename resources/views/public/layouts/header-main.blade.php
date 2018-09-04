@@ -78,6 +78,15 @@
                         </a>
                     @endif
                 @else
+                    <a href="{{env('APP_URL')}}/login">
+                        <ul class="header__like">
+                            <li>Избранное</li>
+                            <li><img src="/images/icons/heart.png" alt="Избранное"></li>
+                            @if(!empty($wishlist) && !empty($wishlist->count()))
+                                <li class="in-cart">{{ $wishlist->count() }}</li>
+                            @endif
+                        </ul>
+                    </a>
                     <a href="#" class="popup-btn" data-mfp-src="#logIn-popup">
                         <ul class="header__profile">
                             <li>Вход</li>
@@ -151,7 +160,7 @@
                             <div class="mobile-menu__body">
                                 <ul class="mobile-menu__links">
                                     @foreach($children->children as $children2)
-                                        <li><a href="{{ $children2->url_alias }}">{{ $children2->name }}</a></li>
+                                        <li><a href="{{env('APP_URL')}}/catalog/{{ $children2->url_alias }}">{{ $children2->name }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -167,7 +176,7 @@
                             <div class="mobile-menu__body">
                                 <ul class="mobile-menu__links">
                                     @foreach($children->children as $children2)
-                                        <li><a href="{{ $children2->url_alias }}">{{ $children2->name }}</a></li>
+                                        <li><a href="{{env('APP_URL')}}/catalog/{{ $children2->url_alias }}">{{ $children2->name }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -184,7 +193,7 @@
                         <div class="mobile-menu__body">
                             <ul class="mobile-menu__links">
                                 @foreach($categories->where('name', 'Другое')->first()->children as $children2)
-                                    <li><a href="{{ $children2->url_alias }}">{{ $children2->name }}</a></li>
+                                    <li><a href="{{env('APP_URL')}}/catalog/{{ $children2->url_alias }}">{{ $children2->name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -204,7 +213,7 @@
                             @endphp
                             @foreach($cats as $children)
                                 <li>
-                                    <a href="{{ $children->url_alias }}">{{ mb_strtoupper($children->name) }}</a>
+                                    <a href="{{env('APP_URL')}}/catalog/{{ $children->url_alias }}">{{ mb_strtoupper($children->name) }}</a>
                                     <div class="header__navigation-page-links">
                                         <ul>
                                             @foreach($children->children as $children2)
@@ -216,7 +225,7 @@
                                                         $img = $image->url();
                                                     }
                                                 @endphp
-                                                <li><a href="{{ $children2->url_alias }}" data-toggle="{{ $img }}">{{ $children2->name }}</a></li>
+                                                <li><a href="{{env('APP_URL')}}/catalog/{{ $children2->url_alias }}" data-toggle="{{ $img }}">{{ $children2->name }}</a></li>
                                             @endforeach
                                         </ul>
                                         @php
@@ -244,7 +253,7 @@
                             @endphp
                             @foreach($cats as $children)
                                 <li>
-                                    <a href="{{ $children->url_alias }}">{{ mb_strtoupper($children->name) }}</a>
+                                    <a href="{{env('APP_URL')}}/catalog/{{ $children->url_alias }}">{{ mb_strtoupper($children->name) }}</a>
                                     <div class="header__navigation-page-links">
                                         <ul>
                                             @foreach($children->children as $children2)
@@ -256,7 +265,7 @@
                                                         $img = $image->url();
                                                     }
                                                 @endphp
-                                                <li><a href="{{ $children2->url_alias }}" data-toggle="{{ $img }}">{{ $children2->name }}</a></li>
+                                                <li><a href="{{env('APP_URL')}}/catalog/{{ $children2->url_alias }}" data-toggle="{{ $img }}">{{ $children2->name }}</a></li>
                                             @endforeach
                                         </ul>
                                         @php
@@ -276,11 +285,11 @@
                 </div>
 
                 <div class="header__navigation-item">
-                    <a href="#">Распродажа</a>
+                    <a href="javascript:void(0)">Распродажа</a>
                 </div>
 
                 <div class="header__navigation-item">
-                    <a href="#">Акции</a>
+                    <a href="javascript:void(0)">Акции</a>
                 </div>
 
                 <div class="header__navigation-item">

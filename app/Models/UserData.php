@@ -11,8 +11,8 @@ class UserData extends Model
     protected $fillable = [
         'user_id',
         'image_id',
-        'phone',
-        'address',
+        'phones',
+        'addresses',
         'company',
         'other_data',
         'subscribe'
@@ -27,8 +27,13 @@ class UserData extends Model
         return $this->belongsTo('App\Models\Image');
     }
 
-    public function address()
+    public function addresses()
     {
-        return json_decode($this->address);
+        return json_decode($this->addresses);
+    }
+
+    public function phones()
+    {
+        return json_decode($this->phones);
     }
 }

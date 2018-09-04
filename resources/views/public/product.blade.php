@@ -133,24 +133,24 @@
                             <input class="hidden" type="radio" id="var_{{ $variation }}" name="variation" value="{{ $val['id'] }}" data-price="{{ $val['price'] }}">
                         @endforeach
                         <button type="button" class="btn_buy" data-prod-id="{{ $product->id}}">Купить</button>
-                        <a href="" class="product__one-click-btn popup-btn" data-mfp-src="#oneClick">
-                            <span> Купить в 1 клик</span>
+                        <a href="javascript:void(0);" class="product__one-click-btn popup-btn" data-mfp-src="#oneClick">
+                            <span>Купить в 1 клик</span>
                         </a>
-                        <a href="" class="product__part-pay-btn popup-btn" data-mfp-src="#partPay">
+                        <a href="javascript:void(0);" class="product__part-pay-btn popup-btn" data-mfp-src="#partPay">
                             <span>Купить частичной оплатой</span>
                         </a>
-                        <a href="" class="product__wishlist-btn">
+                        <a href="javascript:void(0);" class="product__wishlist-btn wishlist-add" data-prod-id="{{ $product->id}}">
                             <span>Добавить в избранное</span>
                         </a>
-                        <a href="" class="product__full-descr-btn">
-                            <span>Полное описание товара</span>
-                        </a>
+                        {{--<a href="" class="product__full-descr-btn">--}}
+                            {{--<span>Полное описание товара</span>--}}
+                        {{--</a>--}}
                     </form>
                     <div class="product__description-wrp">
                         <p class="main-title">Полное описание:</p>
 
                         <ul class="product__description-tabs nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#characteristics">Характеристики </a></li>
+                            <li class="active"><a data-toggle="tab" href="#characteristics">Характеристики</a></li>
                             <li><a data-toggle="tab" href="#delivery">Доставка</a></li>
                             <li><a data-toggle="tab" href="#garanty">Гарантия</a></li>
                             <li><a data-toggle="tab" href="#pay">Оплата</a></li>
@@ -627,7 +627,15 @@
                             <p class="oneClick__container-title">Оставьте свои контакты<br>
                                 и наш менеджер свяжется с Вами<br>
                                 для оформления заказа</p>
-                            <form action="" class="oneClick__container-form">
+                            <form action="" class="oneClick__container-form ajax_form"
+                                  data-error-title="Ошибка отправки!"
+                                  data-error-message="Попробуйте отправить заявку через некоторое время."
+                                  data-success-title="Спасибо за заявку!"
+                                  data-success-message="Наш менеджер свяжется с вами в ближайшее время.">
+                                <input type="hidden" name="form" value="Быстрый заказ" data-title="Форма">
+                                <input type="hidden" name="product_name" value="{{ $product->name }}" data-title="Название товара">
+                                <input type="hidden" name="product_id" value="{{ $product->id }}" data-title="ID товара">
+                                <input type="hidden" name="product_articul" value="{{ $product->articul }}" data-title="Артикул товара">
                                 <input placeholder="Ваше имя" type="text" name="name" data-title="Имя">
                                 <input type="tel" name="phone" placeholder="Ваш телефон" data-title="Телефон" data-validate-required="Обязательное поле" data-validate-uaphone="Неправильный номер">
                                 <button type="submit">Отправить</button>

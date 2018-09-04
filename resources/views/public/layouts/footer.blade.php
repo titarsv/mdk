@@ -19,37 +19,35 @@
                 </div>
                 <ul class="footer__contact-address footer-list">
                     <li><img src="/images/icons/6.png"></li>
-                    <li><a href="">ВСЕ МАГАЗИНЫ</a></li>
+                    <li>ТЦ «Дафи», 2 эт., ул. Героев Труда, 9</li>
                 </ul>
             </div>
             <div class="col-md-offset-1 col-md-3 col-sm-3">
-                <p class="footer__title">Сервис</p>
-                <ul class="footer__links">
-                    <li><a href="{{env('APP_URL')}}/page/dostavka-i-oplata">Доставка и оплата</a></li>
-                    <li><a href="{{env('APP_URL')}}/page/predlozheniya-ot-privatbanka">Рассрочка</a></li>
-                    <li><a href="{{env('APP_URL')}}/page/hochu-videt-v-magazine">Хочу видеть в магазине</a></li>
-                </ul>
-                <ul class="footer__links">
-                    <li><a href="{{env('APP_URL')}}/page/obmen">Обмен</a></li>
-                    <li><a href="#">Отследить посылку</a></li>
-                </ul>
-            </div>
-            <div class="col-md-2 col-sm-2">
-                <p class="footer__title">Кабинет</p>
-                <ul class="footer__links">
-                    <li><a href="#">Личные данные</a></li>
-                    <li><a href="#">Настройка рассылок</a></li>
-                    <li><a href="#">Мои заказы</a></li>
-                    <li><a href="#">Мои товары</a></li>
-                    <li><a href="#">Мои товары</a></li>
-                </ul>
-            </div>
-            <div class="col-md-2 col-sm-2">
-                <p class="footer__title">Информация</p>
+                <p class="footer__title">Помощь</p>
                 <ul class="footer__links">
                     <li><a href="{{env('APP_URL')}}/page/o-magazine">О магазине</a></li>
+                    <li><a href="{{env('APP_URL')}}/page/dostavka-i-oplata">Доставка и оплата</a></li>
+                    <li><a href="{{env('APP_URL')}}/page/obmen">Обмен</a></li>
+                    <li><a href="{{env('APP_URL')}}/page/hochu-videt-v-magazine">Хочу видеть в магазине</a></li>
+                    <li><a href="{{env('APP_URL')}}/page/predlozheniya-ot-privatbanka">Рассрочка</a></li>
                     <li><a href="{{env('APP_URL')}}/news">Публикации</a></li>
-                    <li><a href="">Контакты</a></li>
+                </ul>
+            </div>
+            @if($user_logged)
+            <div class="col-md-2 col-sm-2">
+                <p class="footer__title">Мой кабинет</p>
+                <ul class="footer__links">
+                    <li><a href="{{env('APP_URL')}}/user">Личный Кабинет</a></li>
+                    <li><a href="{{env('APP_URL')}}/user/history">История заказов</a></li>
+                    <li><a href="{{env('APP_URL')}}/user/wishlist">Избранное</a></li>
+                </ul>
+            </div>
+            @endif
+            <div class="col-md-2 col-sm-2">
+                <p class="footer__title">Партнерам</p>
+                <ul class="footer__links">
+                    <li><a href="javascript:void(0);">Оптовый сайт</a></li>
+                    <li><a href="javascript:void(0);">Дропшиппинг</a></li>
                 </ul>
             </div>
         </div>

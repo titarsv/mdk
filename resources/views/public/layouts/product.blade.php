@@ -26,11 +26,28 @@
 @endphp
 
 <div class="item slider__item product-card">
-    <div class="product-card__img-slider product-card__img-slider{{ $product->id }} slick-slider" data-slick='{"slidesToShow": 1, "lazyLoad": "ondemand", "asNavFor": ".product-card__colors-slider{{ $product->id }}", "arrows": false}'>
-        @if(!empty($colors))
-            @foreach($colors as $color)
+    <a href="{{env('APP_URL')}}/product/{{ $product->url_alias }}">
+        <div class="product-card__img-slider product-card__img-slider{{ $product->id }} slick-slider" data-slick='{"slidesToShow": 1, "lazyLoad": "ondemand", "asNavFor": ".product-card__colors-slider{{ $product->id }}", "arrows": false}'>
+            @if(!empty($colors))
+                @foreach($colors as $color)
+                    <div class="product-card__img-slider-item">
+                        <img src="{{ $color['image'] }}" alt="{{ $product->name }}">
+                        @if(!empty($product->label) && $product->label != 'z' && isset($labels[$product->label]))
+                            <div class="slider__item-img-label new">
+                                {{ $labels[$product->label] }}
+                            </div>
+                        @elseif(!empty($product->old_price))
+                            <div class="slider__item-img-label sale">
+                                -{{ ceil((($product->old_price - $product->price)/ $product->old_price) * 100) }}%<br>sale
+                            </div>
+                        @else
+                            <div class="slider__item-img-label" style="visibility: hidden;"></div>
+                        @endif
+                    </div>
+                @endforeach
+            @else
                 <div class="product-card__img-slider-item">
-                    <img src="{{ $color['image'] }}" alt="{{ $product->name }}">
+                    <img src="{{ $product->image == null ? '/uploads/no_image.jpg' : $product->image->url('product_list') }}" alt="{{ $product->name }}">
                     @if(!empty($product->label) && $product->label != 'z' && isset($labels[$product->label]))
                         <div class="slider__item-img-label new">
                             {{ $labels[$product->label] }}
@@ -43,24 +60,9 @@
                         <div class="slider__item-img-label" style="visibility: hidden;"></div>
                     @endif
                 </div>
-            @endforeach
-        @else
-            <div class="product-card__img-slider-item">
-                <img src="{{ $product->image == null ? '/uploads/no_image.jpg' : $product->image->url('product_list') }}" alt="{{ $product->name }}">
-                @if(!empty($product->label) && $product->label != 'z' && isset($labels[$product->label]))
-                    <div class="slider__item-img-label new">
-                        {{ $labels[$product->label] }}
-                    </div>
-                @elseif(!empty($product->old_price))
-                    <div class="slider__item-img-label sale">
-                        -{{ ceil((($product->old_price - $product->price)/ $product->old_price) * 100) }}%<br>sale
-                    </div>
-                @else
-                    <div class="slider__item-img-label" style="visibility: hidden;"></div>
-                @endif
-            </div>
-        @endif
-    </div>
+            @endif
+        </div>
+    </a>
     <div class="color-slider-wrp underline">
         <div class="product-card__colors-slider product-card__colors-slider{{ $product->id }} slick-slider" data-slick='{"slidesToShow": 8, "lazyLoad": "ondemand", "asNavFor": ".product-card__img-slider{{ $product->id }}","focusOnSelect": true,"responsive":[{"breakpoint":1300,"settings":{"slidesToShow": 6}}, {"breakpoint":1200,"settings":{"slidesToShow": 5}}, {"breakpoint":768,"settings":{"slidesToShow": 3}}]}'>
             @foreach($colors as $key => $item)
@@ -72,7 +74,36 @@
     <p class="product-card__price">{{ number_format($product->price, 2, '.', ' ') }} грн</p>
     <div class="product-card__btn">
         <a href="{{env('APP_URL')}}/product/{{ $product->url_alias }}"><p class="product-card__btn-more">Подробнее</p></a>
-        <button class="product-card__btn-buy">Купить в 1 клик</button>
+        <button class="product-card__btn-buy popup-btn" data-mfp-src="#oneClick_{{ $product->id }}">Купить в 1 клик</button>
+    </div>
+    <div class="hidden">
+        <div id="oneClick_{{ $product->id }}" class="view-popup">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+                        <div class="oneClick__container">
+                            <p class="oneClick__container-title">Оставьте свои контакты<br>
+                                и наш менеджер свяжется с Вами<br>
+                                для оформления заказа</p>
+                            <form action="" class="oneClick__container-form ajax_form"
+                                  data-error-title="Ошибка отправки!"
+                                  data-error-message="Попробуйте отправить заявку через некоторое время."
+                                  data-success-title="Спасибо за заявку!"
+                                  data-success-message="Наш менеджер свяжется с вами в ближайшее время.">
+                                <input type="hidden" name="form" value="Быстрый заказ" data-title="Форма">
+                                <input type="hidden" name="product_name" value="{{ $product->name }}" data-title="Название товара">
+                                <input type="hidden" name="product_id" value="{{ $product->id }}" data-title="ID товара">
+                                <input type="hidden" name="product_articul" value="{{ $product->articul }}" data-title="Артикул товара">
+                                <input placeholder="Ваше имя" type="text" name="name" data-title="Имя">
+                                <input type="tel" name="phone" placeholder="Ваш телефон" data-title="Телефон" data-validate-required="Обязательное поле" data-validate-uaphone="Неправильный номер">
+                                <button type="submit">Отправить</button>
+                            </form>
+                            <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
