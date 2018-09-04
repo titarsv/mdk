@@ -454,6 +454,7 @@
     text-align: center;
     margin: 10px 0;
     font-family: 'FuturaDemiC';
+    margin-left: 25%;
     span{
         position: relative;
         &::before{
@@ -547,7 +548,7 @@
         border-right: 1px solid #000;
         border-radius: 0;
         &:hover{
-            border-right: 1px solid transparent;
+            border: none;
         }
     }
 
@@ -574,8 +575,8 @@
         color: black;
         font-family: 'FuturaBookC';
         font-size: 16px;
-        border-right: 1px solid transparent;
         border: none;
+        border-right: 1px solid transparent;
         border-radius: 0;
         box-shadow: -49px -50px 16px -49px rgba(0,0,0,0.29);
     }

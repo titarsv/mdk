@@ -405,7 +405,7 @@ $(function() {
         $(this).hide();
     });
 
-    $('#filters input').change(function(){
+    $('.filters input').change(function(){
         var url = $(this).data('url')
         if(typeof url !== 'undefined' && location.pathname != url){
             location = url;
@@ -468,11 +468,7 @@ $(function() {
                             window.location = '/checkout/complete?order_id=' + response.order_id;
                         });
                     } else if (response.success == 'redirect') {
-                        swal('Заказ оформлен!', 'Номер заказа: '+response.order_id, 'success');
-                        setTimeout(function(){
-                            window.location = '/user/history';
-                        }, 5000);
-                        //window.location = '/checkout/complete?order_id=' + response.order_id;
+                        window.location = '/thank_you?order_id=' + response.order_id;
                     }
                 }
             }

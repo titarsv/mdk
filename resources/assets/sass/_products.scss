@@ -25,9 +25,7 @@
         font-family: 'FuturaDemiC';
         display: block;
         text-transform: uppercase;
-        @include bp (md){
-            font-size: 14px;
-        }
+        font-size: 14px;
     }
     .filters__title-icon{
         position: absolute;

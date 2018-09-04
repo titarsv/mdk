@@ -2,6 +2,50 @@
     padding: 15px;
     margin-top: 30px;
 }
+.side-border{
+  position: relative;
+  &::before{
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 150px;
+    background: #c7c7c7;
+    top: 0;
+    left: 9px;
+    @include bp (lg){
+      left: -2px;
+    }
+    @include bp (md){
+      left: -5px;
+    }
+    @include bp (sm){
+      width: 50px;
+      height: 1px;
+      top: 0;
+      left: calc(50% - 25px);
+    }
+  }
+  &.left{
+    &::before{
+      left: -52px;
+      @include bp (lg){
+        left: -42px;
+      }
+      @include bp (md){
+        left: -2px;
+      }
+      @include bp (sm){
+        width: 50px;
+        height: 1px;
+        top: 0;
+        left: calc(50% - 25px);
+      }
+    }
+  }
+  @include bp (sm){
+  padding-top: 5px;
+}
+}
 
 .footer__title{
     text-transform: uppercase;
@@ -13,6 +57,9 @@
     @include bp (md){
         font-size: 15px;
     }
+    @include bp (sm){
+       margin-top: 15px;
+     }
 }
 
 .footer-list{
@@ -29,6 +76,7 @@
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
+    align-items: flex-start;
     &.thanks-page{
         @include bp (xs){
             flex-direction: column;
@@ -89,6 +137,9 @@
             font-size: 14px;
         }
     }
+  @include bp (sm){
+    margin-bottom: 10px;
+  }
 }
 
 .footer-row{
@@ -130,4 +181,13 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+}
+
+.footer-vertical-align{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include bp (sm){
+    display: block;
+  }
 }

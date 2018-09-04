@@ -90,7 +90,7 @@
 
 .item.slider__item.product-card{
     padding: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 50px;
 }
 
 .product-card__colors-slider{
@@ -147,6 +147,11 @@
     &.sale{
         background-color: #f08893;
     }
+  @include bp (xs){
+    padding: 4px 6px;
+    font-size: 14px;
+    top: 10px;
+  }
 }
 
 .color-slider-wrp{
@@ -155,15 +160,15 @@
 
 .slick-slide.slick-current.slick-active{
     .product-card__colors-item{
-        width: 30px !important;
-        height: 30px;
+        width: 25px !important;
+        height: 25px;
     }
 }
 
 .product-card__colors-item{
-    width: 25px !important;
-    height: 25px;
-    border-radius: 50%;
+    width: 20px !important;
+    height: 20px;
+    //border-radius: 50%;
     &.black{
        background-color: #000; 
     }
@@ -208,14 +213,25 @@
     color: #484848;
     text-align: center;
     padding: 5px 0;
+    height: 50px;
+   @include bp (md){
+     font-size: 16px;
+   }
  }
 
  .product-card__price{
     font-family: 'FuturaDemiC';
     color: #484848;
-    font-size: 24px;
+    font-size: 21px;
     padding: 5px 0 10px;
-    text-align: center;    
+    text-align: center;
+   @include bp (lg){
+     font-size: 18px;
+   }
+   @include bp (xs){
+     padding: 5px;
+     font-size: 16px;
+   }
  }
 
  .product-card__btn{
@@ -233,6 +249,15 @@
      text-decoration: underline;
      font-size: 18px;
      font-family: 'FuturaDemiC';
+     @include bp (lg){
+       font-size: 14px;
+     }
+     @include bp (md){
+       font-size: 16px;
+     }
+     @include bp (xs){
+       font-size: 14px;
+     }
  }
 
  .product-card__btn-buy{
@@ -248,8 +273,19 @@
     &:hover{
         background-color: #dcdcdc85;
     }
+   @include bp (lg){
+     font-size: 14px;
+     padding: 5px;
+   }
+   @include bp (md){
+     font-size: 16px;
+     padding: 15px 5px;
+   }
     @include bp (sm){
         margin-top: 10px;
         width: 100%;
     }
+   @include bp (xs){
+     padding: 7px 5px;
+   }
  }

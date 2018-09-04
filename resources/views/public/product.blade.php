@@ -2,14 +2,15 @@
 @section('meta')
     <title>
         @if(empty($product->meta_title))
-            {!! $product->name !!}} купить по выгодной цене
+            {!! $product->name !!}}
         @else
             {!! $product->meta_title !!}
         @endif
+            | Мир дубленок и кожи
     </title>
 
     @if(empty($product->meta_description))
-        <meta name="description" content="Купить {!! $product->name !!}} в Харькове">
+        <meta name="description" content="Купить {!! $product->name !!}}">
     @else
         <meta name="description" content="{!! $product->meta_description !!}">
     @endif

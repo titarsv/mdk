@@ -237,7 +237,7 @@ class OrdersController extends Controller
                 $auth = Sentinel::authenticateAndRemember($credentials);
 
                 if($auth){
-                    return redirect('/user/history')
+                    return redirect('/thank_you')
                         ->with('status', 'Ваш заказ оформлен. Оператор свяжется с вами в ближайшее время.');
                 }else{
                     return redirect()
@@ -290,7 +290,7 @@ class OrdersController extends Controller
         if($request->registration == 'on') {
             $auth = Sentinel::authenticateAndRemember($credentials);
             if ($auth) {
-                return redirect('/user/history')
+                return redirect('/thank_you')
                     ->with('status', 'Ваш заказ оформлен. Оператор свяжется с вами в ближайшее время.');
             }
         }else{
@@ -332,17 +332,10 @@ class OrdersController extends Controller
         return true;
     }
 
-    public function thank_you()
+    public function thank_you(Request $request)
     {
-        $modules_settings = Modules::all();
-
-        foreach ($modules_settings as $module_setting) {
-            if ($module_setting->alias_name == 'latest') {
-                $latest_settings = json_decode($module_setting->settings);
-            }
-        }
-//        $latest_products = Products::orderBy('created_at', 'desc')->take($latest_settings->quantity)->get();
-        $latest_products = Products::orderBy('created_at', 'desc')->where('stock', 1)->whereNotNull('action')->take(12)->get();
-        return view('public.thanks')->with('latest_products', $latest_products);
+        $order = Order::find($request->order_id);
+        dd($order->user_id);
+        return view('public.thanks')->with('order', $order);
     }
 }

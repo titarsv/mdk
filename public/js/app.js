@@ -16816,7 +16816,8 @@ if(false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(19);
-module.exports = __webpack_require__(92);
+__webpack_require__(92);
+module.exports = __webpack_require__(93);
 
 
 /***/ }),
@@ -16874,9 +16875,7 @@ $(function () {
   new Popup();
   new Fancy_select();
   new Jscrollpane();
-  // new LightGallery();
   new Slider();
-  // new Jslider();
   new Fancybox();
   new Chosen();
 
@@ -16961,7 +16960,31 @@ $(function () {
         }
       },
       stop: function stop(event, ui) {
-        $(this).parents('form').submit();
+        var from = ui.values[0];
+        var to = ui.values[1];
+        var path_parts = location.pathname.split('/');
+        var append = false;
+        if (typeof path_parts[3] !== 'undefined') {
+          var filter = path_parts[3];
+          var filter_parts = filter.split('_');
+          for (var i = 0; i < filter_parts.length; i++) {
+            var filter_data = filter_parts[i].split('-');
+            if (filter_data.length == 3 && filter_data[0] == 'price') {
+              filter_parts[i] = 'price-' + from + '-' + to;
+              append = true;
+            }
+          }
+          if (!append) {
+            filter_parts[filter_parts.length] = 'price-' + from + '-' + to;
+          }
+          path_parts[3] = filter_parts.join('_');
+        } else {
+          path_parts[3] = 'price-' + from + '-' + to;
+        }
+
+        var path = path_parts.join('/');
+        location = path;
+        //$(this).parents('form').submit();
       }
     });
   }
@@ -52761,7 +52784,7 @@ $(function () {
         $(this).hide();
     });
 
-    $('#filters input').change(function () {
+    $('.filters input').change(function () {
         var url = $(this).data('url');
         if (typeof url !== 'undefined' && location.pathname != url) {
             location = url;
@@ -52822,11 +52845,7 @@ $(function () {
                             window.location = '/checkout/complete?order_id=' + response.order_id;
                         });
                     } else if (response.success == 'redirect') {
-                        swal('Заказ оформлен!', 'Номер заказа: ' + response.order_id, 'success');
-                        setTimeout(function () {
-                            window.location = '/user/history';
-                        }, 5000);
-                        //window.location = '/checkout/complete?order_id=' + response.order_id;
+                        window.location = '/thank_you?order_id=' + response.order_id;
                     }
                 }
             }
@@ -53048,6 +53067,12 @@ window.newpostUpdate = function (id, value) {
 
 /***/ }),
 /* 92 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 93 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

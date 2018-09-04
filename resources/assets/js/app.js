@@ -47,9 +47,7 @@ $(function() {
   new Popup();
   new Fancy_select();
   new Jscrollpane();
-  // new LightGallery();
   new Slider();
-  // new Jslider();
   new Fancybox();
   new Chosen();
 
@@ -134,7 +132,31 @@ $(function() {
         }
       },
       stop: function( event, ui ) {
-        $(this).parents('form').submit();
+          var from = ui.values[0];
+          var to = ui.values[1];
+          var path_parts = location.pathname.split('/');
+          var append = false;
+          if(typeof path_parts[3] !== 'undefined'){
+              var filter = path_parts[3];
+              var filter_parts = filter.split('_');
+              for(var i=0; i<filter_parts.length; i++){
+                  var filter_data = filter_parts[i].split('-');
+                  if(filter_data.length == 3 && filter_data[0] == 'price'){
+                      filter_parts[i] = 'price-'+from+'-'+to;
+                      append = true;
+                  }
+              }
+              if(!append){
+                  filter_parts[filter_parts.length] = 'price-'+from+'-'+to;
+              }
+              path_parts[3] = filter_parts.join('_');
+          }else{
+              path_parts[3] = 'price-'+from+'-'+to;
+          }
+
+          var path = path_parts.join('/');
+          location = path;
+          //$(this).parents('form').submit();
       }
     });
   }

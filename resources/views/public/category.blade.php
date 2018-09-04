@@ -6,6 +6,7 @@
         @else
             {!! $category->meta_title !!}
         @endif
+            | Мир дубленок и кожи
         @if(!empty($products) && $products->currentPage() > 1) - Страница {!! $products->currentPage() !!}@endif
     </title>
 
@@ -71,7 +72,7 @@
                         </div>
                         @if(!empty($attributes))
                             @foreach($attributes as $key => $attribute)
-                                <div class="filters-wrp border">
+                                <div class="filters-wrp border filters">
                                     <h4 class="filters__title">
                                         <a data-toggle="collapse" data-parent="#accordion-filters" href="#collapse{{ $key }}">{{ $attribute['name'] }}</a>
                                         <div class="filters__title-icon"></div>
@@ -142,67 +143,36 @@
                                             <form action="">
                                                 <p class="mobile-filters-title">ПАРАМЕТРЫ</p>
                                                 <div class="accordion-filters">
-                                                    <div class="filters-wrp">
-                                                        <h4 class="filters__title">
-                                                            <a data-toggle="collapse" data-parent="#accordion-filters" href="#collapseFilters1">ВЕРХНЯЯ ОДЕЖДА</a>
-                                                            <div class="filters__title-icon open"></div>
-                                                        </h4>
-                                                        <div id="collapseFilters1" class="filters__collapse collapse in">
-                                                            <div class="filters__body">
-                                                                <ul class="filters__links">
-                                                                    <li><a href="">Дубленки   </a></li>
-                                                                    <li><a href="">Меховые жилеты</a></li>
-                                                                    <li><a href="">Кожаные куртки</a></li>
-                                                                    <li><a href="">Удлиненные кожанные куртки</a></li>
-                                                                    <li><a href="">Утепленные куртки</a></li>
-                                                                    <li><a href=""> Парки</a></li>
-                                                                    <li><a href=""> Шубы</a></li>
-                                                                    <li><a href="">Пальто</a></li>
-                                                                </ul>
+                                                    @foreach($categories as $i => $cat)
+                                                        <div class="filters-wrp">
+                                                            <h4 class="filters__title">
+                                                                <a data-toggle="collapse" data-parent="#accordion-filters" href="#collapseFilters{{ $cat->id }}">{{ mb_strtoupper($cat->name) }}</a>
+                                                                <div class="filters__title-icon{{ $i == 0 ? ' open' : '' }}"></div>
+                                                            </h4>
+                                                            <div id="collapseFilters{{ $cat->id }}" class="filters__collapse collapse{{ $i == 0 ? ' in' : '' }}">
+                                                                <div class="filters__body">
+                                                                    <ul class="filters__links">
+                                                                        @foreach($cat->children as $child)
+                                                                            <li>
+                                                                                <a href="{{env('APP_URL')}}/catalog/{{ $child->url_alias }}">{{ $child->name }}</a>
+                                                                                @if($child->hasChildren())
+                                                                                    <ul class="filters__links">
+                                                                                        @foreach($child->children as $child2)
+                                                                                            <li><a href="{{env('APP_URL')}}/catalog/{{ $child2->url_alias }}">{{ $child2->name }}</a></li>
+                                                                                        @endforeach
+                                                                                    </ul>
+                                                                                @endif
+                                                                            </li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="filters-wrp">
-                                                        <h4 class="filters__title">
-                                                            <a data-toggle="collapse" data-parent="#accordion-filters" href="#collapseFilters2">Аксессуары</a>
-                                                            <div class="filters__title-icon"></div>
-                                                        </h4>
-                                                        <div id="collapseFilters2" class="filters__collapse collapse">
-                                                            <div class="filters__body">
-                                                                <ul class="filters__links">
-                                                                    <li><a href="">Кошельки</a></li>
-                                                                    <li><a href="">Перчатки</a></li>
-                                                                    <li><a href="">Ремни</a></li>
-                                                                    <li><a href="">Сумки</a></li>
-                                                                    <li><a href="">Шапки</a></li>
-                                                                    <li><a href="">Шарфы</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="filters-wrp">
-                                                        <h4 class="filters__title">
-                                                            <a data-toggle="collapse" data-parent="#accordion-filters" href="#collapseFilters3">Другое</a>
-                                                            <div class="filters__title-icon"></div>
-                                                        </h4>
-                                                        <div id="collapseFilters3" class="filters__collapse collapse">
-                                                            <div class="filters__body">
-                                                                <ul class="filters__links">
-                                                                    <li><a href="">Браслеты</a></li>
-                                                                    <li><a href="">Визитницы</a></li>
-                                                                    <li><a href="">Ключицы</a></li>
-                                                                    <li><a href="">Обложки для документов</a></li>
-                                                                    <li><a href="">Амулеты в кошельки</a></li>
-                                                                    <li><a href=""> Зонт</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    @endforeach
                                                 </div>
-
                                                 @if(!empty($attributes))
                                                     @foreach($attributes as $key => $attribute)
-                                                        <div class="filters-wrp border">
+                                                        <div class="filters-wrp border filters">
                                                             <h4 class="filters__title">
                                                                 <a data-toggle="collapse" data-parent="#accordion-filters" href="#collapseMin{{ $key }}">{{ $attribute['name'] }}</a>
                                                                 <div class="filters__title-icon"></div>
@@ -259,8 +229,8 @@
                                                     </div>
                                                 </div>
 
-                                                <button type="reset" class="filters-reset-btn">Очистить</button>
-                                                <button type="submit" class="filters-submit-btn">Применить</button>
+                                                {{--<button type="reset" class="filters-reset-btn">Очистить</button>--}}
+                                                {{--<button type="submit" class="filters-submit-btn">Применить</button>--}}
                                             </form>
                                         </div>
                                     </div>
@@ -282,11 +252,11 @@
                                 <span>Нет таких товаров...</span>
                             </div>
                         @else
-                            <div class="col-md-4 col-sm-6 col-xs-12">
-                                @foreach($products as $key => $product)
+                            @foreach($products as $key => $product)
+                                <div class="col-md-4 col-sm-6 col-xs-12">
                                     @include('public.layouts.product', ['product' => $product, 'slide' => false])
-                                @endforeach
-                            </div>
+                                </div>
+                            @endforeach
                         @endif
                     </div>
                     @if(!empty($products))

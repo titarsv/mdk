@@ -2,11 +2,6 @@ body, #main-container, footer{
 	opacity: 1 !important;
 }
 
-@import 'variables';
-@import 'vendor';
-@import 'fonts';
-@import 'mixin';
-
 html, body{
   min-width: 320px;
 }

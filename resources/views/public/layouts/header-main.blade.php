@@ -41,9 +41,9 @@
             <div class="visible-xs-block col-xs-12">
                 <div class="header__logo">
                     @if(Request::path()=='/')
-                        <img src="/images/logo.png" alt="MDK">
+                        <img src="/images/logo1.png" alt="MDK">
                     @else
-                        <a href="{{env('APP_URL')}}"><img src="/images/logo.png" alt="MDK"></a>
+                        <a href="{{env('APP_URL')}}"><img src="/images/logo1.png" alt="MDK"></a>
                     @endif
                 </div>
             </div>

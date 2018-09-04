@@ -16,8 +16,7 @@ class News extends Model
 
     public $categories = [
         1 => 'Новости и акции',
-        2 => 'Статьи',
-        3 => 'Уход за обувью'
+        2 => 'Статьи'
     ];
 
     public $fillable = [
@@ -35,15 +34,15 @@ class News extends Model
         'robots'
     ];
 
-    public function getCreatedAtAttribute($attr)
-    {
-        return DateFormat::post($attr);
-    }
-
-    public function getUpdatedAtAttribute($attr)
-    {
-        return DateFormat::post($attr);
-    }
+//    public function getCreatedAtAttribute($attr)
+//    {
+//        return DateFormat::post($attr);
+//    }
+//
+//    public function getUpdatedAtAttribute($attr)
+//    {
+//        return DateFormat::post($attr);
+//    }
 
     public function user()
     {
