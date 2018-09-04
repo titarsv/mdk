@@ -19,33 +19,36 @@
                 </div>
                 <ul class="footer__contact-address footer-list">
                     <li><img src="/images/icons/6.png"</li>
-                    <li>ТЦ «Дафи», 2 эт., ул. Героев Труда, 9</li>
+                    <li><a href="">ВСЕ МАГАЗИНЫ</a></li>
                 </ul>
             </div>
             <div class="col-md-offset-1 col-md-3 col-sm-3">
-                <p class="footer__title">Помощь</p>
+                <p class="footer__title">Сервис</p>
                 <ul class="footer__links">
-                    <li><a href="#">Условия доставки</a></li>
-                    <li><a href="#">Условия оплаты</a></li>
-                    <li><a href="#">Гарантия</a></li>
-                    <li><a href="#">Как применить промокод</a></li>
-                    <li><a href="#">Вернуть товар. Инструкция</a></li>
-                    <li><a href="#"> Отследить посылку</a></li>
+                    <li><a href="#">Доставка и оплата</a></li>
+                    <li><a href="#">Рассрочка</a></li>
+                    <li><a href="#">Хочу видеть в магазине</a></li>
+                </ul>
+                <ul class="footer__links">
+                    <li><a href="#">Обмен</a></li>
+                    <li><a href="#">Отследить посылку</a></li>
                 </ul>
             </div>
             <div class="col-md-2 col-sm-2">
-                <p class="footer__title">Мой кабинет</p>
+                <p class="footer__title">Кабинет</p>
                 <ul class="footer__links">
                     <li><a href="#">Личный Кабинет</a></li>
-                    <li><a href="#">История заказов</a></li>
-                    <li><a href="#">Избранное</a></li>
+                    <li><a href="#">Настройка рассылок</a></li>
+                    <li><a href="#">Мои заказы</a></li>
+                    <li><a href="#">Мои товары</a></li>
                 </ul>
             </div>
             <div class="col-md-2 col-sm-2">
-                <p class="footer__title">Партнерам</p>
+                <p class="footer__title">Информация</p>
                 <ul class="footer__links">
-                    <li><a href="#">Оптовый сайт</a></li>
-                    <li><a href="#">Дропшиппинг</a></li>
+                    <li><a href="#">О магазине</a></li>
+                    <li><a href="#">Публикация</a></li>
+                    <li><a href="#">Контакты</a></li>
                 </ul>
             </div>
         </div>
