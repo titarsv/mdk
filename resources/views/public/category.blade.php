@@ -38,9 +38,9 @@
                     {!! Breadcrumbs::render('categories', $category) !!}
                 </div>
                 <div class="col-sm-12 col-xs-12">
-                    <p class="category-title">Верхняя одежда</p>
+                    <p class="category-title">{{ $category->name }}</p>
                 </div>
-                <div class="col-sm-3 hidden-xs">
+                <div class="col-md-2 col-sm-3 hidden-xs">
                     <form action="">
                         <div class="accordion-filters">
                             @foreach($categories as $i => $cat)
@@ -130,7 +130,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-sm-9">
+                <div class="col-md-10 col-sm-9">
                     <div class="row">
                         <div class="products-sorting-wrp col-sm-12 col-xs-12">
                             <div class="visible-xs-block mobile-filters popup-btn" data-mfp-src="#mobile-filters">
@@ -248,12 +248,12 @@
                             @endif
                         </div>
                         @if(empty($products))
-                            <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="col-md-3 col-sm-4 col-xs-6 col-12">
                                 <span>Нет таких товаров...</span>
                             </div>
                         @else
                             @foreach($products as $key => $product)
-                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                <div class="col-md-3 col-sm-4 col-xs-6 col-12">
                                     @include('public.layouts.product', ['product' => $product, 'slide' => false])
                                 </div>
                             @endforeach

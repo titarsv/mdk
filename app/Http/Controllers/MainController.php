@@ -24,15 +24,15 @@ class MainController extends Controller
 //        $women_new_prod = $categories->get_products(1, null, [8 => [113]], ['id', 'desc'], 3, []);
 //        $men_new_prod = $categories->get_products(2, null, [8 => [113]], ['id', 'desc'], 3, []);
 //        $big_sizes = $categories->get_products(11, null, [1 => [11]], ['id', 'desc'], 2, []);
-//        $blog = new News();
-//        $articles = $blog->where('published', 1)->orderBy('updated_at', 'desc')->paginate(12);
+        $blog = new News();
+        $articles = $blog->where('published', 1)->orderBy('updated_at', 'desc')->paginate(12);
 
         return view('index')
 //	        ->with('women_new_prod', $women_new_prod)
 //	        ->with('men_new_prod', $men_new_prod)
 //	        ->with('big_sizes', $big_sizes)
 //	        ->with('brands', $brands)
-//	        ->with('articles', $articles)
+	        ->with('articles', $articles)
             ->with('slideshow', $slideshow->all())
             ->with('banners', $banners->all());
     }

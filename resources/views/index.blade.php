@@ -108,7 +108,7 @@
                         </div>
                     </div>
                     <div class="color-slider-wrp underline">
-                        <div class="product-card__colors-slider product-card__colors-slider1 slick-slider" data-slick='{"slidesToShow": 8, "lazyLoad": "ondemand", "asNavFor": ".product-card__img-slider1","focusOnSelect": true,"responsive":[{"breakpoint":1300,"settings":{"slidesToShow": 6}},{"breakpoint":768,"settings":{"slidesToShow": 3}}]}'>
+                        <div class="product-card__colors-slider product-card__colors-slider1 slick-slider" data-slick='{"slidesToShow": 8, "lazyLoad": "ondemand", "asNavFor": ".product-card__img-slider1","responsive":[{"breakpoint":1300,"settings":{"slidesToShow": 6}},{"breakpoint":768,"settings":{"slidesToShow": 3}}]}'>
                             <div class="product-card__colors-item black"></div>
                             <div class="product-card__colors-item dark-grey"></div>
                             <div class="product-card__colors-item grey"></div>
@@ -186,7 +186,7 @@
                         </div>
                     </div>
                     <div class="color-slider-wrp underline">
-                        <div class="product-card__colors-slider product-card__colors-slider2 slick-slider" data-slick='{"slidesToShow": 8, "lazyLoad": "ondemand", "asNavFor": ".product-card__img-slider2","focusOnSelect": true,"responsive":[{"breakpoint":1300,"settings":{"slidesToShow": 6}}, {"breakpoint":768,"settings":{"slidesToShow": 3}}]}'>
+                        <div class="product-card__colors-slider product-card__colors-slider2 slick-slider" data-slick='{"slidesToShow": 8, "lazyLoad": "ondemand", "asNavFor": ".product-card__img-slider2","responsive":[{"breakpoint":1300,"settings":{"slidesToShow": 6}}, {"breakpoint":768,"settings":{"slidesToShow": 3}}]}'>
                             <div class="product-card__colors-item black"></div>
                             <div class="product-card__colors-item dark-grey"></div>
                             <div class="product-card__colors-item grey"></div>
@@ -278,10 +278,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="product-card__colors-slider slick-slider underline" data-slick='{"slidesToShow": 3, "lazyLoad": "ondemand", "centerMode": true", focusOnSelect": true}'>
-                        <div class="product-card__colors-item black"></div>
-                        <div class="product-card__colors-item dark-grey"></div>
-                        <div class="product-card__colors-item grey"></div>
+                    <div class="color-slider-wrp">
+                        <div class="product-card__colors-slider slick-slider underline" data-slick='{"slidesToShow": 3, "lazyLoad": "ondemand"}'>
+                            <div class="product-card__colors-item black"></div>
+                            <div class="product-card__colors-item dark-grey"></div>
+                            <div class="product-card__colors-item grey"></div>
+                            <div class="product-card__colors-item grey"></div>
+                        </div>
                     </div>
                     <p class="product-card__title">Куртка женская NH-9088</p>
                     <div class="product-card__price-wrp">
@@ -302,10 +305,10 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <div class="collection-banner">
-                        <a href="" class="collection-banner__photo">
+                        <a href="{{env('APP_URL')}}/catalog/verhnyaya-odezhda_2" class="collection-banner__photo">
                             <img src="/images/man.jpg" alt="">
                         </a>
-                        <a href="">
+                        <a href="{{env('APP_URL')}}/catalog/verhnyaya-odezhda_2">
                             <p class="collection-banner__title">
                                 мужская коллекция
                             </p>
@@ -314,10 +317,10 @@
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="collection-banner">
-                        <a href="" class="collection-banner__photo">
+                        <a href="{{env('APP_URL')}}/catalog/verhnyaya-odezhda" class="collection-banner__photo">
                             <img src="/images/woman.jpg" alt="">
                         </a>
-                        <a href="">
+                        <a href="{{env('APP_URL')}}/catalog/verhnyaya-odezhda">
                             <p class="collection-banner__title">
                                 женская коллекция
                             </p>
@@ -326,10 +329,10 @@
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="collection-banner">
-                        <a href="" class="collection-banner__photo">
+                        <a href="{{env('APP_URL')}}/catalog/aksessuary" class="collection-banner__photo">
                             <img src="/images/accessorize.jpg" alt="">
                         </a>
-                        <a href="">
+                        <a href="{{env('APP_URL')}}/catalog/aksessuary">
                             <p class="collection-banner__title">
                                 мужские аксессуары
                             </p>
@@ -338,10 +341,10 @@
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="collection-banner">
-                        <a href="" class="collection-banner__photo">
+                        <a href="{{env('APP_URL')}}/catalog/aksessuary_3" class="collection-banner__photo">
                             <img src="/images/bag.jpg" alt="">
                         </a>
-                        <a href="">
+                        <a href="{{env('APP_URL')}}/catalog/aksessuary_3">
                             <p class="collection-banner__title">
                                 женские аксессуары
                             </p>
@@ -390,94 +393,29 @@
             </p>
             <div class="article-slider-wrp">
                 <div class="acticle-slider slick-slider" data-slick='{"slidesToShow": 3, "lazyLoad": "ondemand", "responsive":[{"breakpoint":1200,"settings":{"slidesToShow": 2}}, {"breakpoint":768,"settings":{"slidesToShow": 1, "arrows": false}}]}'>
-                    <div class="acticle-slider__item">
-                        <div class="acticle-slider__item-img">
-                            <img src="/images/article.jpg" alt="">
+                    @foreach($articles as $article)
+                        <div class="acticle-slider__item">
+                            <div class="acticle-slider__item-img">
+                                <a href="{{env('APP_URL')}}/news/{!!$article->url_alias !!}">
+                                    <img src="{!! $article->image->url('blog_list') !!}" alt="">
+                                </a>
+                            </div>
+                            <div class="acticle-slider__item-text-wrp">
+                                <p class="acticle-slider__item-date">
+                                    {!! date('d.m.Y', strtotime($article->created_at)) !!}
+                                </p>
+                                <p class="acticle-slider__item-title">
+                                    {!! $article->title !!}
+                                </p>
+                                <p class="acticle-slider__item-text">
+                                    {!! $article->subtitle !!}
+                                </p>
+                                <a href="{{env('APP_URL')}}/news/{!!$article->url_alias !!}">
+                                    <p class="acticle-slider__item-btn">Подробнее →</p>
+                                </a>
+                            </div>
                         </div>
-                        <div class="acticle-slider__item-text-wrp">
-                            <p class="acticle-slider__item-date">
-                                06.06.2018
-                            </p>
-                            <p class="acticle-slider__item-title">
-                                Правила ухода за кожаными изделиями и аксессуарами
-                            </p>
-                            <p class="acticle-slider__item-text">
-                                При правильном уходе любое изделие из кожи (кошелек, ремень или блокнот)
-                                может прослужить ни один десяток лет и сохраниться  при этом в хорошем
-                                состоянии. Уход за кожаными изделиями не требует особых усилий, нужно
-                                просто запомнить несколько советов и анти-советов.
-                            </p>
-                            <a href="">
-                                <p class="acticle-slider__item-btn">Подробнее →</p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="acticle-slider__item">
-                        <div class="acticle-slider__item-img">
-                            <img src="/images/article.jpg" alt="">
-                        </div>
-                        <div class="acticle-slider__item-text-wrp">
-                            <p class="acticle-slider__item-date">
-                                06.06.2018
-                            </p>
-                            <p class="acticle-slider__item-title">
-                                Правила ухода за кожаными изделиями и аксессуарами
-                            </p>
-                            <p class="acticle-slider__item-text">
-                                При правильном уходе любое изделие из кожи (кошелек, ремень или блокнот)
-                                может прослужить ни один десяток лет и сохраниться  при этом в хорошем
-                                состоянии. Уход за кожаными изделиями не требует особых усилий, нужно
-                                просто запомнить несколько советов и анти-советов.
-                            </p>
-                            <a href="">
-                                <p class="acticle-slider__item-btn">Подробнее →</p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="acticle-slider__item">
-                        <div class="acticle-slider__item-img">
-                            <img src="/images/article.jpg" alt="">
-                        </div>
-                        <div class="acticle-slider__item-text-wrp">
-                            <p class="acticle-slider__item-date">
-                                06.06.2018
-                            </p>
-                            <p class="acticle-slider__item-title">
-                                Правила ухода за кожаными изделиями и аксессуарами
-                            </p>
-                            <p class="acticle-slider__item-text">
-                                При правильном уходе любое изделие из кожи (кошелек, ремень или блокнот)
-                                может прослужить ни один десяток лет и сохраниться  при этом в хорошем
-                                состоянии. Уход за кожаными изделиями не требует особых усилий, нужно
-                                просто запомнить несколько советов и анти-советов.
-                            </p>
-                            <a href="">
-                                <p class="acticle-slider__item-btn">Подробнее →</p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="acticle-slider__item">
-                        <div class="acticle-slider__item-img">
-                            <img src="/images/article.jpg" alt="">
-                        </div>
-                        <div class="acticle-slider__item-text-wrp">
-                            <p class="acticle-slider__item-date">
-                                06.06.2018
-                            </p>
-                            <p class="acticle-slider__item-title">
-                                Правила ухода за кожаными изделиями и аксессуарами
-                            </p>
-                            <p class="acticle-slider__item-text">
-                                При правильном уходе любое изделие из кожи (кошелек, ремень или блокнот)
-                                может прослужить ни один десяток лет и сохраниться  при этом в хорошем
-                                состоянии. Уход за кожаными изделиями не требует особых усилий, нужно
-                                просто запомнить несколько советов и анти-советов.
-                            </p>
-                            <a href="">
-                                <p class="acticle-slider__item-btn">Подробнее →</p>
-                            </a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

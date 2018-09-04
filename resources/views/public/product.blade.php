@@ -154,6 +154,7 @@
                             <li><a data-toggle="tab" href="#delivery">Доставка</a></li>
                             <li><a data-toggle="tab" href="#garanty">Гарантия</a></li>
                             <li><a data-toggle="tab" href="#pay">Оплата</a></li>
+                            <li><a data-toggle="tab" href="#availability">Наличие</a></li>
                         </ul>
                         <div class="product__description-tabs-content tab-content">
                             <div id="characteristics" class="tab-pane fade in active">
@@ -170,13 +171,16 @@
                                 <p>{!! $product->description !!}</p>
                             </div>
                             <div id="delivery" class="tab-pane fade">
-                                Доставка
+                                <p> Доставка</p>
                             </div>
                             <div id="garanty" class="tab-pane fade">
-                                Гарантия
+                                <p>Гарантия</p>
                             </div>
                             <div id="pay" class="tab-pane fade">
-                                Оплата
+                                <p>Оплата</p>
+                            </div>
+                            <div id="availability" class="tab-pane fade">
+                                <p>В наличии</p>
                             </div>
                         </div>
                     </div>

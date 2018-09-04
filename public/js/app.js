@@ -16990,7 +16990,7 @@ $(function () {
   }
 
   var credit_range = $('.partPay__credit-range');
-  if (price_range.length) {
+  if (credit_range.length) {
     credit_range.each(function () {
       var $this = $(this);
       $this.slider({
@@ -17002,6 +17002,7 @@ $(function () {
         animate: 'slow',
         slide: function slide(event, ui) {
           var inputRange = $(this).parent().find('input.partPaysliderValue').val($(this).slider("values", 0));
+          var sliderHandle = $(this).parent().find('.ui-slider .ui-slider-handle').attr('value', $(this).slider("values", 0));
         }
         // stop: function( event, ui ) {
         //   $(this).parents('form').submit();
