@@ -8,7 +8,6 @@
 
 .filters-wrp{
     margin: 15px 0;
-    padding: 0 10px;
     &.border{
         border: 1px solid #bfbfbf;
         padding: 10px;
@@ -16,6 +15,9 @@
             font-family: 'FuturaBookC';
         }
     }
+  @include bp (md){
+    padding: 10px;
+  }
 }
 
 .filters__title{
@@ -26,12 +28,18 @@
         display: block;
         text-transform: uppercase;
         font-size: 14px;
+      @include bp (lg){
+        font-size: 12px;
+      }
+      @include bp (md){
+       font-size: 14px;
+      }
     }
     .filters__title-icon{
         position: absolute;
         width: 12px;
         height: 2px;
-        right: 3px;
+        right: 0px;
         top: 8px;
         z-index: -1;
         &::before{

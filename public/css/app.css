@@ -8321,7 +8321,6 @@ table {
 
 .filters-wrp {
   margin: 15px 0;
-  padding: 0 10px;
 }
 
 .filters-wrp.border {
@@ -8331,6 +8330,12 @@ table {
 
 .filters-wrp.border a {
   font-family: 'FuturaBookC';
+}
+
+@media only screen and (max-width: 991px) {
+  .filters-wrp {
+    padding: 10px;
+  }
 }
 
 .filters__title {
@@ -8345,11 +8350,23 @@ table {
   font-size: 14px;
 }
 
+@media only screen and (max-width: 1199px) {
+  .filters__title a {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .filters__title a {
+    font-size: 14px;
+  }
+}
+
 .filters__title .filters__title-icon {
   position: absolute;
   width: 12px;
   height: 2px;
-  right: 3px;
+  right: 0px;
   top: 8px;
   z-index: -1;
 }
