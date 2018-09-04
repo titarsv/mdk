@@ -653,12 +653,13 @@
                     <div class="row">
                         <div class="col-sm-10 col-sm-offset-1 col-xs-12">
                             <div class="partPay__container">
-                                <form action="">
+                                <form method="post" action="{{env('APP_URL')}}/credit">
+                                    {{ csrf_field() }}
                                     <div class="partPay__img">
-                                        <img src="../../images/mdk-credit.jpg" alt=""><img src="../../images/pb-credit.jpg" alt="">
+                                        <img src="/images/mdk-credit.jpg" alt=""><img src="/images/pb-credit.jpg" alt="">
                                     </div>
                                     <div class="partPay__form-wrp">
-                                        <div action="" class="partPay__form">
+                                        <div class="partPay__form">
                                             <p class="hidden-xs">Сумма</p>
                                             <fieldset class="partPay__credit-range-wrp">
                                                 <div class="partPay__credit-range price-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="0" data-max="100000" data-min="1"></div>
@@ -670,7 +671,7 @@
                                             </fieldset>
                                             <p class="hidden-xs">Сумма</p>
                                         </div>
-                                        <div action="" class="partPay__form">
+                                        <div class="partPay__form">
                                             <p class="hidden-xs">Первый взнос</p>
                                             <fieldset class="partPay__credit-range-wrp">
                                                 <div class="partPay__credit-range credit-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="0" data-max="101" data-min="0"></div>
@@ -682,7 +683,7 @@
                                             </fieldset>
                                             <p class="hidden-xs">%</p>
                                         </div>
-                                        <div action="" class="partPay__form">
+                                        <div class="partPay__form">
                                             <p class="hidden-xs">Cрок</p>
                                             <fieldset class="partPay__credit-range-wrp">
                                                 <div class="partPay__credit-range credit-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="0" data-max="13" data-min="0"></div>
@@ -694,7 +695,7 @@
                                             </fieldset>
                                             <p class="hidden-xs">Месяцев</p>
                                         </div>
-                                        <div action="" class="partPay__form">
+                                        <div class="partPay__form">
                                             <p class="hidden-xs">Месячный платеж</p>
                                             <fieldset class="partPay__credit-range-wrp">
                                                 <div class="partPay__credit-range credit-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="0" data-max="10000" data-min="1000"></div>
@@ -761,7 +762,7 @@
                             <div class="sizeTable__container-wrp">
                                 <p class="main-title">Таблица размеров</p>
                                 <div class="sizeTable__container">
-                                    <img src="../../images/model.jpg" class="hidden-xs" alt="">
+                                    <img src="/images/model.jpg" class="hidden-xs" alt="">
                                     <div class="sizeTable__table">
                                         <ul>
                                             <li class="sizeTable__table-row-title">Обхват груди</li>

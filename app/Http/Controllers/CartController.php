@@ -214,4 +214,26 @@ class CartController extends Controller
 
         return $current_cart;
     }
+
+    /**
+     * Кредит
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function credit(Request $request){
+
+        $user = Sentinel::check();
+        if(!empty($user)) {
+            $user = User::find($user->id);
+        }else{
+            $user = null;
+        }
+
+        $credit = [];
+
+        return view('public.credit')
+            ->with('user', $user)
+            ->with('products', $credit);
+    }
 }

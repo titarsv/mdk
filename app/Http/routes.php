@@ -217,6 +217,7 @@ Route::post('wishlist/del','WishListController@delWishlist');
 Route::post('cart/update','CartController@updateCart');
 //Route::post('cart/updateall','CartController@update');
 Route::post('cart/get','CartController@getCart');
+Route::post('credit','CartController@credit');
 
 
 /**
