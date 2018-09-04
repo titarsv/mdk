@@ -375,7 +375,7 @@ $(function() {
         });
     });
 
-    jQuery('.wishlist-add, .prod-card-wish').on('click', function () {
+    jQuery('.wishlist-add').on('click', function () {
         var $this = $(this);
         var data = {};
         data['user_id'] = $this.attr('data-user-id');
@@ -389,11 +389,7 @@ $(function() {
             url: '/wishlist/update', type: 'POST', data: data, dataType: 'JSON',
             success: function (response) {
                 if (response.count !== false) {
-                    if($this.parents('.grid-product-card').length){
-                        $this.parents('.grid-product-card').find('.prod-card-wish').toggleClass('active');
-                    }else{
-                        $this.toggleClass('active');
-                    }
+                    $this.toggleClass('active');
                 }
             }
         });
@@ -496,18 +492,16 @@ $(function() {
     $('#pay-popup .cancel').click(function(){
         $.magnificPopup.close();
     });
-    // $(document).on('click', '.edit-profile.active', function () {
-    //     var data = {
-    //         fio: $('[name="fio"]').val(),
-    //         phone: $('[name="phone"]').val(),
-    //         email: $('[name="email"]').val(),
-    //         user_birth: $('[name="user-birth"]').val()
-    //     };
-    //
-    //     $.post('/saveUserData', data, function(response){
-    //         window.location = window.location;
-    //     });
-    // })
+
+    $('.private-info-form').on('submit', function (e) {
+        e.preventDefault();
+
+        var data = $(this).serializeArray();
+
+        $.post('/saveuserdata', data, function(response){
+            window.location = window.location;
+        });
+    });
 
     $('[name="subscr-type"]').change(function(){
         $.post('/user/updatesubscr', {subscr: $('[name="subscr-type"]:checked').val()}, function(response){
@@ -518,27 +512,27 @@ $(function() {
             }
         });
     });
-    $('.profile-address-btn').click(function(e){
-        e.preventDefault();
-        var data = {
-            city: $('[name="city"]').val(),
-            post_code: $('[name="post_code"]').val(),
-            street: $('[name="street"]').val(),
-            house: $('[name="house"]').val(),
-            flat: $('[name="flat"]').val(),
-            npregion: $('[name="npregion"]').val(),
-            npcity: $('[name="npcity"]').val(),
-            npdepartment: $('[name="npdepartment"]').val()
-        };
-
-        $.post('/user/updateaddress', data, function(response){
-            if(response.success){
-                swal('Сохранено', 'Данные успешно сохранениы!', 'success');
-            }else{
-                swal('Ошибка', 'Не удалось сохранить данные', 'error');
-            }
-        });
-    });
+    // $('.private-info-form').submit(function(e){
+    //     e.preventDefault();
+    //     var data = {
+    //         city: $('[name="city"]').val(),
+    //         post_code: $('[name="post_code"]').val(),
+    //         street: $('[name="street"]').val(),
+    //         house: $('[name="house"]').val(),
+    //         flat: $('[name="flat"]').val(),
+    //         npregion: $('[name="npregion"]').val(),
+    //         npcity: $('[name="npcity"]').val(),
+    //         npdepartment: $('[name="npdepartment"]').val()
+    //     };
+    //
+    //     $.post('/user/updateaddress', data, function(response){
+    //         if(response.success){
+    //             swal('Сохранено', 'Данные успешно сохранениы!', 'success');
+    //         }else{
+    //             swal('Ошибка', 'Не удалось сохранить данные', 'error');
+    //         }
+    //     });
+    // });
 
     $('.sign-up-form').submit(function (e) {
         if($('#email').val() == '' || $('#first_name').val() == '' || $('#phone').val() == '' || $('#password').val() == '' || $('#passwordr').val() == ''){

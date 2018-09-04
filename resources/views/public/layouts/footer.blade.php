@@ -33,19 +33,21 @@
                     <li><a href="{{env('APP_URL')}}/news">Публикации</a></li>
                 </ul>
             </div>
+            @if($user_logged)
             <div class="col-md-2 col-sm-2">
                 <p class="footer__title">Мой кабинет</p>
                 <ul class="footer__links">
-                    <li><a href="#">Личный Кабинет</a></li>
-                    <li><a href="#">История заказов</a></li>
-                    <li><a href="#">Избранное</a></li>
+                    <li><a href="{{env('APP_URL')}}/user">Личный Кабинет</a></li>
+                    <li><a href="{{env('APP_URL')}}/user/history">История заказов</a></li>
+                    <li><a href="{{env('APP_URL')}}/user/wishlist">Избранное</a></li>
                 </ul>
             </div>
+            @endif
             <div class="col-md-2 col-sm-2">
                 <p class="footer__title">Партнерам</p>
                 <ul class="footer__links">
-                    <li><a href="#">Оптовый сайт</a></li>
-                    <li><a href="#">Дропшиппинг</a></li>
+                    <li><a href="javascript:void(0);">Оптовый сайт</a></li>
+                    <li><a href="javascript:void(0);">Дропшиппинг</a></li>
                 </ul>
             </div>
         </div>

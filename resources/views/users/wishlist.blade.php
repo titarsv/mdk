@@ -1,71 +1,82 @@
 @extends('public.layouts.main')
 
-@section('breadcrumbs')
-    {!! Breadcrumbs::render('history') !!}
-@endsection
-
 @section('content')
-    <main>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-4 hidden-xs aside-filter-menu-container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="aside-filter-menu-item">
-                                <div class="aside-filter-menu-item-title aside-block">
-                                    <a href="{{env('APP_URL')}}/user/history"><p>История покупок</p></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="aside-filter-menu-item">
-                                <div class="aside-filter-menu-item-title aside-block">
-                                    <a href="javascript:void(0);" class="active-aside-link"><p>Список желаний</p></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="aside-filter-menu-item">
-                                <div class="aside-filter-menu-item-title aside-block">
-                                    <a href="{{env('APP_URL')}}/user"><p>Личный кабинет</p></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-9 col-sm-8 col-xs-12 products-grid-container">
-                    <div class="row">
-                        <div class="col-md-12 hidden-xs margin">
-                            <h1 class="title">Список желаний</h1>
-                        </div>
-                        <div class="visible-xs-inline-block col-xs-12">
-                            <div>
-                                <select name="site-section-select" id="redirect_select" class="chosen-select site-section-select">
-                                    <option value="{{env('APP_URL')}}/user/history">История покупок</option>
-                                    <option selected="selected" value="">Список желаний</option>
-                                    <option value="{{env('APP_URL')}}/user">Личный кабинет</option>
-                                </select>
-                            </div>
-                        </div>
-                        @forelse($products as $key => $product)
-                            <div class="col-lg-4 col-xs-6">
-                                @include('public.layouts.product', ['product' => $product->product, 'slide' => false])
-                            </div>
-                            @if(($key+1)%3 == 0 && ceil(count($products)/6) == ($key+1)/3)
-                                @include('public.layouts.banner')
-                            @endif
-                        @empty
-                            <div class="col-md-12 margin">
-                                <span>Нет избранных товаров...</span>
-                            </div>
-                        @endforelse
 
-                        @if($products->count() < 3)
-                            @include('public.layouts.banner')
-                        @endif
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 hidden-xs">
+                <ul class="breadcrambs">
+                    {!! Breadcrumbs::render('history') !!}
+                </ul>
+            </div>
+            <div class="col-sm-12 col-xs-12">
+                <p class="main-title">Мои товары</p>
+            </div>
+            <div class="col-sm-3 col-xs-12">
+                <div class="cabinet__aside">
+                    <p class="cabinet__aside-title">МОЙ ЛИЧНЫЙ КАБИНЕТ</p>
+                    <ul class="hidden-xs">
+                        <li><a href="{{env('APP_URL')}}/user">Личные данные</a></li>
+                        <li><a href="{{env('APP_URL')}}/user/mailing">настройка рассылок</a></li>
+                        <li><a href="{{env('APP_URL')}}/user/history">Мои заказы</a></li>
+                        <li><a href="javascript:void(0);" class="active">мои товары</a></li>
+                        <li><a href="{{env('APP_URL')}}/logout">Выйти</a></li>
+                    </ul>
+                    <div class="visible-xs-block">
+                        <select class="chosen-select" name="" id="">
+                            <option value="{{env('APP_URL')}}/user">Личные данные</option>
+                            <option value="{{env('APP_URL')}}/user/mailing">настройка рассылок</option>
+                            <option value="{{env('APP_URL')}}/user/history">Мои заказы</option>
+                            <option value="" selected="selected">мои товары</option>
+                            <option value="{{env('APP_URL')}}/logout">Выйти</option>
+                        </select>
                     </div>
                 </div>
             </div>
+            <div class="col-sm-9 col-xs-12">
+                <div class="row">
+                    @forelse($products as $key => $product)
+                        <div class="col-md-4 col-sm-6 col-xs-6">
+                            <p class="product-card-delete wishlist-add active" data-prod-id="{{ $product->product_id}}">Очистить</p>
+                            @include('public.layouts.product', ['product' => $product->product])
+                        </div>
+                    @empty
+                        <div class="col-xs-12">
+                            <span>Нет избранных товаров...</span>
+                        </div>
+                    @endforelse
+                    {{--<div class="col-md-4 col-sm-6 col-xs-6">--}}
+                        {{--<p class="product-card-delete">Очистить</p>--}}
+                        {{--<div class="item slider__item product-card my-product-item">--}}
+                            {{--<div class="product-card__img-slider-item">--}}
+                                {{--<img src="../../images/sample-1.jpg" alt="">--}}
+                                {{--<div class="slider__item-img-label new">--}}
+                                    {{--new--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="product-card__info underline">--}}
+                                {{--<div>--}}
+                                    {{--<p>Цвет:</p>--}}
+                                    {{--<div class="product-card__colors-item black"></div>--}}
+                                {{--</div>--}}
+                                {{--<div class="product__select-size-wrp">--}}
+                                    {{--<p>Размер:</p>--}}
+                                    {{--<div class="size-label">M</div>--}}
+                                    {{--<p>Medium size</p>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<p class="product-card__title hidden-xs">Куртка женская NH-9088</p>--}}
+                            {{--<p class="product-card__price hidden-xs">12 899 грн</p>--}}
+                            {{--<div class="product-card__btn my-product-btn">--}}
+                                {{--<a href=""><p class="product-card__btn-more">Подробнее</p></a>--}}
+                                {{--<button class="product-card__btn-buy">Купить в 1 клик</button>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                </div>
+            </div>
         </div>
-    </main>
+    </div>
+</section>
 @endsection

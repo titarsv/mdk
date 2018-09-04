@@ -6,179 +6,158 @@
 
 @section('content')
 
-    <main>
-        <div class="container">
+    <section>
+        <div class="container-fluid">
             <div class="row">
-
-                <div class="col-md-3 col-sm-4 hidden-xs aside-filter-menu-container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="aside-filter-menu-item">
-                                <div class="aside-filter-menu-item-title aside-block">
-                                    <a href="javascript:void(0);" class="active-aside-link"><p>История покупок</p></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="aside-filter-menu-item">
-                                <div class="aside-filter-menu-item-title aside-block">
-                                    <a href="{{env('APP_URL')}}/user/wishlist"><p>Список желаний</p></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="aside-filter-menu-item">
-                                <div class="aside-filter-menu-item-title aside-block">
-                                    <a href="{{env('APP_URL')}}/user"><p>Личный кабинет</p></a>
-                                </div>
-                            </div>
+                <div class="col-sm-12 hidden-xs">
+                    <ul class="breadcrambs">
+                        {!! Breadcrumbs::render('user') !!}
+                    </ul>
+                </div>
+                <div class="col-sm-12 col-xs-12">
+                    <p class="main-title">Мои заказы</p>
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                    <div class="cabinet__aside">
+                        <p class="cabinet__aside-title">МОЙ ЛИЧНЫЙ КАБИНЕТ</p>
+                        <ul class="hidden-xs">
+                            <li><a href="{{env('APP_URL')}}/user">Личные данные</a></li>
+                            <li><a href="{{env('APP_URL')}}/user/mailing">настройка рассылок</a></li>
+                            <li><a href="javascript:void(0);" class="active">Мои заказы</a></li>
+                            <li><a href="{{env('APP_URL')}}/user/wishlist">мои товары</a></li>
+                            <li><a href="{{env('APP_URL')}}/logout">Выйти</a></li>
+                        </ul>
+                        <div class="visible-xs-block">
+                            <select class="chosen-select" name="" id="">
+                                <option value="{env('APP_URL')}}/user">Личные данные</option>
+                                <option value="{{env('APP_URL')}}/user/mailing">настройка рассылок</option>
+                                <option value="" selected="selected">Мои заказы</option>
+                                <option value="{{env('APP_URL')}}/user/wishlist">мои товары</option>
+                                <option value="{{env('APP_URL')}}/logout">Выйти</option>
+                            </select>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-6 col-sm-8 col-xs-12 profile-grid-container">
-                    <div class="row">
-                        <div class="col-md-12 hidden-xs margin">
-                            <h1 class="title">История покупок</h1>
-                        </div>
-                        <div class="visible-xs-block col-xs-12">
-                            <div>
-                                <select name="site-section-select" id="redirect_select" class="chosen-select site-section-select">
-                                    <option selected="selected" value="">История покупок</option>
-                                    <option value="{{env('APP_URL')}}/user/wishlist">Список желаний</option>
-                                    <option value="{{env('APP_URL')}}/user">Личный кабинет</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-xs-12 history-page">
-                            <div class="history-list-title path-underline hidden-xs">
-                                <p>Скидка</p>
-                                <p>Размер</p>
-                                <p>Количество</p>
-                                <p>Сумма</p>
-                            </div>
-
+                <div class="col-sm-9 col-xs-12">
+                    <form action="" class="my-order__form">
+                        <select class="chosen-select" name="" id="">
+                            <option value="0" selected="selected">Все заказы (15)</option>
                             @foreach($orders as $order)
-                                @foreach($order->getProducts() as $product)
+                                <option value="{{ $order->id }}">Заказ № {{ $order->id }}</option>
+                            @endforeach
+                        </select>
+                        <button class="my-order-refresh-btn">Обновить статусы заказов</button>
+                    </form>
+                    <ul class="my-order__titles">
+                        <li>№ заказа</li>
+                        <li>Оформлен</li>
+                        <li>Товары и сумма</li>
+                        <li>Отследить посылку</li>
+                        <li>Статус</li>
+                    </ul>
+                    @foreach($orders as $order)
+                        @php $products = $order->getProducts(); @endphp
+                        <div class="my-order__item">
+                            <div class="my-order__item-article">
+                                {{--@foreach($products as $product)--}}
+                                    {{--@if(!is_null($product['product']))--}}
+                                        {{--<p>Артикул {{ $product['product']->articul }}</p>--}}
+                                        {{--<a href="{{env('APP_URL')}}/product/{{ $product['product']->url_alias }}" target="_blank">Подробнее</a>--}}
+                                    {{--@endif--}}
+                                {{--@endforeach--}}
+                                № {{ $order->id }}
+                            </div>
+                            <div class="my-order__item-date">{{ date('d.m.Y', strtotime($order->created_at)) }}</div>
+                            <div class="my-order__item-total">
+                                @foreach($products as $product)
                                     @if(!is_null($product['product']))
-                                        <div class="cart-product-item path-underline">
-                                            <div class="cart-img-wrp col-xs-2">
-                                                <img src="{{ $product['product']->image->url('product_list') }}" alt="{{ $product['product']->name }}">
+                                        <div>
+                                            <div class="my-order__item-article">
+                                                <p>Артикул {{ $product['product']->articul }}</p>
+                                                <a href="{{env('APP_URL')}}/product/{{ $product['product']->url_alias }}" target="_blank">Подробнее</a>
                                             </div>
-                                            <div class="cart-prod-description hidden-xs">
-                                                <a href="{{env('APP_URL')}}/product/{{ $product['product']->url_alias }}"><h5 class="default-link-hover">{{ $product['product']->name }}</h5></a>
-                                                <p class="hidden-xs">Код товара:<span>{{ $product['product']->articul }}</span> </p>
-                                            </div>
-                                            <div class="cart-list cart-list-margins hidden-xs">
-                                                <ul>
-                                                    <li>{{ $product['sale_percent'] or 0 }}%</li>
-                                                </ul>
-                                                <ul>
-                                                    <li>{{ isset($product['variations']['Размер']) ? $product['variations']['Размер'] : '' }}</li>
-                                                </ul>
-                                                <ul>
-                                                    <li class="prod-quantity">{{ $product['quantity'] }}</li>
-                                                </ul>
-                                                <div class="popup-price">
-                                                    <p><span>{{ $product['price'] }}</span> грн</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="visible-xs-inline-block col-xs-8">
-                                                <div class="cart-list-margins">
-                                                    <a href="{{env('APP_URL')}}/product/{{ $product['product']->url_alias }}"><h5 class="mobile-prod-cart-title default-link-hover">{{ $product['product']->name }}</h5></a>
-                                                </div>
-                                                <ul class="mobile-prod-cart">
-                                                    <li>
-                                                        <p>Цена</p>
-                                                        <div class="popup-price">
-                                                            <p><span>{{ $product['price'] }}</span> грн</p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <p>Размер</p><span>{{ isset($product['variations']['Размер']) ? $product['variations']['Размер'] : '' }}</span>
-                                                    </li>
-                                                    <li>
-                                                        <p>Цвет</p><span>{{ isset($product['variations']['Цвет']) ? $product['variations']['Цвет'] : '' }}</span>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                            <div class="my-order__item-date">{{ date('d.m.Y', strtotime($order->created_at)) }}</div>
+                                            <p>{{ $product['quantity'] }} товар на <span>{{ $product['price'] }} грн</span></p>
                                         </div>
+                                        <a href="{{ $product['product']->url_alias }}" target="_blank">
+                                            <img src="{{ $product['product']->image->url('product_list') }}" alt="{{ $product['product']->name }}">
+                                        </a>
                                     @else
-                                        <div class="cart-product-item path-underline">
-                                            <p>Товар более недоступен...</p>
+                                        <div>
+                                            <div>
+                                                <p>Товар более не доступен</p>
+                                            </div>
+                                            <div class="my-order__item-date">{{ date('d.m.Y', strtotime($order->created_at)) }}</div>
+                                            <p>{{ $product['quantity'] }} товар на <span>{{ $product['price'] }} грн</span></p>
                                         </div>
                                     @endif
                                 @endforeach
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="col-md-12 hidden-sm hidden-xs no-padding">
-                        <ul class="cart-links">
-                            @include('public.layouts.links')
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-sm-12 col-xs-12 cart-receipt-wrp">
-                    <div class="row">
-                        <div class="col-md-12 no-padding">
-                            <div class="cart-receipt">
-                                <div class="history-info-box path-underline">
-                                    <h5>
-                                        <p>Скидка на сайте</p>
-                                        <p>{{ $user->sale() }} <span>%</span></p>
-                                    </h5>
-                                    <span>Общая сумма Ваших покупок {{ $user->ordersTotal() }} грн.<br/>
-                                        @if(!empty($user->nextSale()))
-                                            @php
-                                                $next_sale = $user->nextSale();
-                                            @endphp
-                                            При покупке на общую сумму свыше {{ $next_sale[0] }} грн сумма скидки станет {{ $next_sale[1] }}%<br/>
+                            </div>
+                            <div class="my-order__item-number">
+                                <div>
+                                    @if(isset($order->ttn))
+                                    <span>Номер ТТН</span>
+                                    <p>{{ $order->ttn }}</p>
+                                    <a href="javascript:void(0);" data-id="{{ $order->ttn }}">Отследить</a>
+                                    @endif
+                                </div>
+                                <div class="my-order__item-status">
+                                    @foreach($orders_statuses as $status)
+                                        @if($status->id == $order->status_id)
+                                            <p class="{{ $status->status == 'Отменен' ? 'canseled' : 'issued' }}">{{ $status->status }}</p>
                                         @endif
-                                        Узнать больше о <a href="{{env('APP_URL')}}/page/bonusnyya-programma" class="default-link-hover">Бонусной программе</a></span>
-                                </div>
-                                <div class="cart-receipt-item cart-receipt-price history-info-box">
-                                    <h5>Общая сумма покупок</h5>
-                                    <p><span>{{ $user->ordersTotal() }}</span> грн</p>
+                                    @endforeach
+                                    {{--<a href="javascript:void(0);" class="return">Заявка на возврат</a>--}}
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-12 no-padding">
-                            <div class="cart-receipt-btn">
-                                @if(empty($orders))
-                                    <a href="{{env('APP_URL')}}/" class="process" style="color: #F5F5F5; font-family: 'HelveticaNeue'; font-size: 18px; font-weight: bold; line-height: 25px; text-align: center; border: none; outline: none;">
-                                        <p>Продолжить покупки</p>
-                                    </a>
-                                @else
-                                    @php
-                                        $href = '/';
-                                        if(!empty($orders->first())){
-                                          $products = $orders->first()->getProducts();
-                                            if(!empty($products)){
-                                                $categories = $products[0]['product']->categories;
-                                                if(!empty($categories)){
-                                                    $href = '/catalog/'.$categories->first()->get_root_category()->url_alias;
-                                                }
-                                            }
-                                        }
-                                    @endphp
-                                    <a href="{{env('APP_URL')}}{{ $href }}" class="process" style="color: #F5F5F5; font-family: 'HelveticaNeue'; font-size: 18px; font-weight: bold; line-height: 25px; text-align: center; border: none; outline: none;">
-                                        <p>Продолжить покупки</p>
-                                    </a>
-                                @endif
+                            <div class="my-order__item-status">
+                                @foreach($orders_statuses as $status)
+                                    @if($status->id == $order->status_id)
+                                        <p class="{{ $status->status == 'Отменен' ? 'canseled' : 'issued' }}">{{ $status->status }}</p>
+                                    @endif
+                                @endforeach
+                                {{--<a href="javascript:void(0);" class="return">Заявка на возврат</a>--}}
                             </div>
                         </div>
-                    </div>
-                </div>
+                    @endforeach
 
-                <div class="visible-sm-inline-block visible-xs-inline-block col-sm-12 col-xs-12">
-                    <ul class="cart-links">
-                        @include('public.layouts.links')
-                    </ul>
+                    {{--<div class="my-order__item">--}}
+                        {{--<div class="my-order__item-article">--}}
+                            {{--<p>Артикул 450944</p>--}}
+                            {{--<a href="">Подробнее</a>--}}
+                        {{--</div>--}}
+                        {{--<div class="my-order__item-date">01.07.2018</div>--}}
+                        {{--<div class="my-order__item-total">--}}
+                            {{--<div>--}}
+                                {{--<div class="my-order__item-article">--}}
+                                    {{--<p>Артикул 450944</p>--}}
+                                    {{--<a href="">Подробнее</a>--}}
+                                {{--</div>--}}
+                                {{--<div class="my-order__item-date">01.07.2018</div>--}}
+                                {{--<p>1 товар на <span>9 999 грн</span></p>--}}
+                            {{--</div>--}}
+                            {{--<img src="../../images/sample-1.jpg" alt="">--}}
+                        {{--</div>--}}
+                        {{--<div class="my-order__item-number">--}}
+                            {{--<div>--}}
+                                {{--<span>Номер ТТН</span>--}}
+                                {{--<p>4509446458379</p>--}}
+                                {{--<a href="">Отследить</a>--}}
+                            {{--</div>--}}
+                            {{--<div class="my-order__item-status">--}}
+                                {{--<p class="issued">Выдан</p>--}}
+                                {{--<a href="" class="return">Заявка на возврат</a href="">--}}
+                                {{--<p class="canseled">Отменен</p>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="my-order__item-status">--}}
+                            {{--<p class="issued">Выдан</p>--}}
+                            {{--<a href="" class="return">Заявка на возврат</a href="">--}}
+                            {{--<p class="canseled">Отменен</p>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                 </div>
-
             </div>
         </div>
-    </main>
+    </section>
 @endsection

@@ -25,6 +25,7 @@ use App\Models\Products;
 use App\Models\Categories;
 use App\Models\Cart;
 use App\Models\ProductsCart;
+use App\Models\OrderStatus;
 use Breadcrumbs;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Newpost;
@@ -89,42 +90,45 @@ class UserController extends Controller
 
         $user = User::find($user->id);
 
-        $orders = Order::where('user_id',$user->id)->orderBy('created_at','desc')->get();
+//        $orders = Order::where('user_id',$user->id)->orderBy('created_at','desc')->get();
+//
+//        $wish_list = Wishlist::where('user_id',$user->id)->get();
 
-        $wish_list = Wishlist::where('user_id',$user->id)->get();
-
-        $newpost = new Newpost();
-        $regions = $newpost->getRegions();
-
-        $address = $user->user_data->address();
-        $cities = [];
-        $departments = [];
-        if(!empty($address)){
-            if(!empty($address->npregion)){
-                $region = $newpost->getRegionRef($address->npregion);
-                $cities = $newpost->getCities($region->region_id);
-            }
-            if(!empty($address->npcity)){
-                $city = $newpost->getCityRef($address->npcity);
-                $departments = $newpost->getWarehouses($city->city_id);
-            }
-        }
+//        $newpost = new Newpost();
+//        $regions = $newpost->getRegions();
+//
+//        $address = $user->user_data->address();
+//        $cities = [];
+//        $departments = [];
+//        if(!empty($address)){
+//            if(!empty($address->npregion)){
+//                $region = $newpost->getRegionRef($address->npregion);
+//                $cities = $newpost->getCities($region->region_id);
+//            }
+//            if(!empty($address->npcity)){
+//                $city = $newpost->getCityRef($address->npcity);
+//                $departments = $newpost->getWarehouses($city->city_id);
+//            }
+//        }
 
         return view('users.index')->with('user', $user)
-            ->with('orders', $orders)
-            ->with('user_data', $user->user_data)
-            ->with('wish_list', $wish_list)
-            ->with('address', $address)
-            ->with('cities', $cities)
-            ->with('departments', $departments)
-            ->with('regions', $regions);
+//            ->with('orders', $orders)
+            ->with('user_data', $user->user_data);
+//            ->with('wish_list', $wish_list);
+//            ->with('address', $address)
+//            ->with('cities', $cities)
+//            ->with('departments', $departments)
+//            ->with('regions', $regions);
     }
     public function history()
     {
         $user = Sentinel::check();
         $orders = Order::where('user_id',$user->id)->orderBy('created_at','desc')->get();
 
-        return view('users.history')->with('user', $user)->with('orders', $orders);
+        return view('users.history')
+            ->with('user', $user)
+            ->with('orders_statuses', OrderStatus::all())
+            ->with('orders', $orders);
     }
     public function wishList()
     {
@@ -261,14 +265,14 @@ class UserController extends Controller
 
         $rules = [
             'first_name' => 'required',
-            'phone'     => 'required|regex:/^[0-9\-! ,\'\"\/+@\.:\(\)]+$/',
+//            'phone'     => 'required|regex:/^[0-9\-! ,\'\"\/+@\.:\(\)]+$/',
             'email'     => 'required|email|unique:users,email,'.$user->id
         ];
 
         $messages = [
             'first_name.required' => 'Не заполнены обязательные поля!',
-            'phone.required'    => 'Не заполнены обязательные поля!',
-            'phone.regex'       => 'Некорректный телефон!',
+//            'phone.required'    => 'Не заполнены обязательные поля!',
+//            'phone.regex'       => 'Некорректный телефон!',
             'email.required'    => 'Не заполнены обязательные поля!',
             'email.email'       => 'Некорректный email-адрес!',
             'email.unique'      => 'Пользователь с таким email-ом уже зарегистрирован!'
@@ -457,14 +461,14 @@ class UserController extends Controller
 
         $rules = [
             'fio' => 'required',
-            'phone'     => 'required|regex:/^[0-9\-! ,\'\"\/+@\.:\(\)]+$/',
+//            'phone'     => 'required|regex:/^[0-9\-! ,\'\"\/+@\.:\(\)]+$/',
             'email'     => 'required|email|unique:users,email,'.$user->id
         ];
 
         $messages = [
             'fio.required' => 'Не заполнены обязательные поля!',
-            'phone.required'    => 'Не заполнены обязательные поля!',
-            'phone.regex'       => 'Некорректный телефон!',
+//            'phone.required'    => 'Не заполнены обязательные поля!',
+//            'phone.regex'       => 'Некорректный телефон!',
             'email.required'    => 'Не заполнены обязательные поля!',
             'email.email'       => 'Некорректный email-адрес!'
         ];
@@ -475,14 +479,16 @@ class UserController extends Controller
             return response()->json($validator);
         }
 
-        $name = explode(' ', $request->fio);
+//        $name = explode(' ', $request->fio);
 
-        $user->first_name = htmlspecialchars($name[0]);
-        if(isset($name[1]))
-            $user->last_name = htmlspecialchars($name[1]);
+        $user->first_name = htmlspecialchars($request->fio);
+//        if(isset($name[1]))
+//            $user->last_name = htmlspecialchars($name[1]);
         $user->email = htmlspecialchars($request->email);
-        $user->user_data->phone = htmlspecialchars($request->phone);
-        $user->user_data->user_birth = htmlspecialchars($request->user_birth);
+        $user->user_data->phones = json_encode($request->phones);
+        $user->user_data->login = $request->login;
+        $user->user_data->user_birth = htmlspecialchars($request->d.'.'.$request->m.'.'.$request->Y);
+        $user->user_data->addresses = json_encode($request->addresses, JSON_UNESCAPED_UNICODE);
 
         $user->push();
 
@@ -673,5 +679,14 @@ class UserController extends Controller
         if(mail($to, $thm, $multipart, $headers)) {
             return 1;
         }
+    }
+
+    public function mailing(){
+        $user = Sentinel::check();
+
+        $user = User::find($user->id);
+
+        return view('users.mailing')
+            ->with('user', $user);
     }
 }

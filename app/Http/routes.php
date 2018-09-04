@@ -34,7 +34,7 @@ Route::post('/review/add-likes', 'ReviewsController@addLikes');
 
 Route::get('/reviews', 'ReviewsController@shopReviews');
 
-Route::post('/saveUserData', 'UserController@saveUserData');
+Route::post('/saveuserdata', 'UserController@saveUserData');
 
 
 /**
@@ -215,7 +215,7 @@ Route::post('wishlist/update','WishListController@update');
 Route::post('wishlist/del','WishListController@delWishlist');
 
 Route::post('cart/update','CartController@updateCart');
-Route::post('cart/updateAll','CartController@update');
+//Route::post('cart/updateall','CartController@update');
 Route::post('cart/get','CartController@getCart');
 
 
@@ -233,6 +233,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['user']], function(){
     Route::get('/wishlist', 'UserController@wishList');
     Route::get('/change-data', 'UserController@changeData');
     Route::post('/change-data', 'UserController@saveChangedData');
+    Route::get('/mailing', 'UserController@mailing');
 });
 
 Route::post('/subscribe', 'UserController@subscribe');

@@ -112,11 +112,11 @@ class CartController extends Controller
         $newpost = new Newpost();
         $regions = $newpost->getRegions();
 
-        if(!empty($user)){
-            $address = $user->user_data->address();
-        }else{
+//        if(!empty($user)){
+//            $address = $user->user_data->address();
+//        }else{
             $address = '';
-        }
+//        }
         $cities = [];
         $departments = [];
         if(!empty($address)){

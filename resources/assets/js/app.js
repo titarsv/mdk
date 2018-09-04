@@ -206,10 +206,10 @@ $(function() {
   });
 
   $('.cabinet__add-number').click(function() {
-    $(this).prev().append( $( "<input type=\"tel\" name=\"phone\" placeholder=\"Телефон\" data-title=\"Телефон\" data-validate-required=\"Обязательное поле\" data-validate-uaphone=\"Неправильный номер\">" ) )
+    $(this).prev().append( $( "<input type=\"tel\" name=\"phones[]\" placeholder=\"Телефон\" data-title=\"Телефон\" data-validate-required=\"Обязательное поле\" data-validate-uaphone=\"Неправильный номер\">" ) )
   });
   $('.cabinet__add-address').click(function() {
-    $(this).prev().append( $( "<input type=\"text\" name=\"address\" placeholder=\"г.Харьков, улица Кирова, 23 А, кв.4\" data-title=\"Адрес\">" ) )
+    $(this).prev().append( $( "<input type=\"text\" name=\"addresses[]\" placeholder=\"г.Харьков, улица Кирова, 23 А, кв.4\" data-title=\"Адрес\">" ) )
   });
   $('.cabinet__add-email').click(function() {
     $(this).prev().append( $( "<input type=\"text\" name=\"mail\" placeholder=\"ivanovivanivanych@gmail.com\" data-title=\"Email\">" ) )

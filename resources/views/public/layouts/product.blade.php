@@ -26,11 +26,28 @@
 @endphp
 
 <div class="item slider__item product-card">
-    <div class="product-card__img-slider product-card__img-slider{{ $product->id }} slick-slider" data-slick='{"slidesToShow": 1, "lazyLoad": "ondemand", "asNavFor": ".product-card__colors-slider{{ $product->id }}", "arrows": false}'>
-        @if(!empty($colors))
-            @foreach($colors as $color)
+    <a href="{{env('APP_URL')}}/product/{{ $product->url_alias }}">
+        <div class="product-card__img-slider product-card__img-slider{{ $product->id }} slick-slider" data-slick='{"slidesToShow": 1, "lazyLoad": "ondemand", "asNavFor": ".product-card__colors-slider{{ $product->id }}", "arrows": false}'>
+            @if(!empty($colors))
+                @foreach($colors as $color)
+                    <div class="product-card__img-slider-item">
+                        <img src="{{ $color['image'] }}" alt="{{ $product->name }}">
+                        @if(!empty($product->label) && $product->label != 'z' && isset($labels[$product->label]))
+                            <div class="slider__item-img-label new">
+                                {{ $labels[$product->label] }}
+                            </div>
+                        @elseif(!empty($product->old_price))
+                            <div class="slider__item-img-label sale">
+                                -{{ ceil((($product->old_price - $product->price)/ $product->old_price) * 100) }}%<br>sale
+                            </div>
+                        @else
+                            <div class="slider__item-img-label" style="visibility: hidden;"></div>
+                        @endif
+                    </div>
+                @endforeach
+            @else
                 <div class="product-card__img-slider-item">
-                    <img src="{{ $color['image'] }}" alt="{{ $product->name }}">
+                    <img src="{{ $product->image == null ? '/uploads/no_image.jpg' : $product->image->url('product_list') }}" alt="{{ $product->name }}">
                     @if(!empty($product->label) && $product->label != 'z' && isset($labels[$product->label]))
                         <div class="slider__item-img-label new">
                             {{ $labels[$product->label] }}
@@ -43,24 +60,9 @@
                         <div class="slider__item-img-label" style="visibility: hidden;"></div>
                     @endif
                 </div>
-            @endforeach
-        @else
-            <div class="product-card__img-slider-item">
-                <img src="{{ $product->image == null ? '/uploads/no_image.jpg' : $product->image->url('product_list') }}" alt="{{ $product->name }}">
-                @if(!empty($product->label) && $product->label != 'z' && isset($labels[$product->label]))
-                    <div class="slider__item-img-label new">
-                        {{ $labels[$product->label] }}
-                    </div>
-                @elseif(!empty($product->old_price))
-                    <div class="slider__item-img-label sale">
-                        -{{ ceil((($product->old_price - $product->price)/ $product->old_price) * 100) }}%<br>sale
-                    </div>
-                @else
-                    <div class="slider__item-img-label" style="visibility: hidden;"></div>
-                @endif
-            </div>
-        @endif
-    </div>
+            @endif
+        </div>
+    </a>
     <div class="color-slider-wrp underline">
         <div class="product-card__colors-slider product-card__colors-slider{{ $product->id }} slick-slider" data-slick='{"slidesToShow": 8, "lazyLoad": "ondemand", "asNavFor": ".product-card__img-slider{{ $product->id }}","focusOnSelect": true,"responsive":[{"breakpoint":1300,"settings":{"slidesToShow": 6}}, {"breakpoint":1200,"settings":{"slidesToShow": 5}}, {"breakpoint":768,"settings":{"slidesToShow": 3}}]}'>
             @foreach($colors as $key => $item)

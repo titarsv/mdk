@@ -63,7 +63,7 @@ class AppServiceProvider extends ServiceProvider
                 }
             }
 
-            view()->composer('public.layouts.header-middle', function ($view) {
+            view()->composer('public.layouts.header-middle',  function ($view) {
                 $view->with('user_logged', $this->user);
             });
 
@@ -74,7 +74,8 @@ class AppServiceProvider extends ServiceProvider
                 'public.layouts.cart',
                 'public.category',
                 'admin.orders.edit',
-                'public.order'
+                'public.order',
+                'public.layouts.footer'
             ], function ($view) {
                 $view->with('user_id', $this->user->id)
                     ->with('user_logged', true)
@@ -91,7 +92,8 @@ class AppServiceProvider extends ServiceProvider
                 'public.layouts.header-middle',
                 'public.layouts.product',
                 'public.product',
-                'public.order'
+                'public.order',
+                'public.layouts.footer'
                 ], function ($view) {
                 $view->with('user_logged', false);
             });
