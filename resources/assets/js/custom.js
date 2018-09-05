@@ -600,6 +600,15 @@ $(function() {
             window.location = location.origin + location.pathname + s;
         }
     });
+
+    $('.to_tab_2').click(function () {
+        $('#tab1').hide();
+        $('#tab2').show();
+    });
+    $('.to_tab_1').click(function () {
+        $('#tab2').hide();
+        $('#tab1').show();
+    });
 });
 
 /**
@@ -684,5 +693,5 @@ window.newpostUpdate = function(id, value) {
                 }
             }
         }
-    })
+    });
 };

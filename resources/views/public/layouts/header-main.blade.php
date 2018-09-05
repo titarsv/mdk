@@ -22,10 +22,20 @@
                 <div class="header__phone">
                     <img src="/images/icons/2.png" alt="">
                     <ul>
-                        {{--<a href="tel:{{ str_replace(['(', ')', ' ', '-'], '', $settings->main_phone_1) }}">{{ $settings->main_phone_1 }}</a>--}}
-                        <li><a href="tel:(050) 162 08 88">(050) 162 08 88</a></li>
-                        <li><a href="tel:(067) 800 10 77">(067) 800 10 77</a></li>
-                        <li><a href="tel:(044) 333 71 09">(044) 333 71 09</a></li>
+                        @if(!empty($settings->main_phone_1))
+                            <li><a href="tel:{{ str_replace(['(', ')', ' ', '-'], '', $settings->main_phone_2) }}">{{ $settings->main_phone_2 }}</a></li>
+                        @endif
+                        @if(!empty($settings->main_phone_2))
+                            <li><a href="tel:{{ str_replace(['(', ')', ' ', '-'], '', $settings->main_phone_2) }}">{{ $settings->main_phone_2 }}</a></li>
+                        @endif
+                        @if(!empty($settings->other_phones))
+                            {{-- @foreach($settings->other_phones as $phone)--}}
+                            <li><a href="tel:{{ str_replace(['(', ')', ' ', '-'], '', $settings->other_phones[0]) }}">{{ $settings->other_phones[0] }}</a></li>
+                            {{--@endforeach--}}
+                        @endif
+                        {{--<li><a href="tel:(050) 162 08 88">(050) 162 08 88</a></li>--}}
+                        {{--<li><a href="tel:(067) 800 10 77">(067) 800 10 77</a></li>--}}
+                        {{--<li><a href="tel:(044) 333 71 09">(044) 333 71 09</a></li>--}}
                     </ul>
                 </div>
             </div>
@@ -189,7 +199,6 @@
                         <a data-toggle="collapse" data-parent="#accordion-menu" href="#collapseThree">Другое</a>
                     </h4>
                     <div id="collapseThree" class="mobile-menu__collapse collapse">
-                        <!-- Содержимое 3 панели -->
                         <div class="mobile-menu__body">
                             <ul class="mobile-menu__links">
                                 @foreach($categories->where('name', 'Другое')->first()->children as $children2)
