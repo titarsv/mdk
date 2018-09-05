@@ -260,7 +260,9 @@
 
     @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi), only screen and (min-resolution: 1.5dppx){
         .chosen-container-single .chosen-single div b{
-            background-image: url('../images/icons/17.png') center no-repeat !important;
+            background-image: url('../images/icons/17.png') !important;
+            background-position: center  !important;
+            background-repeat: no-repeat  !important;
         }
     }
     
@@ -527,13 +529,18 @@
         padding: 10px 0;
         &:hover{
             background: #f08893;
+            border-right: 1px solid transparent;
             a{
                 background: #f08893;
                 color: #fff;
                 border: none;
+                border-right: 1px solid transparent;
+                &:hover{
+                    border-right: 1px solid transparent;
+                }
             }
         }
-        &::last-child{
+        &:last-child{
             a{
                 border-right: none;
             }
@@ -554,6 +561,7 @@
 
     .nav-tabs>li.active{
         position: relative;
+        border-right: 1px solid transparent;
         &::before{
             content: '';
             position: absolute;

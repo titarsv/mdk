@@ -4272,26 +4272,56 @@ table {
   padding: 10px 0;
 }
 
-.news-slider.owl-carousel .owl-prev span,
-.news-slider.owl-carousel .owl-next span {
+.news-slider.owl-carousel .owl-prev,
+.news-slider.owl-carousel .owl-next {
   position: absolute;
-  width: 30px;
-  height: 35px;
+  width: 20px;
+  height: 25px;
   top: 45%;
   font-size: 0;
   border: none;
   outline: none;
   z-index: 10;
+  color: transparent;
+}
+
+.news-slider.owl-carousel .owl-prev:hover,
+.news-slider.owl-carousel .owl-next:hover {
+  background-color: transparent;
+  color: transparent;
+}
+
+.news-slider.owl-carousel .owl-prev:hover span,
+.news-slider.owl-carousel .owl-next:hover span {
+  background-color: transparent;
+  color: transparent;
+  cursor: pointer;
+}
+
+.news-slider.owl-carousel .owl-prev span,
+.news-slider.owl-carousel .owl-next span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: transparent;
+}
+
+.news-slider.owl-carousel .owl-prev {
+  left: -10px;
 }
 
 .news-slider.owl-carousel .owl-prev span {
-  left: -10px;
   background: url(/images/15.png?dea3021c872944f455725b47ccd6537a) center no-repeat;
+  background-size: cover;
+}
+
+.news-slider.owl-carousel .owl-next {
+  right: -10px;
 }
 
 .news-slider.owl-carousel .owl-next span {
-  right: -10px;
   background: url(/images/16.png?a47b0c2f6e7a28d130b16e0b259d0b29) center no-repeat;
+  background-size: cover;
 }
 
 .product-card__img-slider.slick-slider .slick-prev,
@@ -5178,7 +5208,9 @@ table {
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi), only screen and (min-resolution: 1.5dppx) {
   .product__form-container .chosen-container-single .chosen-single div b {
-    background-image: url(/images/17.png?9a9b23f252bfd07cfd92257902c5ce02) center no-repeat !important;
+    background-image: url(/images/17.png?9a9b23f252bfd07cfd92257902c5ce02) !important;
+    background-position: center  !important;
+    background-repeat: no-repeat  !important;
   }
 }
 
@@ -5515,15 +5547,21 @@ table {
 
 .product__description-wrp .nav-tabs > li:hover {
   background: #f08893;
+  border-right: 1px solid transparent;
 }
 
 .product__description-wrp .nav-tabs > li:hover a {
   background: #f08893;
   color: #fff;
   border: none;
+  border-right: 1px solid transparent;
 }
 
-.product__description-wrp .nav-tabs > li::last-child a {
+.product__description-wrp .nav-tabs > li:hover a:hover {
+  border-right: 1px solid transparent;
+}
+
+.product__description-wrp .nav-tabs > li:last-child a {
   border-right: none;
 }
 
@@ -5542,6 +5580,7 @@ table {
 
 .product__description-wrp .nav-tabs > li.active {
   position: relative;
+  border-right: 1px solid transparent;
 }
 
 .product__description-wrp .nav-tabs > li.active::before {
