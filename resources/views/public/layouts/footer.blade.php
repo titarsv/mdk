@@ -7,9 +7,20 @@
                     <div class="footer__contact-phones">
                         <img src="/images/icons/2.png" alt="">
                         <ul class="footer__contact-list footer-list">
-                            <li>(050) 162 08 88</li>
-                            <li>(067) 800 10 77</li>
-                            <li>(044) 333 71 09</li>
+                            @if(!empty($settings->main_phone_1))
+                                <li><a href="tel:{{ str_replace(['(', ')', ' ', '-'], '', $settings->main_phone_2) }}">{{ $settings->main_phone_2 }}</a></li>
+                            @endif
+                            @if(!empty($settings->main_phone_2))
+                                <li><a href="tel:{{ str_replace(['(', ')', ' ', '-'], '', $settings->main_phone_2) }}">{{ $settings->main_phone_2 }}</a></li>
+                                @endif
+                            @if(!empty($settings->other_phones))
+                                @foreach($settings->other_phones as $phone)
+                                    <li><a href="tel:{{ str_replace(['(', ')', ' ', '-'], '', $phone) }}">{{ $phone }}</a></li>
+                                @endforeach
+                            @endif
+                            {{--<li>(050) 162 08 88</li>--}}
+                            {{--<li>(067) 800 10 77</li>--}}
+                            {{--<li>(044) 333 71 09</li>--}}
                         </ul>
                     </div>
                     <ul class="footer__contact-mail footer-list">
@@ -60,9 +71,9 @@
         <div class="row footer-row">
             <div class="col-md-5 col-sm-4">
                 <ul class="footer__social">
-                    <li><img src="/images/icons/9.png" alt="" srcset=""></li>
-                    <li><img src="/images/icons/10.png" alt="" srcset=""></li>
-                    <li><img src="/images/icons/11.png" alt="" srcset=""></li>
+                    <li><a href="https://www.facebook.com/mdk.ukraine21" target="__blank"><img src="/images/icons/9.png" alt="" srcset=""></a></li>
+                    <li><a href="https://www.instagram.com/mdk.ukraine/" target="__blank"><img src="/images/icons/10.png" alt="" srcset=""></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCpgCNEcYa04jsKYP1r3hBZg" target="__blank"><img src="/images/icons/11.png" alt="" srcset=""></a></li>
                     <li><img src="/images/icons/12.png" alt="" srcset=""></li>
                 </ul>
             </div>
