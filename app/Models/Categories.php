@@ -52,7 +52,7 @@ class Categories extends Model
         return $this->hasMany('App\Models\Categories', 'parent_id', 'id')->with('children');
     }
 
-    public function get_products($category_id, $subcategory_id, $filter, $sort, $take = false, $price = [], $page = 1)
+    public function get_products($category_id, $subcategory_id, $filter, $sort, $take = false, $price = [], $page = 1, $actions = false)
     {
         $orderBy = $sort[0];
         $route = $sort[1];
@@ -112,6 +112,10 @@ class Categories extends Model
             $products->with(['wishlist' => function ($query) use ($user) {
                 $query->where('user_id', $user->id);
             }]);
+        }
+
+        if($actions){
+            $products->where('old_price', '>', 'price');
         }
 
         if(!$take){

@@ -162,28 +162,34 @@ $(function() {
   }
 
   var credit_range = $('.partPay__credit-range');
-  if (price_range.length) {
-    credit_range.each(function(){
-      var $this = $(this);
-      $this.slider({
-        min: $this.data('min'),
-        max: $this.data('max'),
-        value: $this.data('value'),
-        step: 1,
-        range: false,
-        animate: 'slow',
-        slide: function(event, ui){
-          var inputRange = $(this).parent().find('input.partPaysliderValue').val($(this).slider("values",0));
-        },
-        // stop: function( event, ui ) {
-        //   $(this).parents('form').submit();
-        // }
+  if (credit_range.length) {
+      credit_range.each(function(){
+          var $this = $(this);
+          $this.slider({
+              min: $this.data('min'),
+              max: $this.data('max'),
+              value: $this.data('value'),
+              step: 1,
+              range: false,
+              animate: 'slow',
+              slide: function(event, ui){
+                  var inputRange = $(this).parent().find('input.partPaysliderValue').val($(this).slider("values",0));
+                  var sliderHandle = $(this).parent().find('.ui-slider .ui-slider-handle').attr('value', $(this).slider("values",0));
+              },
+              stop: function( event, ui ) {
+                  var inputRange = $(this).parent().find('input.partPaysliderValue').val($(this).slider("values",0));
+                  var sliderHandle = $(this).parent().find('.ui-slider .ui-slider-handle').attr('value', $(this).slider("values",0));
+              },
+              create: function( event, ui ) {
+                  var inputRange = $(this).parent().find('input.partPaysliderValue').val($(this).slider("values",0));
+                  var sliderHandle = $(this).parent().find('.ui-slider .ui-slider-handle').attr('value', $(this).slider("values",0));
+              }
+          });
       });
-    });
   }
   $('input.partPaysliderValue').keyup(function(){
-    var inputValue = $(this).val();
-    $(price_range).slider('value', inputValue);
+      var inputValue = $(this).val();
+      $(price_range).slider('value', inputValue);
   });
 
   // $('.minus').click(function() {
