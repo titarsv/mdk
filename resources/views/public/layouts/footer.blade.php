@@ -13,13 +13,13 @@
                         </ul>
                     </div>
                     <ul class="footer__contact-mail footer-list">
-                        <li><img src="/images/icons/7.png" alt="">mailmdk@gmail.com</li>
-                        <li><img src="/images/icons/8.png" alt=""><a href="">Напишите нам</a></li>
+                        <li><img src="/images/icons/7.png" alt=""><a href="mailto:mailmdk@gmail.com">mailmdk@gmail.com</a></li>
+                        <li><img src="/images/icons/8.png" alt=""><a href="{{env('APP_URL')}}/page/contact">Напишите нам</a></li>
                     </ul>
                 </div>
                 <ul class="footer__contact-address footer-list">
                     <li><img src="/images/icons/6.png"></li>
-                    <li><a href="">ВСЕ МАГАЗИНЫ</a></li>
+                    <li><a href="{{env('APP_URL')}}/page/contact">ВСЕ МАГАЗИНЫ</a></li>
                 </ul>
             </div>
             <div class="col-md-offset-1 col-md-3 col-sm-3 side-border left">

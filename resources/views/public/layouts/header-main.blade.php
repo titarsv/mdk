@@ -285,11 +285,11 @@
                 </div>
 
                 <div class="header__navigation-item">
-                    <a href="javascript:void(0)">Распродажа</a>
+                    <a href="{{env('APP_URL')}}/catalog/rasprodazha">Распродажа</a>
                 </div>
 
                 <div class="header__navigation-item">
-                    <a href="javascript:void(0)">Акции</a>
+                    <a href="{{env('APP_URL')}}/catalog/akcii">Акции</a>
                 </div>
 
                 <div class="header__navigation-item">

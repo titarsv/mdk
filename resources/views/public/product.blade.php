@@ -11,9 +11,22 @@
 
     @if(empty($product->meta_description))
         <meta name="description" content="Купить {!! $product->name !!}}">
+        <meta name=description content="Купить {!! $product->name !!}}"/>
     @else
         <meta name="description" content="{!! $product->meta_description !!}">
+        <meta name=description content="{!! $product->meta_description !!}"/>
     @endif
+
+    <meta property=og:site_name content="Мир дубленок и кожи">
+    <meta property=og:title content="
+        @if(empty($product->meta_title))
+        {!! $product->name !!}}
+            @else
+        {!! $product->meta_title !!}
+        @endif
+            | Мир дубленок и кожи
+    "/>
+    <meta property=og:url content="https://mdk.ua/">
 
     <meta name="keywords" content="{!! $product->meta_keywords !!}">
     @if(!empty($product->robots))
@@ -666,10 +679,10 @@
                                         <div class="partPay__form">
                                             <p class="hidden-xs">Сумма</p>
                                             <fieldset class="partPay__credit-range-wrp">
-                                                <div class="partPay__credit-range price-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="0" data-max="100000" data-min="1"></div>
+                                                <div class="partPay__credit-range price-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="{{ $product->price }}" data-max="{{ $product->price }}" data-min="{{ $product->price }}"></div>
                                                 <div class="partPay-inputs__inner">
                                                     <p class="visible-xs-block">Сумма</p>
-                                                    <input type="text" class="partPaysliderValue val1" data-index="0" value="0" />
+                                                    <input type="text" class="partPaysliderValue val1" data-index="{{ $product->price }}" value="{{ $product->price }}" />
                                                     <p class="visible-xs-block">Сумма</p>
                                                 </div>
                                             </fieldset>
@@ -678,10 +691,10 @@
                                         <div class="partPay__form">
                                             <p class="hidden-xs">Первый взнос</p>
                                             <fieldset class="partPay__credit-range-wrp">
-                                                <div class="partPay__credit-range credit-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="0" data-max="101" data-min="0"></div>
+                                                <div class="partPay__credit-range credit-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="20" data-max="100" data-min="20"></div>
                                                 <div class="partPay-inputs__inner">
                                                     <p class="visible-xs-block">Первый взнос</p>
-                                                    <input type="text" class="partPaysliderValue val2" data-index="0" value="0" />
+                                                    <input type="text" class="partPaysliderValue val2" data-index="20" value="20" />
                                                     <p class="visible-xs-block">%</p>
                                                 </div>
                                             </fieldset>
@@ -690,10 +703,10 @@
                                         <div class="partPay__form">
                                             <p class="hidden-xs">Cрок</p>
                                             <fieldset class="partPay__credit-range-wrp">
-                                                <div class="partPay__credit-range credit-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="0" data-max="13" data-min="0"></div>
+                                                <div class="partPay__credit-range credit-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="1" data-max="5" data-min="1"></div>
                                                 <div class="partPay-inputs__inner">
                                                     <p class="visible-xs-block">Cрок</p>
-                                                    <input type="text" class="partPaysliderValue val3" data-index="0" value="0" />
+                                                    <input type="text" class="partPaysliderValue val3" data-index="1" value="1" />
                                                     <p class="visible-xs-block">Месяцев</p>
                                                 </div>
                                             </fieldset>

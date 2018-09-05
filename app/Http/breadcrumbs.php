@@ -73,6 +73,9 @@ Breadcrumbs::register('categories', function($breadcrumbs, $category) {
                 $name = $category['name'];
                 $alias = $category['url_alias'];
             }
+        }else{
+            $name = 'Акции';
+            $alias = 'akcii';
         }
         $breadcrumbs->push($name, url('/catalog/' . $alias));
     }

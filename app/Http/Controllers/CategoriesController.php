@@ -185,10 +185,13 @@ class CategoriesController extends Controller
         $request->page = (int) str_replace('page', '', $page);
 
         // Получение текущей категории
-        if($alias == null)
+        if($alias == null) {
             $category = null;
-        else
+        }elseif($alias == 'akcii') {
+            $category = 0;
+        }else{
             $category = $categories->where('url_alias', $alias)->first();
+        }
 
         if($category === null)
             abort(404);
@@ -208,13 +211,17 @@ class CategoriesController extends Controller
         ];
 
         // Катигории для навигации
-        $root_category = $category->get_root_category();
-        if(in_array($root_category->name, ['Мужское', 'Женское'])){
-            $cats = collect([]);
-            foreach($root_category->children as $cat){
-                $cats->push($cat);
+        if(!empty($category)){
+            $root_category = $category->get_root_category();
+            if(in_array($root_category->name, ['Мужское', 'Женское'])){
+                $cats = collect([]);
+                foreach($root_category->children as $cat){
+                    $cats->push($cat);
+                }
+                $cats->push($categories->where('name', 'Другое')->with('children')->first());
+            }else{
+                $cats = $categories->get_root_categories();
             }
-            $cats->push($categories->where('name', 'Другое')->with('children')->first());
         }else{
             $cats = $categories->get_root_categories();
         }

@@ -64,7 +64,7 @@
         </div>
     </a>
     <div class="color-slider-wrp underline">
-        <div class="product-card__colors-slider product-card__colors-slider{{ $product->id }} slick-slider" data-slick='{"slidesToShow": 7, "lazyLoad": "ondemand", "asNavFor": ".product-card__img-slider{{ $product->id }}","responsive":[{"breakpoint":1450,"settings":{"slidesToShow": 6}}, {"breakpoint":1200,"settings":{"slidesToShow": 5}}, {"breakpoint":991,"settings":{"slidesToShow": 4}}, {"breakpoint":768,"settings":{"slidesToShow": 3}}, {"breakpoint":480,"settings":{"slidesToShow": 1}}]}'>
+        <div class="product-card__colors-slider product-card__colors-slider{{ $product->id }} slick-slider" data-slick='{"slidesToShow": 7, "lazyLoad": "ondemand", "focusOnSelect": true, "asNavFor": ".product-card__img-slider{{ $product->id }}","responsive":[{"breakpoint":1450,"settings":{"slidesToShow": 6}}, {"breakpoint":1200,"settings":{"slidesToShow": 5}}, {"breakpoint":991,"settings":{"slidesToShow": 4}}, {"breakpoint":768,"settings":{"slidesToShow": 3}}, {"breakpoint":480,"settings":{"slidesToShow": 1}}]}'>
             @foreach($colors as $key => $item)
                 <div data-id="{{ $key }}" title="{{ $item['color']->name }}" class="product-card__colors-item" style="background-color: {{ $item['color']->value }}"></div>
             @endforeach

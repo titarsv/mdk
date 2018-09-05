@@ -6,10 +6,8 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
 use Cartalyst\Sentinel\Native\Facades\Sentinel;
 
-use App\Models\HTMLContent;
 use App\Models\Settings;
 use App\Models\Categories;
-use App\Models\Wishlist;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Review;
@@ -19,6 +17,8 @@ use App\Models\Paginator;
 use App\Models\Modules;
 use App\Models\Seo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,6 +31,16 @@ class AppServiceProvider extends ServiceProvider
     private $roles_array = array();
     public function boot(Categories $categories, Request $request)
     {
+        // Проверка БД
+        try {
+            DB::connection()->getPdo();
+        } catch (\Exception $e) {
+            abort(503);
+        }
+        if(!Schema::hasTable('settings')){
+            abort(503);
+        }
+
         $user = Sentinel::getUser();
         if(!is_null($user)) {
             $user = User::find($user->id);

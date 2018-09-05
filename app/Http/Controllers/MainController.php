@@ -26,12 +26,14 @@ class MainController extends Controller
 //        $big_sizes = $categories->get_products(11, null, [1 => [11]], ['id', 'desc'], 2, []);
         $blog = new News();
         $articles = $blog->where('published', 1)->orderBy('updated_at', 'desc')->paginate(12);
+        $products = new Products();
 
         return view('index')
 //	        ->with('women_new_prod', $women_new_prod)
 //	        ->with('men_new_prod', $men_new_prod)
 //	        ->with('big_sizes', $big_sizes)
-//	        ->with('brands', $brands)
+	        ->with('new', $products->where('stock', 1)->where('label', 'new')->take(12)->get())
+	        ->with('sale', $products->where('stock', 1)->where('old_price', '>', 'price')->where('label', 'z')->take(12)->get())
 	        ->with('articles', $articles)
             ->with('slideshow', $slideshow->all())
             ->with('banners', $banners->all());
