@@ -57,27 +57,43 @@
 
 .news-slider.owl-carousel{
     .owl-prev, .owl-next{
-        span{
             position: absolute;
-            width: 30px;
-            height: 35px;
+            width: 20px;
+            height: 25px;
             top: 45%;
             font-size: 0;
             border: none;
             outline: none;
             z-index: 10;
+            color: transparent;
+      &:hover{
+        background-color: transparent;
+        color: transparent;
+        span{
+          background-color: transparent;
+          color: transparent;
+          cursor: pointer;
         }
+      }
+      span{
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: transparent;
+      }
     }
     .owl-prev{
+      left:-10px;
         span{
-            left:-10px;
             background: url('../images/icons/15.png') center no-repeat;
+            background-size: cover;
         }
     }
     .owl-next{
+      right: -10px;
         span{
-            right: -10px;
             background: url('../images/icons/16.png') center no-repeat;
+            background-size: cover;
         }
     }
 }
