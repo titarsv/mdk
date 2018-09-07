@@ -252,6 +252,24 @@ module.exports = function() {
     });
   };
 
+  window.form_validate = function(form){
+      $('.validate-error').remove();
+      let d = {};
+      form.formData({
+          validator: {},
+          invalid: function(data) {
+              for (let name in data.errors) {
+                  data.obj[name].obj.validateTooltip({
+                      text: data.obj[name].obj.rules[data.errors[name][0]]
+                  });
+              }
+              d = data;
+          }
+      });
+
+      return d;
+  };
+
   /**
    * Отправка формы
    */

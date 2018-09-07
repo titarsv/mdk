@@ -97,6 +97,10 @@ class Order extends Model
                 'method'    => 'Новая Почта'
             ];
 
+            if(isset($delivery_info['info']['ttn'])){
+                $result['ttn'] = $delivery_info['info']['ttn'];
+            }
+
             if(is_array($delivery_info['info']) && !empty($delivery_info['info']['region'])){
                 $result['region'] = $newpost->getRegionRef($delivery_info['info']['region'])->name_ru;
                 if(!empty($delivery_info['info']['city']))
@@ -104,16 +108,16 @@ class Order extends Model
                 if(!empty($delivery_info['info']['warehouse']))
                     $result['warehouse'] = $newpost->getWarehouse($delivery_info['info']['warehouse'])->address_ru;
             }else{
-                $data = UserData::where('user_id', $this->user_id)->first();
-                if(!empty($data)){
-                    $address = $data->address();
-                    if(!empty($address->npregion))
-                        $result['region'] = $newpost->getRegionRef($address->region)->name_ru;
-                    if(!empty($address->npcity))
-                        $result['city'] = $newpost->getCityRef($address->city)->name_ru;
-                    if(!empty($address->npdepartment))
-                        $result['warehouse'] = $newpost->getWarehouse($address->warehouse)->address_ru;
-                }
+//                $data = UserData::where('user_id', $this->user_id)->first();
+//                if(!empty($data)){
+//                    $address = $data->address();
+//                    if(!empty($address->npregion))
+//                        $result['region'] = $newpost->getRegionRef($address->region)->name_ru;
+//                    if(!empty($address->npcity))
+//                        $result['city'] = $newpost->getCityRef($address->city)->name_ru;
+//                    if(!empty($address->npdepartment))
+//                        $result['warehouse'] = $newpost->getWarehouse($address->warehouse)->address_ru;
+//                }
             }
 
             return $result;
@@ -125,12 +129,12 @@ class Order extends Model
                 'method' => 'Доставка курьером по Харькову'
             ];
             $data = UserData::where('user_id', $this->user_id)->first();
-            if(!empty($data)){
-                $address = $data->address();
-                foreach ($address as $key => $val){
-                    $result[$key] = $val;
-                }
-            }
+//            if(!empty($data)){
+//                $address = $data->address();
+//                foreach ($address as $key => $val){
+//                    $result[$key] = $val;
+//                }
+//            }
             return $result;
         } elseif ($delivery_info['method'] == 'pickup') {
             return [

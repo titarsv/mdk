@@ -601,13 +601,56 @@ $(function() {
         }
     });
 
-    $('.to_tab_2').click(function () {
-        $('#tab1').hide();
-        $('#tab2').show();
+    $('.to_tab_2').click(function (e) {
+        e.preventDefault();
+        var data = window.form_validate($('.credit_form'));
+        var validate = true;
+        if(typeof data.errors !== 'undefined') {
+            for (var param in data.errors) {
+                if($.inArray(param, ['surname', 'name', 'patronymic', 'phone', 'birthday-year', 'birthday-mounth', 'birthday-day', 'identification-code', 'passport-year', 'passport-mounth', 'passport-day', 'passport-code', 'passport-num', 'dep']) != -1){
+                    validate = false;
+                    break;
+                }
+            }
+        }
+        if(validate){
+            $('#tab1').hide();
+            $('#tab2').show();
+        }else{
+            setTimeout(function(){
+                $('.credit_form').formData({
+                    validator: {},
+                    invalid: function(data) {
+                        for (let name in data.errors) {
+                            data.obj[name].obj.validateTooltip({
+                                text: data.obj[name].obj.rules[data.errors[name][0]]
+                            });
+                        }
+                    }
+                });
+            }, 100);
+        }
     });
     $('.to_tab_1').click(function () {
         $('#tab2').hide();
         $('#tab1').show();
+    });
+
+    $('.ttn_info').click(function () {
+        $.post('/tracking', {'ttn': $(this).data('id')}, function (response) {
+            var html = '';
+            if(response.success == true){
+                var data = response.data[0];
+                html += 'Статус посылки: ' +data.Status + '<br>';
+                html += 'Отделение для получения посылки: '+data.CityRecipient+', '+data.WarehouseRecipient + '<br>';
+                swal('Информация о посылке', html, 'info');
+            }else{
+                $.each(response.errors, function(i, value){
+                    html += value + '<br>';
+                });
+                swal('Ошибка', html, 'error');
+            }
+        });
     });
 });
 

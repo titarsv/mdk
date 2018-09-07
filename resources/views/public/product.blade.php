@@ -672,6 +672,7 @@
                             <div class="partPay__container">
                                 <form method="post" action="{{env('APP_URL')}}/credit">
                                     {{ csrf_field() }}
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
                                     <div class="partPay__img">
                                         <img src="/images/mdk-credit.jpg" alt=""><img src="/images/pb-credit.jpg" alt="">
                                     </div>
@@ -682,7 +683,7 @@
                                                 <div class="partPay__credit-range price-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="{{ $product->price }}" data-max="{{ $product->price }}" data-min="{{ $product->price }}"></div>
                                                 <div class="partPay-inputs__inner">
                                                     <p class="visible-xs-block">Сумма</p>
-                                                    <input type="text" class="partPaysliderValue val1" data-index="{{ $product->price }}" value="{{ $product->price }}" />
+                                                    <input type="text" name="price" class="partPaysliderValue val1" data-index="{{ $product->price }}" value="{{ $product->price }}" />
                                                     <p class="visible-xs-block">Сумма</p>
                                                 </div>
                                             </fieldset>
@@ -694,7 +695,7 @@
                                                 <div class="partPay__credit-range credit-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="20" data-max="100" data-min="20"></div>
                                                 <div class="partPay-inputs__inner">
                                                     <p class="visible-xs-block">Первый взнос</p>
-                                                    <input type="text" class="partPaysliderValue val2" data-index="20" value="20" />
+                                                    <input type="text" name="first_cash" class="partPaysliderValue val2" data-index="20" value="20" />
                                                     <p class="visible-xs-block">%</p>
                                                 </div>
                                             </fieldset>
@@ -706,7 +707,7 @@
                                                 <div class="partPay__credit-range credit-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="1" data-max="5" data-min="1"></div>
                                                 <div class="partPay-inputs__inner">
                                                     <p class="visible-xs-block">Cрок</p>
-                                                    <input type="text" class="partPaysliderValue val3" data-index="1" value="1" />
+                                                    <input type="text" name="months" class="partPaysliderValue val3" data-index="1" value="1" />
                                                     <p class="visible-xs-block">Месяцев</p>
                                                 </div>
                                             </fieldset>
@@ -718,7 +719,7 @@
                                                 <div class="partPay__credit-range credit-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="0" data-max="10000" data-min="1000"></div>
                                                 <div class="partPay-inputs__inner">
                                                     <p class="visible-xs-block">Месячный платеж</p>
-                                                    <input type="text" class="partPaysliderValue val4" data-index="0" value="0" />
+                                                    <input type="text" name="for_month" class="partPaysliderValue val4" data-index="0" value="0" />
                                                     <p class="visible-xs-block">Сумма</p>
                                                 </div>
                                             </fieldset>
@@ -731,21 +732,21 @@
                                         <div class="partPay__total-item">
                                             <p>Сумма:</p>
                                             <div>
-                                                <p>10 000</p>
+                                                <p>{{ number_format($product->price, 2, '.', ' ') }}</p>
                                                 <span>грн</span>
                                             </div>
                                         </div>
                                         <div class="partPay__total-item">
                                             <p>Первый взнос:</p>
                                             <div>
-                                                <p>0,9</p>
+                                                <p>20</p>
                                                 <span>%</span>
                                             </div>
                                         </div>
                                         <div class="partPay__total-item">
                                             <p>Срок:</p>
                                             <div>
-                                                <p>9</p>
+                                                <p>1</p>
                                                 <span>мес.</span>
                                             </div>
                                         </div>
@@ -755,7 +756,7 @@
                                         </div>
                                         <div class="partPay__total-item sum">
                                             <p>Всего:</p>
-                                            <span class="partPay__total-item-sum">10 090 грн</span>
+                                            <span class="partPay__total-item-sum">{{ number_format($product->price, 2, '.', ' ') }} грн</span>
                                         </div>
                                     </div>
                                     <div class="partPay__bnt-wrp">

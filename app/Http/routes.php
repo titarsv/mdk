@@ -35,6 +35,7 @@ Route::post('/review/add-likes', 'ReviewsController@addLikes');
 Route::get('/reviews', 'ReviewsController@shopReviews');
 
 Route::post('/saveuserdata', 'UserController@saveUserData');
+Route::post('/tracking', 'OrdersController@getTracking');
 
 
 /**

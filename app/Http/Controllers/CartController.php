@@ -234,6 +234,7 @@ class CartController extends Controller
 
         return view('public.credit')
             ->with('user', $user)
+            ->with('request', $request->except("_token"))
             ->with('products', $credit);
     }
 }

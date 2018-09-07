@@ -224,6 +224,18 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
+                            <label class="col-sm-2 text-right">ТТН</label>
+                            <div class="form-element col-sm-10">
+                                @if(old('ttn') !== null)
+                                    <input type="text" class="form-control" name="ttn" value="{!! old('ttn') !!}" >
+                                @else
+                                    <input type="text" class="form-control" name="ttn" value="{!! isset($delivery_info['ttn']) ? $delivery_info['ttn'] : '' !!}" >
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
                             <div class="col-sm-10 col-sm-push-2 text-left">
                                 <button type="submit" class="btn">Сохранить</button>
                                 <a href="/admin/orders" class="btn btn-primary">Назад</a>

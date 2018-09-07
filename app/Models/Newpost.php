@@ -273,4 +273,27 @@ class Newpost extends Model
         }
         return false;
     }
+
+    // Трекинг
+    public function tracking($ttn, $phone = ''){
+        $setting = new Settings;
+        $parameters = [
+            'modelName' => 'TrackingDocument',
+            'calledMethod' => 'getStatusDocuments',
+            'apiKey' => $setting->get_setting('newpost_api_key'),
+            'methodProperties' => [
+                'Documents' => [
+                    [
+                        'DocumentNumber' => $ttn,
+                        'Phone' => $phone
+                    ]
+                ],
+                'Language' => 'RU'
+            ]
+        ];
+
+        $result = $this->requestToAPI($parameters);
+
+        return $result;
+    }
 }

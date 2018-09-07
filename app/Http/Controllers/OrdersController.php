@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Newpost;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -95,12 +96,20 @@ class OrdersController extends Controller
 
     public function update($id, Request $request)
     {
-        $status_id = $request->status;
-        $order = Order::find($id)->update([
-            'status_id' => $status_id
-        ]);
-//        return dd($order);
-        $orders = Order::all();
+        $order = Order::find($id);
+
+        $update = [
+            'status_id' => $request->status
+        ];
+        $ttn = $request->ttn;
+        if(!empty($ttn)){
+            $delivery = json_decode($order->delivery, true);
+            $delivery['info']['ttn'] = $ttn;
+            $update['delivery'] = json_encode($delivery);
+        }
+
+        $order->update($update);
+
         return redirect('/admin/orders')
             ->with('message-success', 'Заказ № ' . $id . ' успешно обновлен.');
     }
@@ -337,5 +346,14 @@ class OrdersController extends Controller
         $order = Order::find($request->order_id);
         dd($order->user_id);
         return view('public.thanks')->with('order', $order);
+    }
+
+    // Отслеживание посылки
+    public function getTracking(Request $request){
+        $np = new Newpost();
+        $ttn = $request->ttn;
+        $data = $np->tracking($ttn);
+
+        return response()->json($data);
     }
 }

@@ -17,7 +17,7 @@
                         <li><a href="" target="_blank">Оформление кредита</a></li>
                     </ul>
                 </div>
-                <form action="/creditsender" class="ajax_form"
+                <form action="/creditsender" class="ajax_form credit_form"
                       data-error-title="Ошибка отправки!"
                       data-error-message="Попробуйте отправить заявку через некоторое время."
                       data-success-title="Спасибо за заявку!"
@@ -118,7 +118,7 @@
                                 </div>
                                 <div class="credit-form__input-wrp credit-form__margin">
                                     <label for="passport-place" class="label-width">Кем выдан паспорт <span>*</span></label>
-                                    <input class="input-width100" id="passport-place" type="text" data-title="Кем выдан паспорт" data-validate-required="Обязательное поле">
+                                    <input class="input-width100" name="dep" id="passport-place" type="text" data-title="Кем выдан паспорт" data-validate-required="Обязательное поле">
                                 </div>
                                 <button type="button" class="credit-form__btn to_tab_2">Продолжить</button>
                             </div>
@@ -171,31 +171,31 @@
                                 <div class="credit-form__work-list">
                                     <div class="credit-form__input-wrp">
                                         <label for="name">Текущее место работы <span>*</span></label>
-                                        <input type="text" name="name" data-title="Текущее место работы <s" data-validate-required="Обязательное поле">
+                                        <input type="text" name="w1" data-title="Текущее место работы <s" data-validate-required="Обязательное поле">
                                     </div>
                                     <div class="credit-form__input-wrp">
                                         <label for="name">Место работы <span>*</span></label>
-                                        <input type="text" name="name" data-title="Место работы" data-validate-required="Обязательное поле">
+                                        <input type="text" name="w2" data-title="Место работы" data-validate-required="Обязательное поле">
                                     </div>
                                 </div>
                                 <p class="credit-form__input-title">Кто может подтвердить Вашу информацию</p>
                                 <div class="credit-form__name-list credit-form__margin">
                                     <div class="credit-form__input-wrp">
                                         <label for="surname" class="label-width">Фамилия <span>*</span></label>
-                                        <input type="text" name="surname" data-title="Фамилия поручителя" data-validate-required="Обязательное поле">
+                                        <input type="text" name="psurname" data-title="Фамилия поручителя" data-validate-required="Обязательное поле">
                                     </div>
                                     <div class="credit-form__input-wrp">
                                         <label for="name">Имя <span>*</span></label>
-                                        <input type="text" name="name" data-title="Имя поручителя" data-validate-required="Обязательное поле">
+                                        <input type="text" name="pname" data-title="Имя поручителя" data-validate-required="Обязательное поле">
                                     </div>
                                     <div class="credit-form__input-wrp">
                                         <label for="patronymic">Отчество <span>*</span></label>
-                                        <input type="text" name="patronymic" data-title="Отчество поручителя" data-validate-required="Обязательное поле">
+                                        <input type="text" name="ppatronymic" data-title="Отчество поручителя" data-validate-required="Обязательное поле">
                                     </div>
                                 </div>
                                 <div class="credit-form__input-wrp credit-form__margin">
                                     <label for="phone" class="label-width">Номер телефон <span>*</span></label>
-                                    <input class="input-width100" type="tel" name="phone" data-title="Телефон поручителя" data-validate-required="Обязательное поле" data-validate-uaphone="Неправильный номер">
+                                    <input class="input-width100" type="tel" name="pphone" data-title="Телефон поручителя" data-validate-required="Обязательное поле" data-validate-uaphone="Неправильный номер">
                                 </div>
                                 <p class="credit-form__input-title">Адрес регистрации</p>
                                 <div class="credit-form__address-list">

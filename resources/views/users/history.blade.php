@@ -56,7 +56,10 @@
                         <li>Статус</li>
                     </ul>
                     @foreach($orders as $order)
-                        @php $products = $order->getProducts(); @endphp
+                        @php
+                            $products = $order->getProducts();
+                            $delivery_info = $order->getDeliveryInfo();
+                        @endphp
                         <div class="my-order__item">
                             <div class="my-order__item-article">
                                 {{--@foreach($products as $product)--}}
@@ -95,10 +98,10 @@
                             </div>
                             <div class="my-order__item-number">
                                 <div>
-                                    @if(isset($order->ttn))
+                                    @if(isset($delivery_info['ttn']))
                                     <span>Номер ТТН</span>
-                                    <p>{{ $order->ttn }}</p>
-                                    <a href="javascript:void(0);" data-id="{{ $order->ttn }}">Отследить</a>
+                                    <p>{{ $delivery_info['ttn'] }}</p>
+                                    <a href="javascript:void(0);" class="ttn_info" data-id="{{ $delivery_info['ttn'] }}">Отследить</a>
                                     @endif
                                 </div>
                                 <div class="my-order__item-status">
