@@ -6,6 +6,1545 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MDK</title>
     <link rel="shortcut icon" href="#" type="image/x-icon">
+
+    <!-- Load CSS, CSS Localstorage & WebFonts Main Function -->
+    <script>!function (e) {
+        "use strict";
+
+        function t(e, t, n) {
+            e.addEventListener ? e.addEventListener(t, n, !1) : e.attachEvent && e.attachEvent("on" + t, n)
+        };
+
+        function n(t, n) {
+            return e.localStorage && localStorage[t + "_content"] && localStorage[t + "_file"] === n
+        };
+
+        function a(t, a) {
+            if (e.localStorage && e.XMLHttpRequest) n(t, a) ? o(localStorage[t + "_content"]) : l(t, a); else {
+                var s = r.createElement("link");
+                s.href = a, s.id = t, s.rel = "stylesheet", s.type = "text/css", r.getElementsByTagName("head")[0].appendChild(s), r.cookie = t
+            }
+        }
+
+        function l(e, t) {
+            var n = new XMLHttpRequest;
+            n.open("GET", t, !0), n.onreadystatechange = function () {
+                4 === n.readyState && 200 === n.status && (o(n.responseText), localStorage[e + "_content"] = n.responseText, localStorage[e + "_file"] = t)
+            }, n.send()
+        }
+
+        function o(e) {
+            var t = r.createElement("style");
+            t.setAttribute("type", "text/css"), r.getElementsByTagName("head")[0].appendChild(t), t.styleSheet ? t.styleSheet.cssText = e : t.innerHTML = e
+        }
+
+        var r = e.document;
+        e.loadCSS = function (e, t, n) {
+            var a, l = r.createElement("link");
+            if (t) a = t; else {
+                var o;
+                o = r.querySelectorAll ? r.querySelectorAll("style,link[rel=stylesheet],script") : (r.body || r.getElementsByTagName("head")[0]).childNodes, a = o[o.length - 1]
+            }
+            var s = r.styleSheets;
+            l.rel = "stylesheet", l.href = e, l.media = "only x", a.parentNode.insertBefore(l, t ? a : a.nextSibling);
+            var c = function (e) {
+                for (var t = l.href, n = s.length; n--;) if (s[n].href === t) return e();
+                setTimeout(function () {
+                    c(e)
+                })
+            };
+            return l.onloadcssdefined = c, c(function () {
+                l.media = n || "all"
+            }), l
+        }, e.loadLocalStorageCSS = function (l, o) {
+            n(l, o) || r.cookie.indexOf(l) > -1 ? a(l, o) : t(e, "load", function () {
+                a(l, o)
+            })
+        }
+    }(this);</script>
+
+    <style>
+        html {
+            font-family: sans-serif;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%
+        }
+
+        body {
+            margin: 0
+        }
+
+        article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+            display: block
+        }
+
+        audio, canvas, progress, video {
+            display: inline-block;
+            vertical-align: baseline
+        }
+
+        audio:not([controls]) {
+            display: none;
+            height: 0
+        }
+
+        [hidden], template {
+            display: none
+        }
+
+        a {
+            background-color: transparent
+        }
+
+        a:active, a:hover {
+            outline: 0
+        }
+
+        abbr[title] {
+            border-bottom: 1px dotted
+        }
+
+        b, strong {
+            font-weight: bold
+        }
+
+        dfn {
+            font-style: italic
+        }
+
+        h1 {
+            font-size: 2em;
+            margin: 0.67em 0
+        }
+
+        mark {
+            background: #ff0;
+            color: #000
+        }
+
+        small {
+            font-size: 80%
+        }
+
+        sub, sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative;
+            vertical-align: baseline
+        }
+
+        sup {
+            top: -0.5em
+        }
+
+        sub {
+            bottom: -0.25em
+        }
+
+        img {
+            border: 0
+        }
+
+        svg:not(:root) {
+            overflow: hidden
+        }
+
+        figure {
+            margin: 1em 40px
+        }
+
+        hr {
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+            height: 0
+        }
+
+        pre {
+            overflow: auto
+        }
+
+        code, kbd, pre, samp {
+            font-family: monospace, monospace;
+            font-size: 1em
+        }
+
+        button, input, optgroup, select, textarea {
+            color: inherit;
+            font: inherit;
+            margin: 0
+        }
+
+        button {
+            overflow: visible
+        }
+
+        button, select {
+            text-transform: none
+        }
+
+        button, html input[type="button"], input[type="reset"], input[type="submit"] {
+            -webkit-appearance: button;
+            cursor: pointer
+        }
+
+        button[disabled], html input[disabled] {
+            cursor: default
+        }
+
+        button::-moz-focus-inner, input::-moz-focus-inner {
+            border: 0;
+            padding: 0
+        }
+
+        input {
+            line-height: normal
+        }
+
+        input[type="checkbox"], input[type="radio"] {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 0
+        }
+
+        input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+            height: auto
+        }
+
+        input[type="search"] {
+            -webkit-appearance: textfield;
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box
+        }
+
+        input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+            -webkit-appearance: none
+        }
+
+        fieldset {
+            border: 1px solid #c0c0c0;
+            margin: 0 2px;
+            padding: 0.35em 0.625em 0.75em
+        }
+
+        legend {
+            border: 0;
+            padding: 0
+        }
+
+        textarea {
+            overflow: auto
+        }
+
+        optgroup {
+            font-weight: bold
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+
+        td, th {
+            padding: 0
+        }
+
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box
+        }
+
+        *:before, *:after {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box
+        }
+
+        html {
+            font-size: 10px;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+        }
+
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #333;
+            background-color: #fff
+        }
+
+        input, button, select, textarea {
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit
+        }
+
+        a {
+            color: #337ab7;
+            text-decoration: none
+        }
+
+        a:hover, a:focus {
+            color: #23527c;
+            text-decoration: underline
+        }
+
+        a:focus {
+            outline: 5px auto -webkit-focus-ring-color;
+            outline-offset: -2px
+        }
+
+        figure {
+            margin: 0
+        }
+
+        img {
+            vertical-align: middle
+        }
+
+        .img-responsive {
+            display: block;
+            max-width: 100%;
+            height: auto
+        }
+
+        .img-rounded {
+            border-radius: 6px
+        }
+
+        .img-thumbnail {
+            padding: 4px;
+            line-height: 1.42857143;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            -webkit-transition: all .2s ease-in-out;
+            -o-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+            display: inline-block;
+            max-width: 100%;
+            height: auto
+        }
+
+        .img-circle {
+            border-radius: 50%
+        }
+
+        hr {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 0;
+            border-top: 1px solid #eee
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0
+        }
+
+        .sr-only-focusable:active, .sr-only-focusable:focus {
+            position: static;
+            width: auto;
+            height: auto;
+            margin: 0;
+            overflow: visible;
+            clip: auto
+        }
+
+        [role="button"] {
+            cursor: pointer
+        }
+
+        .container {
+            margin-right: auto;
+            margin-left: auto;
+            padding-left: 15px;
+            padding-right: 15px
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                width: 750px
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                width: 970px
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                width: 1170px
+            }
+        }
+
+        .container-fluid {
+            margin-right: auto;
+            margin-left: auto;
+            padding-left: 15px;
+            padding-right: 15px
+        }
+
+        .row {
+            margin-left: -15px;
+            margin-right: -15px
+        }
+
+        .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+            position: relative;
+            min-height: 1px;
+            padding-left: 15px;
+            padding-right: 15px
+        }
+
+        .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+            float: left
+        }
+
+        .col-xs-12 {
+            width: 100%
+        }
+
+        .col-xs-11 {
+            width: 91.66666667%
+        }
+
+        .col-xs-10 {
+            width: 83.33333333%
+        }
+
+        .col-xs-9 {
+            width: 75%
+        }
+
+        .col-xs-8 {
+            width: 66.66666667%
+        }
+
+        .col-xs-7 {
+            width: 58.33333333%
+        }
+
+        .col-xs-6 {
+            width: 50%
+        }
+
+        .col-xs-5 {
+            width: 41.66666667%
+        }
+
+        .col-xs-4 {
+            width: 33.33333333%
+        }
+
+        .col-xs-3 {
+            width: 25%
+        }
+
+        .col-xs-2 {
+            width: 16.66666667%
+        }
+
+        .col-xs-1 {
+            width: 8.33333333%
+        }
+
+        .col-xs-pull-12 {
+            right: 100%
+        }
+
+        .col-xs-pull-11 {
+            right: 91.66666667%
+        }
+
+        .col-xs-pull-10 {
+            right: 83.33333333%
+        }
+
+        .col-xs-pull-9 {
+            right: 75%
+        }
+
+        .col-xs-pull-8 {
+            right: 66.66666667%
+        }
+
+        .col-xs-pull-7 {
+            right: 58.33333333%
+        }
+
+        .col-xs-pull-6 {
+            right: 50%
+        }
+
+        .col-xs-pull-5 {
+            right: 41.66666667%
+        }
+
+        .col-xs-pull-4 {
+            right: 33.33333333%
+        }
+
+        .col-xs-pull-3 {
+            right: 25%
+        }
+
+        .col-xs-pull-2 {
+            right: 16.66666667%
+        }
+
+        .col-xs-pull-1 {
+            right: 8.33333333%
+        }
+
+        .col-xs-pull-0 {
+            right: auto
+        }
+
+        .col-xs-push-12 {
+            left: 100%
+        }
+
+        .col-xs-push-11 {
+            left: 91.66666667%
+        }
+
+        .col-xs-push-10 {
+            left: 83.33333333%
+        }
+
+        .col-xs-push-9 {
+            left: 75%
+        }
+
+        .col-xs-push-8 {
+            left: 66.66666667%
+        }
+
+        .col-xs-push-7 {
+            left: 58.33333333%
+        }
+
+        .col-xs-push-6 {
+            left: 50%
+        }
+
+        .col-xs-push-5 {
+            left: 41.66666667%
+        }
+
+        .col-xs-push-4 {
+            left: 33.33333333%
+        }
+
+        .col-xs-push-3 {
+            left: 25%
+        }
+
+        .col-xs-push-2 {
+            left: 16.66666667%
+        }
+
+        .col-xs-push-1 {
+            left: 8.33333333%
+        }
+
+        .col-xs-push-0 {
+            left: auto
+        }
+
+        .col-xs-offset-12 {
+            margin-left: 100%
+        }
+
+        .col-xs-offset-11 {
+            margin-left: 91.66666667%
+        }
+
+        .col-xs-offset-10 {
+            margin-left: 83.33333333%
+        }
+
+        .col-xs-offset-9 {
+            margin-left: 75%
+        }
+
+        .col-xs-offset-8 {
+            margin-left: 66.66666667%
+        }
+
+        .col-xs-offset-7 {
+            margin-left: 58.33333333%
+        }
+
+        .col-xs-offset-6 {
+            margin-left: 50%
+        }
+
+        .col-xs-offset-5 {
+            margin-left: 41.66666667%
+        }
+
+        .col-xs-offset-4 {
+            margin-left: 33.33333333%
+        }
+
+        .col-xs-offset-3 {
+            margin-left: 25%
+        }
+
+        .col-xs-offset-2 {
+            margin-left: 16.66666667%
+        }
+
+        .col-xs-offset-1 {
+            margin-left: 8.33333333%
+        }
+
+        .col-xs-offset-0 {
+            margin-left: 0
+        }
+
+        @media (min-width: 768px) {
+            .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+                float: left
+            }
+
+            .col-sm-12 {
+                width: 100%
+            }
+
+            .col-sm-11 {
+                width: 91.66666667%
+            }
+
+            .col-sm-10 {
+                width: 83.33333333%
+            }
+
+            .col-sm-9 {
+                width: 75%
+            }
+
+            .col-sm-8 {
+                width: 66.66666667%
+            }
+
+            .col-sm-7 {
+                width: 58.33333333%
+            }
+
+            .col-sm-6 {
+                width: 50%
+            }
+
+            .col-sm-5 {
+                width: 41.66666667%
+            }
+
+            .col-sm-4 {
+                width: 33.33333333%
+            }
+
+            .col-sm-3 {
+                width: 25%
+            }
+
+            .col-sm-2 {
+                width: 16.66666667%
+            }
+
+            .col-sm-1 {
+                width: 8.33333333%
+            }
+
+            .col-sm-pull-12 {
+                right: 100%
+            }
+
+            .col-sm-pull-11 {
+                right: 91.66666667%
+            }
+
+            .col-sm-pull-10 {
+                right: 83.33333333%
+            }
+
+            .col-sm-pull-9 {
+                right: 75%
+            }
+
+            .col-sm-pull-8 {
+                right: 66.66666667%
+            }
+
+            .col-sm-pull-7 {
+                right: 58.33333333%
+            }
+
+            .col-sm-pull-6 {
+                right: 50%
+            }
+
+            .col-sm-pull-5 {
+                right: 41.66666667%
+            }
+
+            .col-sm-pull-4 {
+                right: 33.33333333%
+            }
+
+            .col-sm-pull-3 {
+                right: 25%
+            }
+
+            .col-sm-pull-2 {
+                right: 16.66666667%
+            }
+
+            .col-sm-pull-1 {
+                right: 8.33333333%
+            }
+
+            .col-sm-pull-0 {
+                right: auto
+            }
+
+            .col-sm-push-12 {
+                left: 100%
+            }
+
+            .col-sm-push-11 {
+                left: 91.66666667%
+            }
+
+            .col-sm-push-10 {
+                left: 83.33333333%
+            }
+
+            .col-sm-push-9 {
+                left: 75%
+            }
+
+            .col-sm-push-8 {
+                left: 66.66666667%
+            }
+
+            .col-sm-push-7 {
+                left: 58.33333333%
+            }
+
+            .col-sm-push-6 {
+                left: 50%
+            }
+
+            .col-sm-push-5 {
+                left: 41.66666667%
+            }
+
+            .col-sm-push-4 {
+                left: 33.33333333%
+            }
+
+            .col-sm-push-3 {
+                left: 25%
+            }
+
+            .col-sm-push-2 {
+                left: 16.66666667%
+            }
+
+            .col-sm-push-1 {
+                left: 8.33333333%
+            }
+
+            .col-sm-push-0 {
+                left: auto
+            }
+
+            .col-sm-offset-12 {
+                margin-left: 100%
+            }
+
+            .col-sm-offset-11 {
+                margin-left: 91.66666667%
+            }
+
+            .col-sm-offset-10 {
+                margin-left: 83.33333333%
+            }
+
+            .col-sm-offset-9 {
+                margin-left: 75%
+            }
+
+            .col-sm-offset-8 {
+                margin-left: 66.66666667%
+            }
+
+            .col-sm-offset-7 {
+                margin-left: 58.33333333%
+            }
+
+            .col-sm-offset-6 {
+                margin-left: 50%
+            }
+
+            .col-sm-offset-5 {
+                margin-left: 41.66666667%
+            }
+
+            .col-sm-offset-4 {
+                margin-left: 33.33333333%
+            }
+
+            .col-sm-offset-3 {
+                margin-left: 25%
+            }
+
+            .col-sm-offset-2 {
+                margin-left: 16.66666667%
+            }
+
+            .col-sm-offset-1 {
+                margin-left: 8.33333333%
+            }
+
+            .col-sm-offset-0 {
+                margin-left: 0
+            }
+        }
+
+        @media (min-width: 992px) {
+            .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+                float: left
+            }
+
+            .col-md-12 {
+                width: 100%
+            }
+
+            .col-md-11 {
+                width: 91.66666667%
+            }
+
+            .col-md-10 {
+                width: 83.33333333%
+            }
+
+            .col-md-9 {
+                width: 75%
+            }
+
+            .col-md-8 {
+                width: 66.66666667%
+            }
+
+            .col-md-7 {
+                width: 58.33333333%
+            }
+
+            .col-md-6 {
+                width: 50%
+            }
+
+            .col-md-5 {
+                width: 41.66666667%
+            }
+
+            .col-md-4 {
+                width: 33.33333333%
+            }
+
+            .col-md-3 {
+                width: 25%
+            }
+
+            .col-md-2 {
+                width: 16.66666667%
+            }
+
+            .col-md-1 {
+                width: 8.33333333%
+            }
+
+            .col-md-pull-12 {
+                right: 100%
+            }
+
+            .col-md-pull-11 {
+                right: 91.66666667%
+            }
+
+            .col-md-pull-10 {
+                right: 83.33333333%
+            }
+
+            .col-md-pull-9 {
+                right: 75%
+            }
+
+            .col-md-pull-8 {
+                right: 66.66666667%
+            }
+
+            .col-md-pull-7 {
+                right: 58.33333333%
+            }
+
+            .col-md-pull-6 {
+                right: 50%
+            }
+
+            .col-md-pull-5 {
+                right: 41.66666667%
+            }
+
+            .col-md-pull-4 {
+                right: 33.33333333%
+            }
+
+            .col-md-pull-3 {
+                right: 25%
+            }
+
+            .col-md-pull-2 {
+                right: 16.66666667%
+            }
+
+            .col-md-pull-1 {
+                right: 8.33333333%
+            }
+
+            .col-md-pull-0 {
+                right: auto
+            }
+
+            .col-md-push-12 {
+                left: 100%
+            }
+
+            .col-md-push-11 {
+                left: 91.66666667%
+            }
+
+            .col-md-push-10 {
+                left: 83.33333333%
+            }
+
+            .col-md-push-9 {
+                left: 75%
+            }
+
+            .col-md-push-8 {
+                left: 66.66666667%
+            }
+
+            .col-md-push-7 {
+                left: 58.33333333%
+            }
+
+            .col-md-push-6 {
+                left: 50%
+            }
+
+            .col-md-push-5 {
+                left: 41.66666667%
+            }
+
+            .col-md-push-4 {
+                left: 33.33333333%
+            }
+
+            .col-md-push-3 {
+                left: 25%
+            }
+
+            .col-md-push-2 {
+                left: 16.66666667%
+            }
+
+            .col-md-push-1 {
+                left: 8.33333333%
+            }
+
+            .col-md-push-0 {
+                left: auto
+            }
+
+            .col-md-offset-12 {
+                margin-left: 100%
+            }
+
+            .col-md-offset-11 {
+                margin-left: 91.66666667%
+            }
+
+            .col-md-offset-10 {
+                margin-left: 83.33333333%
+            }
+
+            .col-md-offset-9 {
+                margin-left: 75%
+            }
+
+            .col-md-offset-8 {
+                margin-left: 66.66666667%
+            }
+
+            .col-md-offset-7 {
+                margin-left: 58.33333333%
+            }
+
+            .col-md-offset-6 {
+                margin-left: 50%
+            }
+
+            .col-md-offset-5 {
+                margin-left: 41.66666667%
+            }
+
+            .col-md-offset-4 {
+                margin-left: 33.33333333%
+            }
+
+            .col-md-offset-3 {
+                margin-left: 25%
+            }
+
+            .col-md-offset-2 {
+                margin-left: 16.66666667%
+            }
+
+            .col-md-offset-1 {
+                margin-left: 8.33333333%
+            }
+
+            .col-md-offset-0 {
+                margin-left: 0
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+                float: left
+            }
+
+            .col-lg-12 {
+                width: 100%
+            }
+
+            .col-lg-11 {
+                width: 91.66666667%
+            }
+
+            .col-lg-10 {
+                width: 83.33333333%
+            }
+
+            .col-lg-9 {
+                width: 75%
+            }
+
+            .col-lg-8 {
+                width: 66.66666667%
+            }
+
+            .col-lg-7 {
+                width: 58.33333333%
+            }
+
+            .col-lg-6 {
+                width: 50%
+            }
+
+            .col-lg-5 {
+                width: 41.66666667%
+            }
+
+            .col-lg-4 {
+                width: 33.33333333%
+            }
+
+            .col-lg-3 {
+                width: 25%
+            }
+
+            .col-lg-2 {
+                width: 16.66666667%
+            }
+
+            .col-lg-1 {
+                width: 8.33333333%
+            }
+
+            .col-lg-pull-12 {
+                right: 100%
+            }
+
+            .col-lg-pull-11 {
+                right: 91.66666667%
+            }
+
+            .col-lg-pull-10 {
+                right: 83.33333333%
+            }
+
+            .col-lg-pull-9 {
+                right: 75%
+            }
+
+            .col-lg-pull-8 {
+                right: 66.66666667%
+            }
+
+            .col-lg-pull-7 {
+                right: 58.33333333%
+            }
+
+            .col-lg-pull-6 {
+                right: 50%
+            }
+
+            .col-lg-pull-5 {
+                right: 41.66666667%
+            }
+
+            .col-lg-pull-4 {
+                right: 33.33333333%
+            }
+
+            .col-lg-pull-3 {
+                right: 25%
+            }
+
+            .col-lg-pull-2 {
+                right: 16.66666667%
+            }
+
+            .col-lg-pull-1 {
+                right: 8.33333333%
+            }
+
+            .col-lg-pull-0 {
+                right: auto
+            }
+
+            .col-lg-push-12 {
+                left: 100%
+            }
+
+            .col-lg-push-11 {
+                left: 91.66666667%
+            }
+
+            .col-lg-push-10 {
+                left: 83.33333333%
+            }
+
+            .col-lg-push-9 {
+                left: 75%
+            }
+
+            .col-lg-push-8 {
+                left: 66.66666667%
+            }
+
+            .col-lg-push-7 {
+                left: 58.33333333%
+            }
+
+            .col-lg-push-6 {
+                left: 50%
+            }
+
+            .col-lg-push-5 {
+                left: 41.66666667%
+            }
+
+            .col-lg-push-4 {
+                left: 33.33333333%
+            }
+
+            .col-lg-push-3 {
+                left: 25%
+            }
+
+            .col-lg-push-2 {
+                left: 16.66666667%
+            }
+
+            .col-lg-push-1 {
+                left: 8.33333333%
+            }
+
+            .col-lg-push-0 {
+                left: auto
+            }
+
+            .col-lg-offset-12 {
+                margin-left: 100%
+            }
+
+            .col-lg-offset-11 {
+                margin-left: 91.66666667%
+            }
+
+            .col-lg-offset-10 {
+                margin-left: 83.33333333%
+            }
+
+            .col-lg-offset-9 {
+                margin-left: 75%
+            }
+
+            .col-lg-offset-8 {
+                margin-left: 66.66666667%
+            }
+
+            .col-lg-offset-7 {
+                margin-left: 58.33333333%
+            }
+
+            .col-lg-offset-6 {
+                margin-left: 50%
+            }
+
+            .col-lg-offset-5 {
+                margin-left: 41.66666667%
+            }
+
+            .col-lg-offset-4 {
+                margin-left: 33.33333333%
+            }
+
+            .col-lg-offset-3 {
+                margin-left: 25%
+            }
+
+            .col-lg-offset-2 {
+                margin-left: 16.66666667%
+            }
+
+            .col-lg-offset-1 {
+                margin-left: 8.33333333%
+            }
+
+            .col-lg-offset-0 {
+                margin-left: 0
+            }
+        }
+
+        .clearfix:before, .clearfix:after, .container:before, .container:after, .container-fluid:before, .container-fluid:after, .row:before, .row:after {
+            content: " ";
+            display: table
+        }
+
+        .clearfix:after, .container:after, .container-fluid:after, .row:after {
+            clear: both
+        }
+
+        .center-block {
+            display: block;
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        .pull-right {
+            float: right !important
+        }
+
+        .pull-left {
+            float: left !important
+        }
+
+        .hide {
+            display: none !important
+        }
+
+        .show {
+            display: block !important
+        }
+
+        .invisible {
+            visibility: hidden
+        }
+
+        .text-hide {
+            font: 0/0 a;
+            color: transparent;
+            text-shadow: none;
+            background-color: transparent;
+            border: 0
+        }
+
+        .hidden {
+            display: none !important
+        }
+
+        .affix {
+            position: fixed
+        }
+
+        @-ms-viewport {
+            width: device-width
+        }
+
+        .visible-xs, .visible-sm, .visible-md, .visible-lg {
+            display: none !important
+        }
+
+        .visible-xs-block, .visible-xs-inline, .visible-xs-inline-block, .visible-sm-block, .visible-sm-inline, .visible-sm-inline-block, .visible-md-block, .visible-md-inline, .visible-md-inline-block, .visible-lg-block, .visible-lg-inline, .visible-lg-inline-block {
+            display: none !important
+        }
+
+        @media (max-width: 767px) {
+            .visible-xs {
+                display: block !important
+            }
+
+            table.visible-xs {
+                display: table !important
+            }
+
+            tr.visible-xs {
+                display: table-row !important
+            }
+
+            th.visible-xs, td.visible-xs {
+                display: table-cell !important
+            }
+        }
+
+        @media (max-width: 767px) {
+            .visible-xs-block {
+                display: block !important
+            }
+        }
+
+        @media (max-width: 767px) {
+            .visible-xs-inline {
+                display: inline !important
+            }
+        }
+
+        @media (max-width: 767px) {
+            .visible-xs-inline-block {
+                display: inline-block !important
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .visible-sm {
+                display: block !important
+            }
+
+            table.visible-sm {
+                display: table !important
+            }
+
+            tr.visible-sm {
+                display: table-row !important
+            }
+
+            th.visible-sm, td.visible-sm {
+                display: table-cell !important
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .visible-sm-block {
+                display: block !important
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .visible-sm-inline {
+                display: inline !important
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .visible-sm-inline-block {
+                display: inline-block !important
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .visible-md {
+                display: block !important
+            }
+
+            table.visible-md {
+                display: table !important
+            }
+
+            tr.visible-md {
+                display: table-row !important
+            }
+
+            th.visible-md, td.visible-md {
+                display: table-cell !important
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .visible-md-block {
+                display: block !important
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .visible-md-inline {
+                display: inline !important
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .visible-md-inline-block {
+                display: inline-block !important
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .visible-lg {
+                display: block !important
+            }
+
+            table.visible-lg {
+                display: table !important
+            }
+
+            tr.visible-lg {
+                display: table-row !important
+            }
+
+            th.visible-lg, td.visible-lg {
+                display: table-cell !important
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .visible-lg-block {
+                display: block !important
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .visible-lg-inline {
+                display: inline !important
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .visible-lg-inline-block {
+                display: inline-block !important
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hidden-xs {
+                display: none !important
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .hidden-sm {
+                display: none !important
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .hidden-md {
+                display: none !important
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .hidden-lg {
+                display: none !important
+            }
+        }
+
+        .visible-print {
+            display: none !important
+        }
+
+        @media print {
+            .visible-print {
+                display: block !important
+            }
+
+            table.visible-print {
+                display: table !important
+            }
+
+            tr.visible-print {
+                display: table-row !important
+            }
+
+            th.visible-print, td.visible-print {
+                display: table-cell !important
+            }
+        }
+
+        .visible-print-block {
+            display: none !important
+        }
+
+        @media print {
+            .visible-print-block {
+                display: block !important
+            }
+        }
+
+        .visible-print-inline {
+            display: none !important
+        }
+
+        @media print {
+            .visible-print-inline {
+                display: inline !important
+            }
+        }
+
+        .visible-print-inline-block {
+            display: none !important
+        }
+
+        @media print {
+            .visible-print-inline-block {
+                display: inline-block !important
+            }
+        }
+
+        @media print {
+            .hidden-print {
+                display: none !important
+            }
+        }
+    </style>
+
+    <!-- Load Custom CSS Start -->
+    <script>loadCSS("/css/app.css?id=9c246150ae0ad6600c38", false, "all");</script>
+    <!-- Load Custom CSS End -->
+
+    <!-- Load Custom CSS Compiled without JS Start -->
+    <noscript>
+        <link rel="stylesheet" href="/css/app.css?id=9c246150ae0ad6600c38">
+    </noscript>
+    <!-- Load Custom CSS Compiled without JS End -->
 </head>
 <body id='body'>
 
@@ -13,10 +1552,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="visible-sm-block col-sm-12 hidden-xs">
-               <div class="header__logo">
-                   <img src="../../images/logo1.png" alt="">
-               </div>
-           </div>
+                <div class="header__logo">
+                    <a href="./index.html"><img src="../../images/logo1.png" alt=""></a>
+                </div>
+            </div>
         </div>
         <div class="row header-inform-container underline">
             <div class="col-sm-3 col-xs-12">
@@ -77,7 +1616,7 @@
                         <p>меню</p>
                     </div>
                     <div class="mobile-nav__enter">
-                        <a href="">
+                        <a href="" class="popup-btn" data-mfp-src="#logIn-popup">
                             <ul class="header__profile">
                                 <li>Вход</li>
                                 <li><img src="../../images/icons/4.png" alt=""></li>
@@ -95,17 +1634,17 @@
         </div>
         <div class="mobile-menu close">
             <div class="mobile-menu__close"></div>
-            <div class="panel-group" id="accordion">                    
+            <div class="panel-group" id="accordion-menu">
                 <!-- 1 панель -->
                 <div>
-                    <h4 class="mobile-menu__title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">ВЕРХНЯЯ ОДЕЖДА</a>
+                    <h4 class="mobile-menu__title accordion__title">
+                        <a data-toggle="collapse" data-parent="#accordion-menu" href="#collapseOne">ВЕРХНЯЯ ОДЕЖДА</a>
                     </h4>
                     <div id="collapseOne" class="mobile-menu__collapse collapse">
-                    <!-- Содержимое 1 панели -->
+                        <!-- Содержимое 1 панели -->
                         <div class="mobile-menu__body">
                             <ul class="mobile-menu__links">
-                                <li><a href="">Дубленки   </a></li>
+                                <li><a href="">Дубленки </a></li>
                                 <li><a href="">Меховые жилеты</a></li>
                                 <li><a href="">Кожаные куртки</a></li>
                                 <li><a href="">Удлиненные кожанные куртки</a></li>
@@ -119,25 +1658,39 @@
                 </div>
                 <!-- 2 панель -->
                 <div>
-                    <h4 class="mobile-menu__title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Аксессуары</a>
+                    <h4 class="mobile-menu__title accordion__title">
+                        <a data-toggle="collapse" data-parent="#accordion-menu" href="#collapseTwo">Аксессуары</a>
                     </h4>
-                    <div id="collapsTwo" class="mobile-menu__collapse collapse">
-                    <!-- Содержимое 2 панели -->
+                    <div id="collapseTwo" class="mobile-menu__collapse collapse">
+                        <!-- Содержимое 2 панели -->
                         <div class="mobile-menu__body">
-                            
+                            <ul class="mobile-menu__links">
+                                <li><a href="">Кошельки</a></li>
+                                <li><a href="">Перчатки</a></li>
+                                <li><a href="">Ремни</a></li>
+                                <li><a href="">Сумки</a></li>
+                                <li><a href="">Шапки</a></li>
+                                <li><a href="">Шарфы</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
                 <!-- 3 панель -->
                 <div>
-                    <h4 class="mobile-menu__title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Другое</a>
+                    <h4 class="mobile-menu__title accordion__title">
+                        <a data-toggle="collapse" data-parent="#accordion-menu" href="#collapseThree">Другое</a>
                     </h4>
-                    <div id="collapsTwo" class="mobile-menu__collapse collapse">
-                    <!-- Содержимое 3 панели -->
+                    <div id="collapseThree" class="mobile-menu__collapse collapse">
+                        <!-- Содержимое 3 панели -->
                         <div class="mobile-menu__body">
-                            
+                            <ul class="mobile-menu__links">
+                                <li><a href="">Браслеты</a></li>
+                                <li><a href="">Визитницы</a></li>
+                                <li><a href="">Ключицы</a></li>
+                                <li><a href="">Обложки для документов</a></li>
+                                <li><a href="">Амулеты в кошельки</a></li>
+                                <li><a href=""> Зонт</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -155,13 +1708,13 @@
                                 <div class="header__navigation-page-links">
                                     <ul>
                                         <li><a href="" data-toggle="img-1">Дубленки</a></li>
-                                        <li><a href="" data-toggle="img-2">Меховые жилеты</a></li>
-                                        <li><a href="" data-toggle="img-3">Кожаные куртки</a></li>
-                                        <li><a href="" data-toggle="img-4">Удлиненные кожанные куртки</a></li>
-                                        <li><a href="" data-toggle="img-5">Утепленные куртки</a></li>
-                                        <li><a href="" data-toggle="img-6"> Парки</a></li>
-                                        <li><a href="" data-toggle="img-7"> Шубы</a></li>
-                                        <li><a href="" data-toggle="img-8">Пальто</a></li>
+                                        <li><a href="" data-toggle="img-11">Меховые жилеты</a></li>
+                                        <li><a href="" data-toggle="img-12">Кожаные куртки</a></li>
+                                        <li><a href="" data-toggle="img-13">Удлиненные кожанные куртки</a></li>
+                                        <li><a href="" data-toggle="img-14">Утепленные куртки</a></li>
+                                        <li><a href="" data-toggle="img-15"> Парки</a></li>
+                                        <li><a href="" data-toggle="img-16"> Шубы</a></li>
+                                        <li><a href="" data-toggle="img-17">Пальто</a></li>
                                     </ul>
                                     <div class="header__navigation-page-links-img img-1"></div>
                                 </div>
@@ -170,28 +1723,89 @@
                                 <a href="">Аксессуары</a>
                                 <div class="header__navigation-page-links">
                                     <ul>
-                                        <li><a href="" data-toggle="img-1">Сумки</a></li>
-                                        <li><a href="" data-toggle="img-2">Перчатки</a></li>
-                                        <li><a href="" data-toggle="img-3">Шарфы</a></li>
-                                        <li><a href="" data-toggle="img-4">Шапки</a></li>
+                                        <li><a href="" data-toggle="2">Кошельки</a></li>
+                                        <li><a href="" data-toggle="22">Перчатки</a></li>
+                                        <li><a href="" data-toggle="23">Ремни</a></li>
+                                        <li><a href="" data-toggle="24">Сумки</a></li>
+                                        <li><a href="" data-toggle="25">Шапки</a></li>
+                                        <li><a href="" data-toggle="26">Шарфы</a></li>
                                     </ul>
-                                    <div class="header__navigation-page-links-img img-1"></div>
+                                    <div class="header__navigation-page-links-img img-2"></div>
                                 </div>
                             </li>
-                            <li><a href="">Другое</a></li>
+                            <li>
+                                <a href="">Другое</a>
+                                <div class="header__navigation-page-links">
+                                    <ul>
+                                        <li><a href="" data-toggle="3">Браслеты</a></li>
+                                        <li><a href="" data-toggle="32">Визитницы</a></li>
+                                        <li><a href="" data-toggle="33">Ключицы</a></li>
+                                        <li><a href="" data-toggle="34">Обложки для документов</a></li>
+                                        <li><a href="" data-toggle="35">Амулеты в кошельки</a></li>
+                                        <li><a href="" data-toggle="36"> Зонт</a></li>
+                                    </ul>
+                                    <div class="header__navigation-page-links-img img-3"></div>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
 
-                 <div class="header__navigation-item">
+                <div class="header__navigation-item">
                     <a href="">Мужчины</a>
+                    <div class="header__navigation-page">
+                        <ul class="header__navigation-page-category">
+                            <li>
+                                <a href="">ВЕРХНЯЯ ОДЕЖДА</a>
+                                <div class="header__navigation-page-links">
+                                    <ul>
+                                        <li><a href="" data-toggle="img-1">Дубленки</a></li>
+                                        <li><a href="" data-toggle="img-12">Кожаные куртки</a></li>
+                                        <li><a href="" data-toggle="img-13">Удлиненные кожанные куртки</a></li>
+                                        <li><a href="" data-toggle="img-14">Утепленные куртки</a></li>
+                                        <li><a href="" data-toggle="img-15">Парки</a></li>
+                                        <li><a href="" data-toggle="img-16">Шубы</a></li>
+                                    </ul>
+                                    <div class="header__navigation-page-links-img img-1"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="">Аксессуары</a>
+                                <div class="header__navigation-page-links">
+                                    <ul>
+                                        <li><a href="" data-toggle="2">Кошельки</a></li>
+                                        <li><a href="" data-toggle="22">Перчатки</a></li>
+                                        <li><a href="" data-toggle="23">Ремни</a></li>
+                                        <li><a href="" data-toggle="24">Портмоне</a></li>
+                                        <li><a href="" data-toggle="25">Шапки</a></li>
+                                        <li><a href="" data-toggle="26">Шарфы</a></li>
+                                    </ul>
+                                    <div class="header__navigation-page-links-img img-2"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="">Другое</a>
+                                <div class="header__navigation-page-links">
+                                    <ul>
+                                        <li><a href="" data-toggle="3">Браслеты</a></li>
+                                        <li><a href="" data-toggle="32">Визитницы</a></li>
+                                        <li><a href="" data-toggle="33">Ключицы</a></li>
+                                        <li><a href="" data-toggle="34">Обложки для документов</a></li>
+                                        <li><a href="" data-toggle="35">Амулеты в кошельки</a></li>
+                                        <li><a href="" data-toggle="36">Зонт</a></li>
+                                    </ul>
+                                    <div class="header__navigation-page-links-img img-3"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                 <div class="header__navigation-item">
+                <div class="header__navigation-item">
                     <a href="">Распродажа</a>
                 </div>
 
-                 <div class="header__navigation-item">
+                <div class="header__navigation-item">
                     <a href="">Акции</a>
                 </div>
 
@@ -217,7 +1831,7 @@
                 <p class="main-title">Контакты</p>
             </div>
             <div class="col-sm-4 col-xs-12">
-               <div class="contact__info">
+                <div class="contact__info">
                     <p>Интернет-магазин</p>
                     <div class="contact__phones">
                         <a href="tel:(095) 00-00-534">(095) 00-00-534</a>
@@ -236,13 +1850,14 @@
                     <div class="contact__scheduel">
                         <p>Пн.- Вс. 09:00-18:00</p>
                     </div>
-               </div>
-               <div class="contact__select">
-                   <p>Магазины “Мир дубленок и кожи”</p>
-                   <div class="panel-group" id="contact__accordion">                    
-                        <div>
+                </div>
+                <div class="contact__select">
+                    <p>Магазины “Мир дубленок и кожи”</p>
+                    <div class="panel-group" id="contact__accordion">
+                        <div class="panel">
                             <h4 class="contact-accordion__title accordion__title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#contact-accordionOne">Харьков</a>
+                                <a class="collapsed" data-toggle="collapse" data-parent="#contact__accordion"
+                                   href="#contact-accordionOne">Харьков</a>
                             </h4>
                             <div id="contact-accordionOne" class="contact-accordion__collapse collapse">
                                 <div class="contact-accordion__body">
@@ -259,9 +1874,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <div class="panel">
                             <h4 class="contact-accordion__title accordion__title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#contact-accordionTwo">Киев</a>
+                                <a class="collapsed" data-toggle="collapse" data-parent="#contact__accordion"
+                                   href="#contact-accordionTwo">Киев</a>
                             </h4>
                             <div id="contact-accordionTwo" class="contact-accordion__collapse collapse">
                                 <div class="contact-accordion__body">
@@ -274,9 +1890,10 @@
                                 </div>
                             </div>
                         </div>
-                         <div>
+                        <div class="panel">
                             <h4 class="contact-accordion__title accordion__title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#contact-accordionThree">Краматорск</a>
+                                <a class="collapsed" data-toggle="collapse" data-parent="#contact__accordion"
+                                   href="#contact-accordionThree">Краматорск</a>
                             </h4>
                             <div id="contact-accordionThree" class="contact-accordion__collapse collapse">
                                 <div class="contact-accordion__body">
@@ -286,9 +1903,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <div class="panel">
                             <h4 class="contact-accordion__title accordion__title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#contact-accordionFour">Житомир</a>
+                                <a class="collapsed" data-toggle="collapse" data-parent="#contact__accordion"
+                                   href="#contact-accordionFour">Житомир</a>
                             </h4>
                             <div id="contact-accordionFour" class="contact-accordion__collapse collapse">
                                 <div class="contact-accordion__body">
@@ -299,140 +1917,305 @@
                             </div>
                         </div>
                     </div>
-               </div>
+                </div>
             </div>
             <div class="col-sm-8 col-xs-12">
                 <div class="contact__map-info">
                     <p>Выберите наш ближайший магазин</p>
-                    <span>* Выберите город и район</span>
+                    <span>* Выберите город и магазин</span>
                     <div class="contact__select-wrp">
-                        <select class="contact__map-select chosen-select" name="" id="">
-                            <option selected="selected"><a href="">Харьков</a></option>
-                            <option><a href="">Киев</a> </option>
-                            <option><a href="">Краматорск</a></option>
-                            <option><a href="">Житомир</a></option>
+                        <select class="contact__map-select chosen-select hidden" id="contacts_city">
+                            <option value="#ckh" selected="selected">Харьков</option>
+                            <option value="#cky">Киев</option>
+                            <option value="#ckr">Краматорск</option>
+                            <option value="#cgy">Житомир</option>
                         </select>
-                        <select class="contact__map-select chosen-select" name="" id="">
-                            <option selected="selected"><a href="">Шевченковский</a></option>
-                            <option><a href="">Киевский</a> </option>
-                        </select>
+                        <div class="shops" id="ckh">
+                            <select class="contact__map-select chosen-select contacts-shop hiddenp">
+                                <option value="50.000095,36.243312">ул. Пушкинская, 54</option>
+                                <option value="50.000577,36.218822">ул. Клочковская, 67</option>
+                                <option value="50.034596,36.223379">ул. 23 Августа, 32/20</option>
+                                <option value="50.026820,36.330723">ТЦ «Дафи», 2 эт., ул. Героев Труда, 9</option>
+                                <option value="49.964454,36.319445">ТЦ «Velta City», 1 эт., пр. Петра Григоренка, 2/146</option>
+                                <option value="49.966337,36.323414">г. Харьков, «Дом кожи», ул. Рождественская, 24, 1 эт.</option>
+                                <option value="49.995748,36.339374">ТРК «Украина», 2 уровень, пр. Тракторостроителей, 59/56</option>
+                                <option value="49.943284,36.301829">ТЦ «Класс», 1 и 2 эт., пр. Героев Сталинграда, 136/8</option>
+                                <option value="49.945137,36.261771">ТРЦ «SUN MALL», 2 эт., пр. Гагарина, 181</option>
+                            </select>
+                        </div>
+                        <div class="shops hidden" id="cky">
+                            <select class="contact__map-select chosen-select contacts-shop hidden">
+                                <option value="50.445071,30.444023">ТЦ «Аркадия», 1 эт., ул. Борщаговская, 154</option>
+                                <option value="50.484724,30.595038">ТРЦ «Квадрат», 1 эт., бульвар Перова, 36</option>
+                                <option value="50.428985,30.356179">ТРК «Променада Парк», 1 эт., ул. Большая окружная, 4</option>
+                                <option value="50.500915,30.496803">ТРЦ «Метрополис», 3 эт., ул. Малиновского, 12</option>
+                            </select>
+                        </div>
+                        <div class="shops hidden" id="ckr">
+                            <select class="contact__map-select chosen-select contacts-shop hidden">
+                                <option value="48.726925,37.596603">ТЦ «Аврора», 1 эт., ул. Парковая, 18</option>
+                            </select>
+                        </div>
+                        <div class="shops hidden" id="cgy">
+                            <select class="contact__map-select chosen-select contacts-shop hidden">
+                                <option value="50.266235,28.685401">ТРЦ «Глобал UA», 1 эт., ул. Киевская, 77</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC96SDGLoCVZnudpRXVacFABY750-UHhSc"></script>
                 <script type="text/javascript">
                     google.maps.event.addDomListener(window, 'load', init);
+
                     function init() {
                         var mapOptions = {
                             zoom: 17,
-                            scrollwheel: false,
+                            // scrollwheel: false,
                             center: new google.maps.LatLng(50.034694, 36.223394)
                         };
 
-                        // Get the HTML DOM element that will contain your map
-                        // We are using a div with id="map" seen below in the <body>
                         var mapElement = document.getElementById('map');
 
-                        // Create the Google Map using our element and options defined above
-                        var map = new google.maps.Map(mapElement, mapOptions);
+                        window.map = new google.maps.Map(mapElement, mapOptions);
 
-                        var image = new google.maps.MarkerImage('http://localhost:88/assets/static/png/251_a4ee53a6d77180c87fafeeddf5e9be97.png',
+                        var image = new google.maps.MarkerImage('data:image/png;base64,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',
                             new google.maps.Size(66, 85),
-                            new google.maps.Point(0,0),
+                            new google.maps.Point(0, 0),
                             new google.maps.Point(26, 66));
-                        // Let's also add a marker while we're at it
+
+
+                        // var marker = new google.maps.Marker({
+                        //     position: new google.maps.LatLng(50.034694, 36.223394),
+                        //     map: map,
+                        //     icon: image
+                        // });
+
+                        var pos1 = new google.maps.LatLng(50.000095, 36.243312);
                         var marker = new google.maps.Marker({
-                            position: new google.maps.LatLng(50.034694, 36.223394),
+                            position: pos1,
                             map: map,
-                            // title: 'Tyfli',
-                            icon: image
+                            icon: image,
+                            title: 'г. Харьков, ул. Пушкинская, 54'
+                        });
+                        var pos2 = new google.maps.LatLng(50.000577, 36.218822);
+                        var marker = new google.maps.Marker({
+                            position: pos2,
+                            map: map,
+                            icon: image,
+                            title: 'г. Харьков, ул. Клочковская, 67'
+                        });
+                        var pos3 = new google.maps.LatLng(50.034596, 36.223379);
+                        var marker = new google.maps.Marker({
+                            position: pos3,
+                            map: map,
+                            icon: image,
+                            title: 'г. Харьков, ул. 23 Августа, 32/20'
+                        });
+                        var pos5 = new google.maps.LatLng(50.026820, 36.330723);
+                        var marker = new google.maps.Marker({
+                            position: pos5,
+                            map: map,
+                            icon: image,
+                            title: 'г. Харьков, ТРЦ «Дафи», 2 эт., ул. Героев Труда, 9'
+                        });
+                        var pos6 = new google.maps.LatLng(49.964454, 36.319445);
+                        var marker = new google.maps.Marker({
+                            position: pos6,
+                            map: map,
+                            icon: image,
+                            title: 'г. Харьков, ТЦ «Velta City», 1 эт., пр. Петра Григоренка, 2/146'
+                        });
+                        var pos7 = new google.maps.LatLng(49.995748, 36.339374);
+                        var marker = new google.maps.Marker({
+                            position: pos7,
+                            map: map,
+                            icon: image,
+                            title: 'г. Харьков, ТРК «Украина», 2 уровень, пр. Тракторостроителей, 59/56'
+                        });
+                        var pos8 = new google.maps.LatLng(49.943284,36.301829);
+                        var marker = new google.maps.Marker({
+                            position: pos8,
+                            map: map,
+                            icon: image,
+                            title: 'г. Харьков, ТЦ «Класс», 1 и 2 эт., пр. Героев Сталинграда, 136/8'
+                        });
+                        var pos15 = new google.maps.LatLng(49.945137, 36.261771);
+                        var marker = new google.maps.Marker({
+                            position: pos15,
+                            map: map,
+                            icon: image,
+                            title: 'ТРЦ «SUN MALL», 2 эт., пр. Гагарина, 181'
+                        });
+                        var pos9 = new google.maps.LatLng(49.966337, 36.323414);
+                        var marker = new google.maps.Marker({
+                            position: pos9,
+                            map: map,
+                            icon: image,
+                            title: 'г. Харьков, «Дом кожи», ул. Рождественская, 24, 1 эт.'
+                        });
+                        var pos10 = new google.maps.LatLng(49.971989, 36.304655);
+                        var marker = new google.maps.Marker({
+                            position: pos10,
+                            map: map,
+                            icon: image,
+                            title: 'г. Харьков, «Дом кожи», ТОЦ «Сан Сити»,  1 эт., пр. Московский, 199-А.'
+                        });
+                        var pos11 = new google.maps.LatLng(50.445071, 30.444023);
+                        var marker = new google.maps.Marker({
+                            position: pos11,
+                            map: map,
+                            icon: image,
+                            title: 'г. Киев, ТЦ «Аркадия», 1 эт., ул. Борщаговская, 154'
+                        });
+                        var pos12 = new google.maps.LatLng(50.484724, 30.595038);
+                        var marker = new google.maps.Marker({
+                            position: pos12,
+                            map: map,
+                            icon: image,
+                            title: 'г. Киев, ТРЦ «Квадрат», 1 эт., бульвар Перова, 36'
+                        });
+                        var pos13 = new google.maps.LatLng(50.428985, 30.356179);
+                        var marker = new google.maps.Marker({
+                            position: pos13,
+                            map: map,
+                            icon: image,
+                            title: 'г. Киев, ТРК «Променада Парк», 1 эт., ул. Большая окружная, 4'
+                        });
+                        var pos14 = new google.maps.LatLng(50.500915, 30.496803);
+                        var marker = new google.maps.Marker({
+                            position: pos14,
+                            map: map,
+                            icon: image,
+                            title: 'г. Киев, ТРЦ «Метрополис», 3 эт., ул. Малиновского, 12'
+                        });
+                        var pos21 = new google.maps.LatLng(48.726925, 37.596603);
+                        var marker = new google.maps.Marker({
+                            position: pos21,
+                            map: map,
+                            icon: image,
+                            title: 'г. Краматорск, ТЦ «Аврора», 1 эт., ул. Парковая, 18'
+                        });
+                        var pos31 = new google.maps.LatLng(50.266235, 28.685401);
+                        var marker = new google.maps.Marker({
+                            position: pos31,
+                            map: map,
+                            icon: image,
+                            title: 'г. Житомир, ТРЦ «Глобал UA», 1 эт., ул. Киевская, 77'
                         });
                     }
                 </script>
-                <div class="map" id="map"></div> 
+                <div class="map" id="map"></div>
             </div>
         </div>
     </div>
 </section>
 
 <footer class="footer">
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-4 col-sm-5">
-            <p class="footer__title">Контакты</p>
-            <div class="footer__contact">
-                <div class="footer__contact-phones">
-                    <img src="../../images/icons/2.png" alt="">
-                    <ul class="footer__contact-list footer-list">
-                        <li>(050) 162 08 88</li>
-                        <li>(067) 800 10 77</li>
-                        <li>(044) 333 71 09</li>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-sm-5">
+                <p class="footer__title">Контакты</p>
+                <div class="footer__contact">
+                    <div class="footer__contact-phones">
+                        <img src="../../images/icons/2.png" alt="">
+                        <ul class="footer__contact-list footer-list">
+                            <li>(050) 162 08 88</li>
+                            <li>(067) 800 10 77</li>
+                            <li>(044) 333 71 09</li>
+                        </ul>
+                    </div>
+                    <ul class="footer__contact-mail footer-list">
+                        <li><img src="../../images/icons/7.png" alt="">mailmdk@gmail.com</li>
+                        <li><img src="../../images/icons/8.png" alt=""><a href="">Напишите нам</a></li>
                     </ul>
                 </div>
-                <ul class="footer__contact-mail footer-list">
-                    <li><img src="../../images/icons/7.png" alt="">mailmdk@gmail.com</li>
-                    <li><img src="../../images/icons/8.png" alt=""><a href="">Напишите нам</a></li>
+                <ul class="footer__contact-address footer-list">
+                    <li><img src="../../images/icons/6.png"</li>
+                    <li>ТЦ «Дафи», 2 эт., ул. Героев Труда, 9</li>
                 </ul>
             </div>
-            <ul class="footer__contact-address footer-list">
-                <li><img src="../../images/icons/6.png"</li>
-                <li>ТЦ «Дафи», 2 эт., ул. Героев Труда, 9</li>
-            </ul>
+            <div class="col-md-offset-1 col-md-3 col-sm-3">
+                <p class="footer__title">Помощь</p>
+                <ul class="footer__links">
+                    <li><a href="#">Условия доставки</a></li>
+                    <li><a href="#">Условия оплаты</a></li>
+                    <li><a href="#">Гарантия</a></li>
+                    <li><a href="#">Как применить промокод</a></li>
+                    <li><a href="#">Вернуть товар. Инструкция</a></li>
+                    <li><a href="#"> Отследить посылку</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-sm-2">
+                <p class="footer__title">Мой кабинет</p>
+                <ul class="footer__links">
+                    <li><a href="#">Личный Кабинет</a></li>
+                    <li><a href="#">История заказов</a></li>
+                    <li><a href="#">Избранное</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-sm-2">
+                <p class="footer__title">Партнерам</p>
+                <ul class="footer__links">
+                    <li><a href="#">Оптовый сайт</a></li>
+                    <li><a href="#">Дропшиппинг</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="col-md-offset-1 col-md-3 col-sm-3">
-            <p class="footer__title">Помощь</p>
-            <ul class="footer__links">
-                <li><a href="#">Условия доставки</a></li>
-                <li><a href="#">Условия оплаты</a></li>
-                <li><a href="#">Гарантия</a></li>
-                <li><a href="#">Как применить промокод</a></li>
-                <li><a href="#">Вернуть товар. Инструкция</a></li>
-                <li><a href="#"> Отследить посылку</a></li>
-            </ul>
-        </div>
-        <div class="col-md-2 col-sm-2">
-            <p class="footer__title">Мой кабинет</p>
-            <ul class="footer__links">
-                <li><a href="#">Личный Кабинет</a></li>   
-                <li><a href="#">История заказов</a></li>
-                <li><a href="#">Избранное</a></li>
-            </ul>
-        </div>
-        <div class="col-md-2 col-sm-2">
-            <p class="footer__title">Партнерам</p>
-            <ul class="footer__links">
-                <li><a href="#">Оптовый сайт</a></li>   
-                <li><a href="#">Дропшиппинг</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="row footer-row">
-        <div class="col-md-5 col-sm-4">
-            <ul class="footer__social">
-                <li><img src="../../images/icons/9.png" alt="" srcset=""></li>
-                <li><img src="../../images/icons/10.png" alt="" srcset=""></li>
-                <li><img src="../../images/icons/11.png" alt="" srcset=""></li>
-                <li><img src="../../images/icons/12.png" alt="" srcset=""></li>
-            </ul>
-        </div>
-        <div class="col-md-offset-2 col-md-3 col-sm-offset-1 col-sm-4">
-            <ul class="footer-delivery-list footer-list">
-                <li><img src="../../images/icons/13.png" alt=""></li>
-                <li> Бесплатная доставка:</li>
-                <li><img src="../../images/icons/np.png" alt=""></li>
-            </ul>
-        </div>
-        <div class="col-md-2 col-sm-3">
-            <ul class="footer-pay-list">
-                <li>
-                    <img src="../../images/icons/mc.png" alt="">
-                </li>
-                <li>
-                    <img src="../../images/icons/visa.png" alt="">
-                </li>
-            </ul>
+        <div class="row footer-row">
+            <div class="col-md-5 col-sm-4">
+                <ul class="footer__social">
+                    <li><img src="../../images/icons/9.png" alt="" srcset=""></li>
+                    <li><img src="../../images/icons/10.png" alt="" srcset=""></li>
+                    <li><img src="../../images/icons/11.png" alt="" srcset=""></li>
+                    <li><img src="../../images/icons/12.png" alt="" srcset=""></li>
+                </ul>
+            </div>
+            <div class="col-md-offset-2 col-md-3 col-sm-offset-1 col-sm-4">
+                <ul class="footer-delivery-list footer-list">
+                    <li><img src="../../images/icons/13.png" alt=""></li>
+                    <li> Бесплатная доставка:</li>
+                    <li><img src="../../images/icons/np.png" alt=""></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-sm-3">
+                <ul class="footer-pay-list">
+                    <li>
+                        <img src="../../images/icons/mc.png" alt="">
+                    </li>
+                    <li>
+                        <img src="../../images/icons/visa.png" alt="">
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
 </footer>
+<!-- Optimized loading JS Start -->
+<script>var scr = {
+    "scripts": [
+        {"src": "/js/app.js", "async": false}
+    ]
+};
+!function (t, n, r) {
+    "use strict";
+    var c = function (t) {
+        if ("[object Array]" !== Object.prototype.toString.call(t)) return !1;
+        for (var r = 0; r < t.length; r++) {
+            var c = n.createElement("script"), e = t[r];
+            c.src = e.src, c.async = e.async, n.body.appendChild(c)
+        }
+        return !0
+    };
+    t.addEventListener ? t.addEventListener("load", function () {
+        c(r.scripts);
+    }, !1) : t.attachEvent ? t.attachEvent("onload", function () {
+        c(r.scripts)
+    }) : t.onload = function () {
+        c(r.scripts)
+    }
+}(window, document, scr);
+</script>
+<!-- Optimized loading JS End -->
+
 </body>
 </html>

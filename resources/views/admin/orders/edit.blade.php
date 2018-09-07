@@ -75,7 +75,13 @@
                                 </thead>
                                 <tr>
                                     <td>Покупатель</td>
-                                    <td>{!! $order->user->name !!}</td>
+                                    <td>
+                                        @if($order->user_id)
+                                            <a href="/admin/users/edit/{{ $order->user_id }}">{!! $order->user->name !!}</a>
+                                        @else
+                                            {!! $order->user->name !!}
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Телефон</td>
