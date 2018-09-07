@@ -34,7 +34,7 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <div class="row">
-                                <label class="col-sm-2 text-right control-label">Имя</label>
+                                <label class="col-sm-2 text-right control-label">ФИО</label>
                                 <div class="form-element col-sm-10">
                                     <input type="text" class="form-control" name="first_name" value="{!! old('first_name') ? old('first_name') : $user->first_name !!}" />
                                     @if($errors->has('first_name'))
@@ -44,21 +44,21 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="row">
-                                <label class="col-sm-2 text-right control-label">Фамилия</label>
-                                <div class="form-element col-sm-10">
-                                    <input type="text" class="form-control" name="last_name" value="{!! old('last_name') ? old('last_name') : $user->last_name !!}" />
-                                    @if($errors->has('last_name'))
-                                        <p class="warning" role="alert">{!! $errors->first('last_name',':message') !!}</p>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
+                        {{--<div class="form-group">--}}
+                            {{--<div class="row">--}}
+                                {{--<label class="col-sm-2 text-right control-label">Фамилия</label>--}}
+                                {{--<div class="form-element col-sm-10">--}}
+                                    {{--<input type="text" class="form-control" name="last_name" value="{!! old('last_name') ? old('last_name') : $user->last_name !!}" />--}}
+                                    {{--@if($errors->has('last_name'))--}}
+                                        {{--<p class="warning" role="alert">{!! $errors->first('last_name',':message') !!}</p>--}}
+                                    {{--@endif--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
 
                         <div class="form-group">
                             <div class="row">
-                                <label class="col-sm-2 text-right control-label">Почта</label>
+                                <label class="col-sm-2 text-right control-label">Основная почта</label>
                                 <div class="form-element col-sm-10">
                                     <input type="text" class="form-control" name="email" value="{!! old('email') ? old('email') : $user->email !!}" />
                                     @if($errors->has('email'))
@@ -70,11 +70,12 @@
 
                         <div class="form-group">
                             <div class="row">
-                                <label class="col-sm-2 text-right control-label">Телефон</label>
+                                <label class="col-sm-2 text-right">Телефоны</label>
                                 <div class="form-element col-sm-10">
-                                    <input type="text" class="form-control" name="phone" value="{!! old('phone') ? old('phone') : empty($user->user_data) ? '' : $user->user_data->phone !!}" />
-                                    @if($errors->has('phone'))
-                                        <p class="warning" role="alert">{!! $errors->first('phone',':message') !!}</p>
+                                    @if(is_object($user->user_data) && is_array($user->user_data->phones()))
+                                        @foreach($user->user_data->phones() as $phone)
+                                            <p>{{ $phone }}</p>
+                                        @endforeach
                                     @endif
                                 </div>
                             </div>
@@ -82,39 +83,42 @@
 
                         <div class="form-group">
                             <div class="row">
-                                <label class="col-sm-2 text-right control-label">Адрес</label>
+                                <label class="col-sm-2 text-right">Адреса</label>
                                 <div class="form-element col-sm-10">
-                                    <input type="text" class="form-control" name="adress" value="{!! old('adress') ? old('adress') : empty($user->user_data) ? '' : $user->user_data->adress !!}" />
-                                    @if($errors->has('adress'))
-                                        <p class="warning" role="alert">{!! $errors->first('adress',':message') !!}</p>
+                                    @if(is_object($user->user_data) && is_array($user->user_data->addresses()))
+                                        @foreach($user->user_data->addresses() as $address)
+                                            <p>{{ $address }}</p>
+                                        @endforeach
+                                    @else
+                                        <div class="cabinet__info">Нет адреса</div>
                                     @endif
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="row">
-                                <label class="col-sm-2 text-right control-label">Компания</label>
-                                <div class="form-element col-sm-10">
-                                    <input type="text" class="form-control" name="company" value="{!! old('company') ? old('company') : empty($user->user_data) ? '' : $user->user_data->company !!}" />
-                                    @if($errors->has('company'))
-                                        <p class="warning" role="alert">{!! $errors->first('company',':message') !!}</p>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
+                        {{--<div class="form-group">--}}
+                            {{--<div class="row">--}}
+                                {{--<label class="col-sm-2 text-right control-label">Компания</label>--}}
+                                {{--<div class="form-element col-sm-10">--}}
+                                    {{--<input type="text" class="form-control" name="company" value="{!! old('company') ? old('company') : empty($user->user_data) ? '' : $user->user_data->company !!}" />--}}
+                                    {{--@if($errors->has('company'))--}}
+                                        {{--<p class="warning" role="alert">{!! $errors->first('company',':message') !!}</p>--}}
+                                    {{--@endif--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
 
-                        <div class="form-group">
-                            <div class="row">
-                                <label class="col-sm-2 text-right control-label">Общая информация</label>
-                                <div class="form-element col-sm-10">
-                                    <input type="text" class="form-control" name="other_data" value="{!! old('other_data') ? old('other_data') : empty($user->user_data) ? '' : $user->user_data->other_data !!}" />
-                                    @if($errors->has('other_data'))
-                                        <p class="warning" role="alert">{!! $errors->first('other_data',':message') !!}</p>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
+                        {{--<div class="form-group">--}}
+                            {{--<div class="row">--}}
+                                {{--<label class="col-sm-2 text-right control-label">Общая информация</label>--}}
+                                {{--<div class="form-element col-sm-10">--}}
+                                    {{--<input type="text" class="form-control" name="other_data" value="{!! old('other_data') ? old('other_data') : empty($user->user_data) ? '' : $user->user_data->other_data !!}" />--}}
+                                    {{--@if($errors->has('other_data'))--}}
+                                        {{--<p class="warning" role="alert">{!! $errors->first('other_data',':message') !!}</p>--}}
+                                    {{--@endif--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
 
                         <div class="form-group">
                             <div class="row">

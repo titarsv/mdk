@@ -208,7 +208,13 @@ $(function() {
   // });
 
   $('.accordion__title').click(function() {
-    $(this).toggleClass('open');
+      var $this = $(this);
+      $this.parents('.panel-group').find('.accordion__title').removeClass('open');
+      if($this.find('a').hasClass('collapsed')){
+          $this.addClass('open');
+      }else{
+          $this.removeClass('open');
+      }
   });
 
   $('.cabinet__add-number').click(function() {
@@ -221,6 +227,22 @@ $(function() {
     $(this).prev().append( $( "<input type=\"text\" name=\"mail\" placeholder=\"ivanovivanivanych@gmail.com\" data-title=\"Email\">" ) )
   });
 
+  $('#contacts_city').change(function(){
+      var $this = $(this);
+      var parent = $this.parent();
+      parent.find('.shops').addClass('hidden');
+      $($(this).val()).removeClass('hidden').find('select').change();
+  });
+
+    $('.contacts-shop').change(function () {
+        var loc = $(this).val().split(',');
+        var center = new google.maps.LatLng(loc[0], loc[1]);
+        window.map.panTo(center);
+    });
+
+    $('.cabinet-number-close').click(function () {
+        $(this).parents('.cabinet-number').remove();
+    });
 });
 
 require('./custom.js');
