@@ -30,14 +30,7 @@
                             {!! html_entity_decode($article->text) !!}
                         </div>
                     </div>
-                    <div class="article-nav">
-                        @if($prev)
-                            <a href="{{env('APP_URL')}}/news/{!!$prev->url_alias !!}" class="article-prev">← Предыдущая статья</a>
-                        @endif
-                        @if($next)
-                            <a href="{{env('APP_URL')}}/news/{!!$next->url_alias !!}" class="article-next">Следующая статья →</a>
-                        @endif
-                    </div>
+
                 </div>
                 <div class="col-sm-4 col-xs-12">
                     <form class="subscribe__form ajax_form"
@@ -76,6 +69,16 @@
                         </div>
                     @endif
                 </div>
+               <div class="col-sm-12 col-xs-12">
+                   <div class="article-nav">
+                       @if($prev)
+                           <a href="{{env('APP_URL')}}/news/{!!$prev->url_alias !!}" class="article-prev">← Предыдущая статья</a>
+                       @endif
+                       @if($next)
+                           <a href="{{env('APP_URL')}}/news/{!!$next->url_alias !!}" class="article-next">Следующая статья →</a>
+                       @endif
+                   </div>
+               </div>
             </div>
         </div>
     </section>

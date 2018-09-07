@@ -1,6 +1,5 @@
 .footer{
-    padding: 15px;
-    margin-top: 30px;
+    padding: 15px 0;
 }
 .side-border{
   position: relative;
@@ -192,5 +191,65 @@
   align-items: center;
   @include bp (sm){
     display: block;
+  }
+}
+
+.subscribe-form{
+  padding: 10px 0;
+  border-top: 1px solid #c0c0c0;
+  border-bottom: 1px solid #c0c0c0;
+  margin-bottom: 20px;
+  p{
+    font-size: 18px;
+    text-align: center;
+    margin: 5px 0 10px;
+    color: #484848;
+    text-transform: uppercase;
+  }
+  div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include bp (xs){
+      flex-direction: column;
+    }
+  }
+  input{
+    outline: none;
+    font-size: 16px;
+    font-family: 'FuturaBookC';
+    padding: 8px 5px;
+    width: 200px;
+    color: #484848;
+    text-align: center;
+    margin: 0 10px;
+    border: 1px solid #484848;
+    transition: .3s;
+    &::placeholder{
+      font-size: 16px;
+      color: #484848
+    }
+    @include bp (sm){
+      width: 100%;
+    }
+  }
+  button{
+    text-align: center;
+    width: 200px;
+    padding: 10px 0;
+    color: #fff;
+    font-size: 14px;
+    background: #f66070;
+    border: none;
+    outline: none;
+    margin-bottom: 10px;
+    margin-top: 11px;
+    font-family: 'FuturaDemiC';
+    &:hover{
+      background: #e95362;
+    }
+    @include bp (sm){
+      width: 100%;
+    }
   }
 }

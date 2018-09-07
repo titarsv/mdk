@@ -310,3 +310,15 @@
      padding: 7px 5px;
    }
  }
+
+ .product-card__like{
+   cursor: pointer;
+   margin: 5px 0;
+   width: 25px;
+   height: 25px;
+   display: block;
+   border: none;
+   font-size: 0;
+   background: url('../images/heart1.png') center no-repeat;
+   background-size: contain;
+ }
