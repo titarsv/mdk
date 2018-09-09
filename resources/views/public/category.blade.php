@@ -49,7 +49,7 @@
 @section('content')
 
     <section>
-        <div class="container-fluid">
+        <div class="container-fluid category-padding">
             <div class="row">
                 <div class="col-sm-12 hidden-xs">
                     {!! Breadcrumbs::render('categories', $category) !!}

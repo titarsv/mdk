@@ -5,7 +5,7 @@
 @section('content')
 
     <section>
-        <div class="container-fluid delivery-container" id="order_cart_content">
+        <div class="container-fluid delivery-container category-padding" id="order_cart_content">
             <div class="row">
                 <div class="col-sm-12 hidden-xs">
                     {!! Breadcrumbs::render('cart') !!}

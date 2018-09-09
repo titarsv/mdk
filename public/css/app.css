@@ -3077,7 +3077,18 @@ table {
 
 @media only screen and (max-width: 767px) {
   .header-inform-container {
-    display: block;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .header-inform-container {
+    width: 100vw;
   }
 }
 
@@ -3085,6 +3096,7 @@ table {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  padding: 0;
 }
 
 .underline {
@@ -3131,6 +3143,11 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-left: 1px solid rgba(212, 214, 211, 0.51);
+  border-right: 1px solid rgba(212, 214, 211, 0.51);
   font-family: 'FuturaBookC';
   font-size: 14px;
 }
@@ -3138,6 +3155,12 @@ table {
 @media only screen and (max-width: 1199px) {
   .header__phone {
     font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .header__phone {
+    border: none;
   }
 }
 
@@ -3156,6 +3179,10 @@ table {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 
@@ -3193,9 +3220,9 @@ table {
   width: 140px;
 }
 
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 767px) {
   .header__logo img {
-    width: 250px;
+    width: 100%;
   }
 }
 
@@ -3222,15 +3249,22 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding-left: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.header__searcher-container {
+  background: #d4d6d357;
+  padding: 10px 0;
+  border-top: 1px solid #D8D8D8;
+  -webkit-box-shadow: 0 10px 20px -10px #b3b3b3;
+          box-shadow: 0 10px 20px -10px #b3b3b3;
 }
 
 .header__searcher {
   position: relative;
-  background-color: #fbfbfb;
+  width: 300px;
 }
 
 .header__searcher::after {
@@ -3256,7 +3290,13 @@ table {
   z-index: 100;
 }
 
-.header__searcher-input {
+@media only screen and (max-width: 480px) {
+  .header__searcher {
+    width: 100%;
+  }
+}
+
+.header__searcher input {
   outline: none;
   border: none;
   padding: 7px;
@@ -3266,24 +3306,31 @@ table {
   position: relative;
   font-family: 'FuturaDemiC';
   font-size: 12px;
-  width: 150px;
+  width: 300px;
   margin-right: 7px;
+  border-radius: 15px;
 }
 
-.header__searcher-input::-webkit-input-placeholder {
+.header__searcher input::-webkit-input-placeholder {
   color: #454545;
 }
 
-.header__searcher-input:-ms-input-placeholder {
+.header__searcher input:-ms-input-placeholder {
   color: #454545;
 }
 
-.header__searcher-input::-ms-input-placeholder {
+.header__searcher input::-ms-input-placeholder {
   color: #454545;
 }
 
-.header__searcher-input::placeholder {
+.header__searcher input::placeholder {
   color: #454545;
+}
+
+@media only screen and (max-width: 480px) {
+  .header__searcher input {
+    width: 100%;
+  }
 }
 
 .header__like {
@@ -3591,11 +3638,13 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   text-transform: uppercase;
   color: #000;
   font-size: 13px;
   font-family: 'FuturaDemiC';
-  padding: 10px 5px 10px 0;
 }
 
 .burger-menu {
@@ -3755,7 +3804,7 @@ table {
 }
 
 .footer {
-  padding: 15px 0;
+  padding: 15px;
 }
 
 .side-border {
@@ -4563,11 +4612,11 @@ table {
 
 .product-card__title {
   font-family: 'FuturaMediumC';
-  font-size: 18px;
+  font-size: 16px;
   color: #484848;
   text-align: center;
   padding: 5px 0;
-  height: 50px;
+  height: 45px;
 }
 
 @media only screen and (max-width: 991px) {
@@ -4579,21 +4628,15 @@ table {
 .product-card__price {
   font-family: 'FuturaDemiC';
   color: #484848;
-  font-size: 21px;
+  font-size: 14px;
   padding: 5px 0 13px;
   text-align: center;
-}
-
-@media only screen and (max-width: 1199px) {
-  .product-card__price {
-    font-size: 18px;
-  }
 }
 
 @media only screen and (max-width: 480px) {
   .product-card__price {
     padding: 5px;
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
@@ -4604,17 +4647,17 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 @media only screen and (max-width: 767px) {
   .product-card__btn {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
     padding: 5px;
   }
 }
@@ -4645,7 +4688,7 @@ table {
 }
 
 .product-card__btn-buy {
-  width: 300px;
+  width: 100%;
   font-size: 16px;
   font-family: 'FuturaDemiC';
   padding: 15px 5px;
@@ -4653,7 +4696,7 @@ table {
   color: #5a5a5a;
   text-align: center;
   background-color: #fff;
-  margin-left: 5px;
+  margin-top: 5px;
 }
 
 .product-card__btn-buy:hover {
@@ -4760,11 +4803,11 @@ table {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 5px 0 10px;
+  padding: 5px 0 13px;
 }
 
 .old-price {
-  font-size: 18px;
+  font-size: 12px;
   text-decoration: line-through;
   font-family: 'FuturaDemiC';
   color: #484848;
@@ -4772,13 +4815,13 @@ table {
 }
 
 .new-price {
-  font-size: 24px;
+  font-size: 14px;
   font-family: 'FuturaDemiC';
   color: #e84859;
 }
 
 .section-5 {
-  padding-bottom: 30px;
+  padding: 0 20px 30px;
 }
 
 .collection-banner {
@@ -4805,7 +4848,7 @@ table {
 }
 
 .section-6 {
-  padding-bottom: 30px;
+  padding: 0 20px 30px;
 }
 
 .about-title {
@@ -9018,6 +9061,16 @@ table {
   border: none;
   outline: none;
   margin: 10px 0;
+}
+
+.category-padding {
+  padding: 0 50px;
+}
+
+@media only screen and (max-width: 767px) {
+  .category-padding {
+    padding: 0;
+  }
 }
 
 .thanks__title {

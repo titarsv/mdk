@@ -82,10 +82,10 @@
     @else
         <p class="product-card__price">{{ number_format($product->price, 2, '.', ' ') }} грн</p>
     @endif
-    {{--<div class="product-card__btn">--}}
-        {{--<a href="{{env('APP_URL')}}/product/{{ $product->url_alias }}"><p class="product-card__btn-more">Подробнее</p></a>--}}
-        {{--<button class="product-card__btn-buy popup-btn" data-mfp-src="#oneClick_{{ $product->id }}">Купить в 1 клик</button>--}}
-    {{--</div>--}}
+    <div class="product-card__btn">
+        <a href="{{env('APP_URL')}}/product/{{ $product->url_alias }}"><p class="product-card__btn-more">Подробнее</p></a>
+        <button class="product-card__btn-buy popup-btn" data-mfp-src="#oneClick_{{ $product->id }}">Купить в 1 клик</button>
+    </div>
     <div class="hidden">
         <div id="oneClick_{{ $product->id }}" class="view-popup">
             <div class="container">

@@ -430,3 +430,10 @@
     outline: none;
     margin: 10px 0;
 }
+
+.category-padding{
+  padding: 0 50px;
+  @include bp (sm){
+    padding: 0;
+  }
+}
