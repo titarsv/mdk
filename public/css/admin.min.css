@@ -9541,8 +9541,7 @@ main {
 
 #sidebar .logo img {
   display: block;
-  max-width: 100%;
-  filter: invert(1); }
+  max-width: 100%; }
 
 .navbar {
   background-color: #2d3e50;

@@ -94,31 +94,31 @@ class UserController extends Controller
 //
 //        $wish_list = Wishlist::where('user_id',$user->id)->get();
 
-//        $newpost = new Newpost();
-//        $regions = $newpost->getRegions();
-//
-//        $address = $user->user_data->address();
-//        $cities = [];
-//        $departments = [];
-//        if(!empty($address)){
-//            if(!empty($address->npregion)){
-//                $region = $newpost->getRegionRef($address->npregion);
-//                $cities = $newpost->getCities($region->region_id);
-//            }
-//            if(!empty($address->npcity)){
-//                $city = $newpost->getCityRef($address->npcity);
-//                $departments = $newpost->getWarehouses($city->city_id);
-//            }
-//        }
+        $newpost = new Newpost();
+        $regions = $newpost->getRegions();
+
+        $address = $user->user_data->address();
+        $cities = [];
+        $departments = [];
+        if(!empty($address)){
+            if(!empty($address->npregion)){
+                $region = $newpost->getRegionRef($address->npregion);
+                $cities = $newpost->getCities($region->region_id);
+            }
+            if(!empty($address->npcity)){
+                $city = $newpost->getCityRef($address->npcity);
+                $departments = $newpost->getWarehouses($city->city_id);
+            }
+        }
 
         return view('users.index')->with('user', $user)
 //            ->with('orders', $orders)
-            ->with('user_data', $user->user_data);
+            ->with('user_data', $user->user_data)
 //            ->with('wish_list', $wish_list);
-//            ->with('address', $address)
-//            ->with('cities', $cities)
-//            ->with('departments', $departments)
-//            ->with('regions', $regions);
+            ->with('address', $address)
+            ->with('cities', $cities)
+            ->with('departments', $departments)
+            ->with('regions', $regions);
     }
     public function history()
     {
@@ -305,6 +305,11 @@ class UserController extends Controller
         $user = Sentinel::check();
         if ($user) {
             $user = User::find($user->id);
+//            $credentials = [
+//                'email'    => $user->email,
+//                'password' => $request->old_pass,
+//            ];
+//            $u = Sentinel::findByCredentials($credentials);
         }
 
         $rules = [
@@ -479,6 +484,17 @@ class UserController extends Controller
             return response()->json($validator);
         }
 
+        $address = json_encode([
+//            'city' => $request->city,
+//            'post_code' => $request->post_code,
+//            'street' => $request->street,
+//            'house' => $request->house,
+//            'flat' => $request->flat,
+            'npregion' => $request->npregion,
+            'npcity' => $request->npcity,
+            'npdepartment' => $request->npdepartment,
+        ], JSON_UNESCAPED_UNICODE);
+
 //        $name = explode(' ', $request->fio);
 
         $user->first_name = htmlspecialchars($request->fio);
@@ -488,7 +504,9 @@ class UserController extends Controller
         $user->user_data->phones = json_encode($request->phones);
         $user->user_data->login = $request->login;
         $user->user_data->user_birth = htmlspecialchars($request->d.'.'.$request->m.'.'.$request->Y);
-        $user->user_data->addresses = json_encode($request->addresses, JSON_UNESCAPED_UNICODE);
+//        $user->user_data->addresses = json_encode($request->addresses, JSON_UNESCAPED_UNICODE);
+        $user->user_data->address = $address;
+        $user->user_data->card = htmlspecialchars($request->card);
 
         $user->push();
 

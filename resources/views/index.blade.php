@@ -71,12 +71,12 @@
                     </li>
                     <li class="features-list__item col-md-4 col-sm-6 col-xs-12">
                         <div>
-                            <p class="features-list__item-title">Химчистка</p>
+                            <p class="features-list__item-title">Постгарантийное обслуживание</p>
                             <img src="/images/img-2.png" class="features-list__item-img" alt="">
                             <p class="features-list__item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                                 sed do eiusmod tempor incididunt ut labore et dolore
                                 magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip</p>
+                                exercitation ullamco laboris nisi</p>
                             <a href="javascript:void(0);">
                                 <p class="features-list__item-btn">Подробнее →</p>
                             </a>

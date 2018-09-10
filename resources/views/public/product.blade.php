@@ -674,90 +674,96 @@
                                     {{ csrf_field() }}
                                     <input type="hidden" name="product_id" value="{{ $product->id }}">
                                     <div class="partPay__img">
-                                        <img src="/images/mdk-credit.jpg" alt=""><img src="/images/pb-credit.jpg" alt="">
+                                        <img src="/images/mdk-credit.jpg" alt="" id="mdk_btn">
+                                        <img src="/images/pb-credit.jpg" alt="" id="prv_btn">
                                     </div>
-                                    <div class="partPay__form-wrp">
-                                        <div class="partPay__form">
-                                            <p class="hidden-xs">Сумма</p>
-                                            <fieldset class="partPay__credit-range-wrp">
-                                                <div class="partPay__credit-range price-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="{{ $product->price }}" data-max="{{ $product->price }}" data-min="{{ $product->price }}"></div>
-                                                <div class="partPay-inputs__inner">
-                                                    <p class="visible-xs-block">Сумма</p>
-                                                    <input type="text" name="price" class="partPaysliderValue val1" data-index="{{ $product->price }}" value="{{ $product->price }}" />
-                                                    <p class="visible-xs-block">Сумма</p>
-                                                </div>
-                                            </fieldset>
-                                            <p class="hidden-xs">Сумма</p>
+                                    <div id="mdk_credit">
+                                        <div class="partPay__form-wrp">
+                                            <div class="partPay__form">
+                                                <p class="hidden-xs">Сумма</p>
+                                                <fieldset class="partPay__credit-range-wrp">
+                                                    <div class="partPay__credit-range price-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="{{ $product->price }}" data-max="{{ $product->price }}" data-min="{{ $product->price }}"></div>
+                                                    <div class="partPay-inputs__inner">
+                                                        <p class="visible-xs-block">Сумма</p>
+                                                        <input type="text" name="price" class="partPaysliderValue val1" data-index="{{ $product->price }}" value="{{ $product->price }}" />
+                                                        <p class="visible-xs-block">Сумма</p>
+                                                    </div>
+                                                </fieldset>
+                                                <p class="hidden-xs">Сумма</p>
+                                            </div>
+                                            <div class="partPay__form">
+                                                <p class="hidden-xs">Первый взнос</p>
+                                                <fieldset class="partPay__credit-range-wrp">
+                                                    <div class="partPay__credit-range credit-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="20" data-max="100" data-min="20"></div>
+                                                    <div class="partPay-inputs__inner">
+                                                        <p class="visible-xs-block">Первый взнос</p>
+                                                        <input type="text" name="first_cash" class="partPaysliderValue val2" data-index="20" value="20" />
+                                                        <p class="visible-xs-block">%</p>
+                                                    </div>
+                                                </fieldset>
+                                                <p class="hidden-xs">%</p>
+                                            </div>
+                                            <div class="partPay__form">
+                                                <p class="hidden-xs">Cрок</p>
+                                                <fieldset class="partPay__credit-range-wrp">
+                                                    <div class="partPay__credit-range credit-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="1" data-max="5" data-min="1"></div>
+                                                    <div class="partPay-inputs__inner">
+                                                        <p class="visible-xs-block">Cрок</p>
+                                                        <input type="text" name="months" class="partPaysliderValue val3" data-index="1" value="1" />
+                                                        <p class="visible-xs-block">Месяцев</p>
+                                                    </div>
+                                                </fieldset>
+                                                <p class="hidden-xs">Месяцев</p>
+                                            </div>
+                                            <div class="partPay__form">
+                                                <p class="hidden-xs">Месячный платеж</p>
+                                                <fieldset class="partPay__credit-range-wrp">
+                                                    <div class="partPay__credit-range credit-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="0" data-max="10000" data-min="1000"></div>
+                                                    <div class="partPay-inputs__inner">
+                                                        <p class="visible-xs-block">Месячный платеж</p>
+                                                        <input type="text" name="for_month" class="partPaysliderValue val4" data-index="0" value="0" />
+                                                        <p class="visible-xs-block">Сумма</p>
+                                                    </div>
+                                                </fieldset>
+                                                <p class="hidden-xs">Сумма</p>
+                                            </div>
                                         </div>
-                                        <div class="partPay__form">
-                                            <p class="hidden-xs">Первый взнос</p>
-                                            <fieldset class="partPay__credit-range-wrp">
-                                                <div class="partPay__credit-range credit-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="20" data-max="100" data-min="20"></div>
-                                                <div class="partPay-inputs__inner">
-                                                    <p class="visible-xs-block">Первый взнос</p>
-                                                    <input type="text" name="first_cash" class="partPaysliderValue val2" data-index="20" value="20" />
-                                                    <p class="visible-xs-block">%</p>
+                                        <p class="partPay__total-title">Ваша сумма:</p>
+                                        <div class="partPay__total">
+                                            <p class="partPay__total-date">25.06.2018 ПОНЕДЕЛЬНИК</p>
+                                            <div class="partPay__total-item">
+                                                <p>Сумма:</p>
+                                                <div>
+                                                    <p>{{ number_format($product->price, 2, '.', ' ') }}</p>
+                                                    <span>грн</span>
                                                 </div>
-                                            </fieldset>
-                                            <p class="hidden-xs">%</p>
-                                        </div>
-                                        <div class="partPay__form">
-                                            <p class="hidden-xs">Cрок</p>
-                                            <fieldset class="partPay__credit-range-wrp">
-                                                <div class="partPay__credit-range credit-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="1" data-max="5" data-min="1"></div>
-                                                <div class="partPay-inputs__inner">
-                                                    <p class="visible-xs-block">Cрок</p>
-                                                    <input type="text" name="months" class="partPaysliderValue val3" data-index="1" value="1" />
-                                                    <p class="visible-xs-block">Месяцев</p>
+                                            </div>
+                                            <div class="partPay__total-item">
+                                                <p>Первый взнос:</p>
+                                                <div>
+                                                    <p>20</p>
+                                                    <span>%</span>
                                                 </div>
-                                            </fieldset>
-                                            <p class="hidden-xs">Месяцев</p>
-                                        </div>
-                                        <div class="partPay__form">
-                                            <p class="hidden-xs">Месячный платеж</p>
-                                            <fieldset class="partPay__credit-range-wrp">
-                                                <div class="partPay__credit-range credit-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value="0" data-max="10000" data-min="1000"></div>
-                                                <div class="partPay-inputs__inner">
-                                                    <p class="visible-xs-block">Месячный платеж</p>
-                                                    <input type="text" name="for_month" class="partPaysliderValue val4" data-index="0" value="0" />
-                                                    <p class="visible-xs-block">Сумма</p>
+                                            </div>
+                                            <div class="partPay__total-item">
+                                                <p>Срок:</p>
+                                                <div>
+                                                    <p>1</p>
+                                                    <span>мес.</span>
                                                 </div>
-                                            </fieldset>
-                                            <p class="hidden-xs">Сумма</p>
+                                            </div>
+                                            <div class="partPay__total-item sum">
+                                                <p>Оплата в месяц:</p>
+                                                <span class="partPay__total-item-sum">1 000 грн</span>
+                                            </div>
+                                            <div class="partPay__total-item sum">
+                                                <p>Всего:</p>
+                                                <span class="partPay__total-item-sum">{{ number_format($product->price, 2, '.', ' ') }} грн</span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <p class="partPay__total-title">Ваша сумма:</p>
-                                    <div class="partPay__total">
-                                        <p class="partPay__total-date">25.06.2018 ПОНЕДЕЛЬНИК</p>
-                                        <div class="partPay__total-item">
-                                            <p>Сумма:</p>
-                                            <div>
-                                                <p>{{ number_format($product->price, 2, '.', ' ') }}</p>
-                                                <span>грн</span>
-                                            </div>
-                                        </div>
-                                        <div class="partPay__total-item">
-                                            <p>Первый взнос:</p>
-                                            <div>
-                                                <p>20</p>
-                                                <span>%</span>
-                                            </div>
-                                        </div>
-                                        <div class="partPay__total-item">
-                                            <p>Срок:</p>
-                                            <div>
-                                                <p>1</p>
-                                                <span>мес.</span>
-                                            </div>
-                                        </div>
-                                        <div class="partPay__total-item sum">
-                                            <p>Оплата в месяц:</p>
-                                            <span class="partPay__total-item-sum">1 000 грн</span>
-                                        </div>
-                                        <div class="partPay__total-item sum">
-                                            <p>Всего:</p>
-                                            <span class="partPay__total-item-sum">{{ number_format($product->price, 2, '.', ' ') }} грн</span>
-                                        </div>
+                                    <div id="privat_credit" style="display: none">
+                                        <iframe src="https://ppcalc.privatbank.ua/pp_calculator/phys" frameborder="0" style="width: 100%; height: 500px;"></iframe>
                                     </div>
                                     <div class="partPay__bnt-wrp">
                                         <button type="submit" class="partPay__btn">Получить кредит</button>

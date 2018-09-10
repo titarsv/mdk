@@ -652,6 +652,34 @@ $(function() {
             }
         });
     });
+
+    $('.password-btn').click(function(event) {
+        event.preventDefault();
+        var data = {
+            old_pass: $('[name="old_pass"]').val(),
+            password: $('[name="pass"]').val(),
+            password_confirmation: $('[name="repass"]').val()
+        };
+
+        $.post('/user/updatepassword', data, function(response){
+            if(response.success){
+                swal('Сохранено', 'Данные успешно сохранениы!', 'success');
+            }else{
+                swal('Ошибка', 'Не удалось сохранить данные', 'error');
+            }
+            $('.password-edit').toggleClass('unactive');
+        });
+    });
+
+    $('#mdk_btn').click(function(){
+        $('#mdk_credit').show();
+        $('#privat_credit').hide();
+    });
+
+    $('#prv_btn').click(function(){
+        $('#privat_credit').show();
+        $('#mdk_credit').hide();
+    });
 });
 
 /**

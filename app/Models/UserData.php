@@ -27,9 +27,9 @@ class UserData extends Model
         return $this->belongsTo('App\Models\Image');
     }
 
-    public function addresses()
+    public function address()
     {
-        return json_decode($this->addresses);
+        return json_decode($this->address);
     }
 
     public function phones()

@@ -39,15 +39,15 @@
                     </div>
                 </div>
                 <div class="col-sm-9 col-xs-12">
-                    <form action="" class="my-order__form">
-                        <select class="chosen-select" name="" id="">
-                            <option value="0" selected="selected">Все заказы (15)</option>
-                            @foreach($orders as $order)
-                                <option value="{{ $order->id }}">Заказ № {{ $order->id }}</option>
-                            @endforeach
-                        </select>
-                        <button class="my-order-refresh-btn">Обновить статусы заказов</button>
-                    </form>
+                    {{--<form action="" class="my-order__form">--}}
+                        {{--<select class="chosen-select" name="" id="">--}}
+                            {{--<option value="0" selected="selected">Все заказы ({{ count($orders) }})</option>--}}
+                            {{--@foreach($orders as $order)--}}
+                                {{--<option value="{{ $order->id }}">Заказ № {{ $order->id }}</option>--}}
+                            {{--@endforeach--}}
+                        {{--</select>--}}
+                        {{--<button class="my-order-refresh-btn">Обновить статусы заказов</button>--}}
+                    {{--</form>--}}
                     <ul class="my-order__titles">
                         <li>№ заказа</li>
                         <li>Оформлен</li>

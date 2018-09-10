@@ -43,17 +43,19 @@
                 <div class="col-sm-9 col-xs-12">
                     <form action="" class="private-info-form">
                         <div class="cabinet__input-wrp">
-                            <p class="label">Дисконтная карта</p>
-                            <p class="card-number">0001 827</p>
+                            {{--<p class="label">Дисконтная карта</p>--}}
+                            {{--<p class="card-number">0001 827</p>--}}
+                            <label for="card" class="label">Дисконтная карта</label>
+                            <input type="text" name="card" id="card" value="{{ $user->user_data->card or '' }}">
                         </div>
-                        <div class="cabinet__input-wrp">
-                            <p class="label">Бонусные баллы</p>
-                            <p class="card-points">1 200</p>
-                        </div>
-                        <div class="cabinet__card-features">
-                            <button class="cabinet__card-refresh" type="button">Обновить</button>
-                            <button class="cabinet__card-info" type="button">Как списать баллы</button>
-                        </div>
+                        {{--<div class="cabinet__input-wrp">--}}
+                            {{--<p class="label">Бонусные баллы</p>--}}
+                            {{--<p class="card-points">1 200</p>--}}
+                        {{--</div>--}}
+                        {{--<div class="cabinet__card-features">--}}
+                            {{--<button class="cabinet__card-refresh" type="button">Обновить</button>--}}
+                            {{--<button class="cabinet__card-info" type="button">Как списать баллы</button>--}}
+                        {{--</div>--}}
                         <div class="cabinet__input-wrp">
                             <label for="fio" class="label">ФИО</label>
                             <input type="text" name="fio" id="fio" value="{{ $user->first_name }}">
@@ -98,24 +100,63 @@
                                 <p class="cabinet__add-number">Добавить еще один</p>
                             </div>
                         </div>
+
+                        {{--<div class="cabinet__input-wrp">--}}
+                            {{--<label for="" class="label">Адрес доставки</label>--}}
+                            {{--<div class="cabinet__address-wrp">--}}
+                                {{--<div class="cabinet-address">--}}
+                                    {{--@if(is_object($user->user_data) && is_array($user->user_data->addresses()))--}}
+                                        {{--@foreach($user->user_data->addresses() as $address)--}}
+                                            {{--<div class="cabinet-address">--}}
+                                                {{--<input type="hidden" name="addresses[]" value="{{ $address }}">--}}
+                                                {{--<p>{{ $address }}</p>--}}
+                                            {{--</div>--}}
+                                        {{--@endforeach--}}
+                                    {{--@else--}}
+                                        {{--<div class="cabinet__info">Нет адреса</div>--}}
+                                    {{--@endif--}}
+                                {{--</div>--}}
+                                {{--<p class="cabinet__add-address">Добавить адрес</p>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+
+
                         <div class="cabinet__input-wrp">
-                            <label for="" class="label">Адрес доставки</label>
-                            <div class="cabinet__address-wrp">
-                                <div class="cabinet-address">
-                                    @if(is_object($user->user_data) && is_array($user->user_data->addresses()))
-                                        @foreach($user->user_data->addresses() as $address)
-                                            <div class="cabinet-address">
-                                                <input type="hidden" name="addresses[]" value="{{ $address }}">
-                                                <p>{{ $address }}</p>
-                                            </div>
+                            <label for="" class="label">Отделение Новой Почты</label>
+                            <div class="cabinet__numbers-wrp">
+                                <div class="profile-data-item">
+                                    <h5 class="data-name">Область</h5>
+                                    <select class="sort_list" name="npregion" id="region" onchange="newpostUpdate('region', jQuery(this).val());">
+                                        @foreach($regions as $region)
+                                            @if($region->name_ru !== 'АРК')
+                                                <option value="{{ $region->id }}"{{ isset($address->npregion) && $address->npregion == $region->id ? ' selected' : '' }}>{{ $region->name_ru }}</option>
+                                            @endif
                                         @endforeach
-                                    @else
-                                        <div class="cabinet__info">Нет адреса</div>
-                                    @endif
+                                    </select>
                                 </div>
-                                <p class="cabinet__add-address">Добавить адрес</p>
+                                <div class="profile-data-item">
+                                    <h5 class="data-name">Населённый пункт</h5>
+                                    <select class="sort_list" name="npcity" id="checkout-step__city" onchange="newpostUpdate('city', jQuery(this).val());">
+                                        @forelse($cities as $city)
+                                            <option value="{{ $city->id }}"{{ isset($address->npcity) && $address->npcity == $city->id ? ' selected' : '' }}>{{ $city->name_ru }}</option>
+                                        @empty
+                                            <option value="">Выберите область</option>
+                                        @endforelse
+                                    </select>
+                                </div>
+                                <div class="profile-data-item">
+                                    <h5 class="data-name">Отделение</h5>
+                                    <select class="sort_list" name="npdepartment" id="checkout-step__warehouse">
+                                        @forelse($departments as $department)
+                                            <option value="{{ $department->id }}"{{ isset($address->npdepartment) && $address->npdepartment == $department->id ? ' selected' : '' }}>{{ $department->address_ru }}</option>
+                                        @empty
+                                            <option value="">Выберите населённый пункт</option>
+                                        @endforelse
+                                    </select>
+                                </div>
                             </div>
                         </div>
+
                         <div class="cabinet__btn-wrp">
                             <button type="submit" class="cabinet__btn">Сохранить изменения</button>
                         </div>
@@ -136,7 +177,7 @@
                             <input type="password" name="repass">
                         </div>
                         <div class="cabinet__btn-wrp">
-                            <button type="submit" class="cabinet__btn">Сохранить изменения</button>
+                            <button type="submit" class="cabinet__btn password-btn">Сохранить изменения</button>
                         </div>
                     </form>
                 </div>
