@@ -232,7 +232,6 @@
     font-family: 'FuturaMediumC';
     font-size: 16px;
     color: #484848;
-    text-align: center;
     padding: 5px 0;
     height: 45px;
    @include bp (md){
@@ -245,7 +244,6 @@
     color: #484848;
     font-size: 14px;
     padding: 5px 0 13px;
-    text-align: center;
    @include bp (xs){
      padding: 5px;
      font-size: 14px;
@@ -316,6 +314,10 @@
    display: block;
    border: none;
    font-size: 0;
-   background: url('../images/heart1.png') center no-repeat;
-   background-size: contain;
+   background: url('../images/heart.png') center no-repeat;
+   background-size: cover;
+   background-position: 0 2px;
+   &:hover{
+     background-position: 0 -23px;
+   }
  }
