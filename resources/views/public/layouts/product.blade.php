@@ -63,26 +63,29 @@
             @endif
         </div>
     </a>
-    <div class="color-slider-wrp underline">
-        <div class="product-card__colors-slider product-card__colors-slider{{ $product->id }} slick-slider" data-slick='{"slidesToShow": 7, "lazyLoad": "ondemand", "focusOnSelect": true, "asNavFor": ".product-card__img-slider{{ $product->id }}","responsive":[{"breakpoint":1450,"settings":{"slidesToShow": 6}}, {"breakpoint":1200,"settings":{"slidesToShow": 5}}, {"breakpoint":991,"settings":{"slidesToShow": 4}}, {"breakpoint":768,"settings":{"slidesToShow": 3}}, {"breakpoint":480,"settings":{"slidesToShow": 1}}]}'>
-            @foreach($colors as $key => $item)
-                <div data-id="{{ $key }}" title="{{ $item['color']->name }}" class="product-card__colors-item" style="background-color: {{ $item['color']->value }}"></div>
-            @endforeach
-        </div>
+    {{--<div class="color-slider-wrp underline">--}}
+        {{--<div class="product-card__colors-slider product-card__colors-slider{{ $product->id }} slick-slider" data-slick='{"slidesToShow": 7, "lazyLoad": "ondemand", "focusOnSelect": true, "asNavFor": ".product-card__img-slider{{ $product->id }}","responsive":[{"breakpoint":1450,"settings":{"slidesToShow": 6}}, {"breakpoint":1200,"settings":{"slidesToShow": 5}}, {"breakpoint":991,"settings":{"slidesToShow": 4}}, {"breakpoint":768,"settings":{"slidesToShow": 3}}, {"breakpoint":480,"settings":{"slidesToShow": 1}}]}'>--}}
+            {{--@foreach($colors as $key => $item)--}}
+                {{--<div data-id="{{ $key }}" title="{{ $item['color']->name }}" class="product-card__colors-item" style="background-color: {{ $item['color']->value }}"></div>--}}
+            {{--@endforeach--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    <div class="underline">
+        <button class="product-card__like"></button>
     </div>
     <p class="product-card__title">{{ $product->name }}</p>
     @if($product->old_price)
         <div class="product-card__price-wrp">
-            <span class="old-price">{{ number_format($product->old_price, 2, '.', ' ') }}</span>
             <span class="new-price">{{ number_format($product->price, 2, '.', ' ') }} грн</span>
+            <span class="old-price">{{ number_format($product->old_price, 2, '.', ' ') }}</span>
         </div>
     @else
         <p class="product-card__price">{{ number_format($product->price, 2, '.', ' ') }} грн</p>
     @endif
-    <div class="product-card__btn">
-        <a href="{{env('APP_URL')}}/product/{{ $product->url_alias }}"><p class="product-card__btn-more">Подробнее</p></a>
-        <button class="product-card__btn-buy popup-btn" data-mfp-src="#oneClick_{{ $product->id }}">Купить в 1 клик</button>
-    </div>
+    {{--<div class="product-card__btn">--}}
+        {{--<a href="{{env('APP_URL')}}/product/{{ $product->url_alias }}"><p class="product-card__btn-more">Подробнее</p></a>--}}
+        {{--<button class="product-card__btn-buy popup-btn" data-mfp-src="#oneClick_{{ $product->id }}">Купить в 1 клик</button>--}}
+    {{--</div>--}}
     <div class="hidden">
         <div id="oneClick_{{ $product->id }}" class="view-popup">
             <div class="container">

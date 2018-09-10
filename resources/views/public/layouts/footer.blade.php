@@ -1,6 +1,18 @@
 <footer class="footer">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <form action="" class="subscribe-form pbz_form"  data-error-title="Ошибка отправки!"
+                      data-error-message="Попробуйте отправить заявку через некоторое время."
+                      data-success-title="Спасибо за заявку!"
+                      data-success-message="Наш менеджер свяжется с вами в ближайшее время.">
+                    <p>подпишись на нас</p>
+                   <div>
+                       <input type="email"  name="email" data-title="Email" data-validate-required="Обязательное поле" data-validate-email="Неправильный email" placeholder="Введите Ваш e-mail">
+                       <button type="submit">Подписаться</button>
+                   </div>
+                </form>
+            </div>
             <div class="col-md-4 col-sm-5">
                 <p class="footer__title">Контакты</p>
                 <div class="footer__contact">
@@ -65,6 +77,7 @@
                     <li><a href="{{env('APP_URL')}}/page/o-magazine">О магазине</a></li>
                     <li><a href="{{env('APP_URL')}}/news">Публикации</a></li>
                     <li><a href="{{env('APP_URL')}}/page/contact">Контакты</a></li>
+                    <li><a href="">Политика конфиденциальности</a></li>
                 </ul>
             </div>
         </div>
@@ -80,7 +93,6 @@
             <div class="col-md-offset-2 col-md-3 col-sm-offset-1 col-sm-4">
                 <ul class="footer-delivery-list footer-list">
                     <li><img src="/images/icons/13.png" alt=""></li>
-                    <li> Бесплатная доставка:</li>
                     <li><img src="/images/icons/np.png" alt=""></li>
                 </ul>
             </div>

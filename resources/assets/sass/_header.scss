@@ -3,10 +3,15 @@
     display: flex;
     align-items: center;
     @include bp (sm){
-        display: block;
+        display: flex;
+        align-items: center;
+    }
+    @include bp (xs){
+        width: 100vw;
     }
     &.thanks-page{
         justify-content: space-between;
+        padding: 0;
     }
 }
 
@@ -40,10 +45,16 @@
 .header__phone{
     display: flex;
     align-items: center;
+    justify-content: center;
+    border-left: 1px solid rgba(212, 214, 211, 0.51);
+    border-right: 1px solid rgba(212, 214, 211, 0.51);
     font-family: 'FuturaBookC';
     font-size: 14px;
     @include bp (lg){
         font-size: 12px;
+    }
+    @include bp (sm){
+        border: none;
     }
     @include bp (xs){
         font-size: 11px;
@@ -52,6 +63,7 @@
         margin-left: 5px;
         @include bp (sm){
             display: flex;
+            flex-direction: column;
         }
     }
     li{
@@ -77,8 +89,8 @@
     justify-content: center;
     img{
         width: 140px;
-        @include bp (md){
-            width: 250px;
+        @include bp (sm){
+            width: 100%;
         }
     }
     @include bp (md){
@@ -97,13 +109,19 @@
 .header-info{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding-left: 0;
+    justify-content: center;
+}
+
+.header__searcher-container{
+    background: #d4d6d32e;
+    padding: 10px 0;
+    border-top: 1px solid #D8D8D8;
+    box-shadow: 0 10px 20px -10px #b3b3b3;
 }
 
 .header__searcher{
     position: relative;
-    background-color: #fbfbfb;
+    width: 300px;
     &::after{
         content: '';
         position: absolute;
@@ -125,24 +143,51 @@
         font-size: none;
         z-index: 100;
     }
-}
-
-.header__searcher-input{
-    outline: none;
-    border: none;
-    padding: 7px;
-    padding-right: 20px;
-    background-color: #fbfbfb;
-    color: #454545;
-    position: relative;
-    font-family: 'FuturaDemiC';
-    font-size: 12px;
-    width: 150px;
-    margin-right: 7px;
-    &::placeholder{
-    color: #454545;
+    @include bp (xs) {
+        width: 100%;
+    }
+    input{
+        outline: none;
+        border: none;
+        padding: 7px;
+        padding-right: 20px;
+        background-color: #fbfbfb;
+        color: #454545;
+        position: relative;
+        font-family: 'FuturaDemiC';
+        font-size: 12px;
+        width: 300px;
+        margin-right: 7px;
+        border-radius: 15px;
+        &::placeholder{
+            color: #454545;
+        }
+        @include bp (xs) {
+            width: 100%;
+        }
     }
 }
+
+//.header__searcher-input{
+//    outline: none;
+//    border: none;
+//    padding: 7px;
+//    padding-right: 20px;
+//    background-color: #fbfbfb;
+//    color: #454545;
+//    position: relative;
+//    font-family: 'FuturaDemiC';
+//    font-size: 12px;
+//    width: 300px;
+//    margin-right: 7px;
+//    border-radius: 15px;
+//    &::placeholder{
+//    color: #454545;
+//    }
+//    @include bp (xs) {
+//        width: 100%;
+//    }
+//}
 
 .header__like{
     display: flex;
@@ -367,11 +412,11 @@
 .burger-menu__wrp{
     display: flex;
     align-items: center;
+    justify-content: center;
     text-transform: uppercase;
     color: #000;
     font-size: 13px;
     font-family: 'FuturaDemiC';
-    padding: 10px 5px 10px 0;
 }
 
 .burger-menu{

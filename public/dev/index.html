@@ -27,22 +27,43 @@
 <body id='body'>
 
 <header class="header">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="visible-sm-block col-sm-12 hidden-xs">
-               <div class="header__logo">
-                   <a href="./index.html"><img src="../../images/logo1.png" alt=""></a>
-               </div>
-           </div>
+    <div class="container">
+        <!--<div class="row">-->
+            <!--<div class="visible-sm-block col-sm-12 hidden-xs">-->
+               <!--<div class="header__logo">-->
+                   <!--<a href="./index.html"><img src="../../images/logo1.png" alt=""></a>-->
+               <!--</div>-->
+           <!--</div>-->
+        <!--</div>-->
+        <div class="visible-xs-block col-xs-6">
+            <ul class="header__time-information">
+                <li><img src="../../images/icons/1.png" alt=""></li>
+                <li>Время работы колл центра: <span>с 09:00 до 17:00 ПН-ПТ </span></li>
+            </ul>
         </div>
-        <div class="row header-inform-container underline">
-            <div class="col-sm-3 col-xs-12">
+        <div class="visible-xs-block col-xs-6">
+            <div class="header__phone">
+                <img src="../../images/icons/2.png" alt="">
+                <ul>
+                    <li><a href="tel:(050) 162 08 88">(050) 162 08 88</a></li>
+                    <li><a href="tel:(067) 800 10 77">(067) 800 10 77</a></li>
+                    <li><a href="tel:(044) 333 71 09">(044) 333 71 09</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row header-inform-container">
+            <div class="col-md-3 col-sm-3 col-xs-4">
+                <div class="header__logo">
+                    <img src="../../images/logo.png" alt="">
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 hidden-xs">
                 <ul class="header__time-information">
                     <li><img src="../../images/icons/1.png" alt=""></li>
                     <li>Время работы колл центра: <span>с 09:00 до 17:00 ПН-ПТ </span></li>
                 </ul>
             </div>
-            <div class="col-md-2 col-sm-3 col-xs-12">
+            <div class="col-md-3 col-sm-4 hidden-xs">
                 <div class="header__phone">
                     <img src="../../images/icons/2.png" alt="">
                     <ul>
@@ -52,63 +73,58 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-2 hidden-sm hidden-xs">
-                <div class="header__logo">
-                    <img src="../../images/logo.png" alt="">
-                </div>
-            </div>
-            <div class="visible-xs-block col-xs-12">
-                <div class="header__logo">
-                    <img src="../../images/logo1.png" alt="">
-                </div>
-            </div>
-            <div class="col-md-5 col-sm-6 hidden-xs header-info">
-                <form action="" class="header__searcher">
-                    <input type="search" class="header__searcher-input" placeholder="ПОИСК" name="" id="">
-                    <button></button>
-                </form>
+            <div class="col-md-2 col-sm-2 col-xs-4 col-sm-offset-0 col-xs-offset-1 header-info">
                 <a href="">
                     <ul class="header__like">
-                        <li>Избранное</li>
+                        <!--<li>Избранное</li>-->
                         <li><img src="../../images/icons/heart.png" alt=""></li>
                     </ul>
                 </a>
                 <a href="" class="popup-btn" data-mfp-src="#logIn-popup">
                     <ul class="header__profile">
-                        <li>Вход</li>
+                        <!--<li>Вход</li>-->
                         <li><img src="../../images/icons/4.png" alt=""></li>
                     </ul>
                 </a>
                 <a href="">
                     <ul class="header__cart">
-                        <li>Корзина</li>
+                        <!--<li>Корзина</li>-->
                         <li><img src="../../images/icons/5.png" alt=""></li>
                         <p class="in-cart">1</p>
                     </ul>
                 </a>
             </div>
-            <div class="visible-xs-block col-xs-12">
-                <div class="mobile-nav">
-                    <div class="burger-menu__wrp">
-                        <div class="burger-menu"></div>
-                        <p>меню</p>
-                    </div>
-                    <div class="mobile-nav__enter">
-                        <a href="" class="popup-btn" data-mfp-src="#logIn-popup">
-                            <ul class="header__profile">
-                                <li>Вход</li>
-                                <li><img src="../../images/icons/4.png" alt=""></li>
-                            </ul>
-                        </a>
-                        <a href="">
-                            <ul class="header__cart">
-                                <li>Корзина</li>
-                                <li><img src="../../images/icons/5.png" alt=""></li>
-                            </ul>
-                        </a>
-                    </div>
+            <div class="visible-xs-block col-xs-3">
+                <div class="burger-menu__wrp">
+                    <div class="burger-menu"></div>
+                    <!--<p>меню</p>-->
                 </div>
             </div>
+            <!--<div class="visible-xs-inline-block col-xs-6 col-xs-offset-1">-->
+                <!--<div class="mobile-nav">-->
+                    <!--<div class="mobile-nav__enter">-->
+                        <!--<a href="">-->
+                            <!--<ul class="header__like">-->
+                                <!--<li><img src="../../images/icons/heart.png" alt=""></li>-->
+                            <!--</ul>-->
+                        <!--</a>-->
+                        <!--<a href="" class="popup-btn" data-mfp-src="#logIn-popup">-->
+                            <!--<ul class="header__profile">-->
+                                <!--<li><img src="../../images/icons/4.png" alt=""></li>-->
+                            <!--</ul>-->
+                        <!--</a>-->
+                        <!--<a href="">-->
+                            <!--<ul class="header__cart">-->
+                                <!--<li><img src="../../images/icons/5.png" alt=""></li>-->
+                            <!--</ul>-->
+                        <!--</a>-->
+                    <!--</div>-->
+                    <!--<div class="burger-menu__wrp">-->
+                        <!--<div class="burger-menu"></div>-->
+                        <!--<p>меню</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
         <div class="mobile-menu close">
             <div class="mobile-menu__close"></div>
@@ -174,7 +190,7 @@
                 </div>
             </div>
         </div>
-        <div class="row underline">
+        <div class="row">
             <nav class="hidden-xs header__navigation">
 
                 <div class="header__navigation-item">
@@ -290,8 +306,19 @@
                 <div class="header__navigation-item">
                     <a href="">Контакты</a>
                 </div>
-
             </nav>
+        </div>
+    </div>
+    <div class="header__searcher-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 header__searcher-wrp">
+                    <form action="" class="header__searcher">
+                        <input type="search" class="header__searcher-input" placeholder="ПОИСК" name="" id="">
+                        <button></button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </header>

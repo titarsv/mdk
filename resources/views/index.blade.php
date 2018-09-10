@@ -184,7 +184,7 @@
         </div>
     </section>
 
-    <section class="section-7 underline">
+    <section class="section-7">
         <div class="container-fluid">
             <p class="acticle-title">
                 Статьи

@@ -37,15 +37,44 @@
 @section('content')
 
     <section>
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-sm-12 hidden-xs">
                     {!! Breadcrumbs::render('product', $product, $product->categories) !!}
                 </div>
-                <div class="col-lg-7 col-md-6 col-sm-5 col-xs-12">
+                <div class=" col-md-9 col-sm-8 col-xs-12">
+                    <p class="product__info-name">{{ $product->name }}</p>
+                    <p class="product__info-article">Артикул товара: {{ $product->articul }}</p>
                     <div class="product__info-sale visible-xs-block">-20% sale</div>
+                    <div class="product__info-wrp visible-xs-block">
+                        <div class="product__info-name-wrp hidden-xs">
+                            @if(!empty($product->label) && $product->label != 'z' && isset($labels[$product->label]))
+                                <div class="product__info-new">
+                                    {{ $labels[$product->label] }}
+                                </div>
+                            @elseif(!empty($product->old_price))
+                                <div class="product__info-sale">
+                                    -{{ ceil((($product->old_price - $product->price)/ $product->old_price) * 100) }}% sale
+                                </div>
+                            @endif
+                            {{--<p class="product__info-name">{{ $product->name }}</p>--}}
+                            {{--<p class="product__info-article">Артикул товара: {{ $product->articul }}</p>--}}
+                        </div>
+                        <div class="product__info-price-wrp">
+                            @if(!empty($product->old_price))
+                                <p class="product__info-price-old">{{ number_format($product->old_price, 2, '.', ' ') }} грн</p>
+                            @endif
+                            <p class="product__info-price">{{ number_format($product->price, 2, '.', ' ') }} грн</p>
+                            {{--@if(!empty($product->old_price))--}}
+                            {{--<p class="product__info-price-economy">--}}
+                            {{--<img src="/images/icons/econom.png" alt="">--}}
+                            {{--<span>Вы экономите {{ number_format($product->old_price - $product->price, 2, '.', ' ') }} грн</span>--}}
+                            {{--</p>--}}
+                            {{--@endif--}}
+                        </div>
+                    </div>
                     <!-- <div class="product__info-new visible-xs-block">new</div> -->
-                    <div class="slick-slider product-slider" data-slick='{"slidesToShow": 2, "dots": false, "arrows": true, "responsive":[{"breakpoint": 991,"settings":{"slidesToShow": 2}}, {"breakpoint":480,"settings":{"slidesToShow": 1}}]}'>
+                    <div class="slick-slider product-slider" data-slick='{"slidesToShow": 1, "dots": false, "arrows": true, "responsive":[{"breakpoint": 991,"settings":{"slidesToShow": 2}}, {"breakpoint":480,"settings":{"slidesToShow": 1}}]}'>
                         @forelse($gallery as $image)
                             @if(is_object($image))
                                 <div>
@@ -66,12 +95,50 @@
                             </div>
                         @endforelse
                     </div>
+                    <div class="product__description-wrp hidden-xs">
+                        <p class="main-title">Полное описание:</p>
+
+                        <ul class="product__description-tabs nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#characteristics">Характеристики</a></li>
+                            <li><a data-toggle="tab" href="#delivery">Доставка</a></li>
+                            <li><a data-toggle="tab" href="#garanty">Гарантия</a></li>
+                            <li><a data-toggle="tab" href="#pay">Оплата</a></li>
+                            <li><a data-toggle="tab" href="#availability">Наличие</a></li>
+                        </ul>
+                        <div class="product__description-tabs-content tab-content">
+                            <div id="characteristics" class="tab-pane fade in active">
+                                @foreach($product_attributes as $name => $values)
+                                    <p class="product__description-color">
+                                        <span class="product__description-name">{{ $name }}:</span>
+                                        @foreach($values as $i => $value){{ $i ? ', '.$value['name'] : $value['name'] }}@endforeach
+                                    </p>
+                                @endforeach
+                                {{--<p class="product__description-color black"> <span class="product__description-name">Цвет:</span> черный</p>--}}
+                                {{--<p><span class="product__description-name">Cезон:</span> осень</p>--}}
+                                {{--<p class="product__description-material suede"><span class="product__description-name">Сырье:</span> jumbo/замш</p>--}}
+                                {{--<p> <span class="product__description-name">Производитель:</span> Турция</p>--}}
+                                <p>{!! $product->description !!}</p>
+                            </div>
+                            <div id="delivery" class="tab-pane fade">
+                                <p> Доставка</p>
+                            </div>
+                            <div id="garanty" class="tab-pane fade">
+                                <p>Гарантия</p>
+                            </div>
+                            <div id="pay" class="tab-pane fade">
+                                <p>Оплата</p>
+                            </div>
+                            <div id="availability" class="tab-pane fade">
+                                <p>В наличии</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-xs-12 visible-xs-block">
-                    {!! Breadcrumbs::render('product', $product, $product->categories) !!}
-                </div>
-                <div class="col-lg-5 col-md-6 col-sm-7 col-xs-12">
-                    <div class="product__info-wrp">
+                {{--<div class="col-xs-12 visible-xs-block">--}}
+                    {{--{!! Breadcrumbs::render('product', $product, $product->categories) !!}--}}
+                {{--</div>--}}
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <div class="product__info-wrp hidden-xs">
                         <div class="product__info-name-wrp hidden-xs">
                             @if(!empty($product->label) && $product->label != 'z' && isset($labels[$product->label]))
                                 <div class="product__info-new">
@@ -82,20 +149,20 @@
                                     -{{ ceil((($product->old_price - $product->price)/ $product->old_price) * 100) }}% sale
                                 </div>
                             @endif
-                            <p class="product__info-name">{{ $product->name }}</p>
-                            <p class="product__info-article">Артикул товара: {{ $product->articul }}</p>
+                            {{--<p class="product__info-name">{{ $product->name }}</p>--}}
+                            {{--<p class="product__info-article">Артикул товара: {{ $product->articul }}</p>--}}
                         </div>
                         <div class="product__info-price-wrp">
                             @if(!empty($product->old_price))
                             <p class="product__info-price-old">{{ number_format($product->old_price, 2, '.', ' ') }} грн</p>
                             @endif
                             <p class="product__info-price">{{ number_format($product->price, 2, '.', ' ') }} грн</p>
-                            @if(!empty($product->old_price))
-                            <p class="product__info-price-economy">
-                                <img src="/images/icons/econom.png" alt="">
-                                <span>Вы экономите {{ number_format($product->old_price - $product->price, 2, '.', ' ') }} грн</span>
-                            </p>
-                            @endif
+                            {{--@if(!empty($product->old_price))--}}
+                            {{--<p class="product__info-price-economy">--}}
+                                {{--<img src="/images/icons/econom.png" alt="">--}}
+                                {{--<span>Вы экономите {{ number_format($product->old_price - $product->price, 2, '.', ' ') }} грн</span>--}}
+                            {{--</p>--}}
+                            {{--@endif--}}
                         </div>
                     </div>
                     <form action="" class="product__form">
@@ -159,7 +226,7 @@
                             {{--<span>Полное описание товара</span>--}}
                         {{--</a>--}}
                     </form>
-                    <div class="product__description-wrp">
+                    <div class="product__description-wrp visible-xs-block col-xs-12">
                         <p class="main-title">Полное описание:</p>
 
                         <ul class="product__description-tabs nav nav-tabs">
